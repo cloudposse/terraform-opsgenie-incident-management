@@ -17,8 +17,8 @@ resource "opsgenie_escalation" "this" {
       for_each = try(var.escalation.rule.recipients, [])
 
       content {
-        type = recipient.value.type
         id   = recipient.value.id
+        type = recipient.value.type
       }
     }
   }

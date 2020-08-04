@@ -15,11 +15,11 @@ resource "opsgenie_notification_policy" "this" {
       for_each = try(var.notification_policy.filter.conditions, [])
 
       content {
-        field          = try(conditions.value.field, null)
-        operation      = try(conditions.value.operation, null)
         expected_value = try(conditions.value.expected_value, null)
+        field          = try(conditions.value.field, null)
         key            = try(conditions.value.key, null)
         not            = try(conditions.value.not, null)
+        operation      = try(conditions.value.operation, null)
         order          = try(conditions.value.order, null)
       }
     }
@@ -27,8 +27,8 @@ resource "opsgenie_notification_policy" "this" {
 
   auto_close_action {
     duration {
-      time_unit   = try(var.notification_policy.auto_close_action.time_unit, null)
       time_amount = try(var.notification_policy.auto_close_action.time_amount, null)
+      time_unit   = try(var.notification_policy.auto_close_action.time_unit, null)
     }
   }
 }

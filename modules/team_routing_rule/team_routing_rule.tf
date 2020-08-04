@@ -16,11 +16,11 @@ resource "opsgenie_team_routing_rule" "this" {
       for_each = try(var.team_routing_rule.criteria.conditions, [])
 
       content {
-        field          = try(conditions.value.field, null)
-        operation      = try(conditions.value.operation, null)
         expected_value = try(conditions.value.expected_value, null)
+        field          = try(conditions.value.field, null)
         key            = try(conditions.value.key, null)
         not            = try(conditions.value.not, null)
+        operation      = try(conditions.value.operation, null)
       }
     }
   }
