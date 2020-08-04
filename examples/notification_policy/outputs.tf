@@ -1,3 +1,8 @@
+output "notification_policy" {
+  description = "Opsgenie Notification Policy."
+  value       = module.notification_policy
+}
+
 output "notification_policy_id" {
   description = "The ID of the Opsgenie Notification Policy."
   value       = module.notification_policy.notification_policy_id

@@ -16,8 +16,19 @@ module "alert_policy" {
 
   alert_policy = {
     name = module.label.id
+
+    tags     = ["test1", "test2"]
+    priority = "P1"
+
+    responders = [
+      {
+        id   = module.team.team_id
+        type = "team"
+      }
+    ]
+
     filter = {
-      type = "match-all"
+      type = "match-all-conditions"
       conditions = [
         {
           field          = "source"
@@ -30,9 +41,17 @@ module "alert_policy" {
           expected_value = "severity:critical"
         }
       ]
-      priority = "P1"
     }
   }
+}
 
+module "team" {
+  source = "../../modules/team"
 
+  provider_api_key = var.opsgenie_provider_api_key
+
+  team = {
+    name        = module.label.id
+    description = "team-description"
+  }
 }
