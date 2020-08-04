@@ -6,13 +6,13 @@ import (
 	"testing"
 )
 
-// Test the Terraform module in examples/complete using Terratest.
-func TestExamplesComplete(t *testing.T) {
+// Test the Terraform module in examples/alert_policy using Terratest.
+func TestExamplesAlertPolicy(t *testing.T) {
 	t.Parallel()
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
-		TerraformDir: "../../examples/complete",
+		TerraformDir: "../../examples/alert_policy",
 		Upgrade:      true,
 		// Variables to pass to our Terraform code using -var-file options
 		VarFiles: []string{"fixtures.us-east-2.tfvars"},
@@ -25,8 +25,8 @@ func TestExamplesComplete(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the value of an output variable
-	outputExample := terraform.Output(t, terraformOptions, "example")
+	outputAlertPolicyName := terraform.Output(t, terraformOptions, "alert_policy_name")
 
 	// Verify we're getting back the outputs we expect
-	assert.Regexp(t, "^Hello world! [0-9]+$", outputExample)
+	assert.Regexp(t, "^eg-test-alert-policy$", outputAlertPolicyName)
 }
