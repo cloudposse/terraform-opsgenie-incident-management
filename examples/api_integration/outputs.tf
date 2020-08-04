@@ -11,5 +11,5 @@ output "api_integration_id" {
 output "api_integration_api_key" {
   description = "The API key of the Opsgenie API Integration"
   value       = module.api_integration.api_integration_api_key
-  sensitive = true
+  sensitive   = true
 }
