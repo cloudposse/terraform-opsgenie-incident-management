@@ -8,8 +8,6 @@ import (
 
 // Test the Terraform module in examples/team_routing_rule using Terratest.
 func TestExamplesTeamRoutingRule(t *testing.T) {
-	t.Parallel()
-
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "../../examples/team_routing_rule",

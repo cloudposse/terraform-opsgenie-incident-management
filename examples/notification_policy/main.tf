@@ -9,7 +9,7 @@ module "label" {
   tags       = var.tags
 }
 
-module "owner_team" {
+module "team" {
   source = "../../modules/team"
 
   provider_api_key = var.opsgenie_provider_api_key
@@ -18,37 +18,29 @@ module "owner_team" {
     name        = "owner-team"
     description = "owner-team-description"
   }
-
-
 }
 
-module "escalation_team" {
-  source = "../../modules/team"
+module "notification_policy" {
+  source = "../../modules/notification_policy"
 
   provider_api_key = var.opsgenie_provider_api_key
 
-  team = {
-    name        = "escalation-team"
-    description = "owner-team-description"
-  }
+  notification_policy = {
+    name    = module.label.id
+    team_id = module.team.team_id
 
-}
-
-module "escalation" {
-  source = "../../modules/escalation"
-
-  provider_api_key = var.opsgenie_provider_api_key
-
-  escalation = {
-    name          = module.label.id
-    owner_team_id = module.owner_team.team_id
-
-    rule = {
-      recipients = [{
-        type = "team"
-        id   = module.escalation_team.team_id
+    filter = {
+      type = "match-all-conditions"
+      conditions = [{
+        field          = "tags"
+        operation      = "contains"
+        expected_value = "recommendation:auto-close"
       }]
     }
-  }
 
+    auto_close_action = {
+      time_unit   = "minutes"
+      time_amount = 5
+    }
+  }
 }

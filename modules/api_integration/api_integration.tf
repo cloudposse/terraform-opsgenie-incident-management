@@ -11,8 +11,8 @@ resource "opsgenie_api_integration" "this" {
     for_each = try(var.api_integration.responders, [])
 
     content {
-      type = responders.value["type"]
-      id   = responders.value["id"]
+      type = responders.value.type
+      id   = responders.value.id
     }
   }
 

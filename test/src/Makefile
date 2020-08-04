@@ -1,4 +1,4 @@
-PACKAGE  = terraform-opsgenie
+PACKAGE  = terraform-opsgenie-incident-management
 GOEXE   ?= /usr/bin/go
 GOPATH   = $(CURDIR)/.gopath
 GOBIN    = $(GOPATH)/bin
@@ -43,6 +43,7 @@ init: $(BASE)/vendor
 .PHONY : test
 ## Run tests
 test: init
+	cd $(BASE) && go test -v -timeout 5m -run TestExamplesNotificationPolicy
 	cd $(BASE) && go test -v -timeout 5m -run TestExamplesTeamRoutingRule
 	cd $(BASE) && go test -v -timeout 5m -run TestExamplesAlertPolicy
 	cd $(BASE) && go test -v -timeout 5m -run TestExamplesApiIntegration

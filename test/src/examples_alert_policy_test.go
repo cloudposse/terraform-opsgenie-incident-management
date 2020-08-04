@@ -8,8 +8,6 @@ import (
 
 // Test the Terraform module in examples/alert_policy using Terratest.
 func TestExamplesAlertPolicy(t *testing.T) {
-	t.Parallel()
-
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "../../examples/alert_policy",

@@ -8,8 +8,6 @@ import (
 
 // Test the Terraform module in examples/team using Terratest.
 func TestExamplesTeam(t *testing.T) {
-	t.Parallel()
-
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "../../examples/team",

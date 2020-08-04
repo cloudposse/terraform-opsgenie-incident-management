@@ -23,11 +23,11 @@ resource "opsgenie_alert_policy" "this" {
       for_each = try(var.alert_policy.filter.conditions, [])
 
       content {
-        field          = try(conditions.value["field"], null)
-        operation      = try(conditions.value["operation"], null)
-        expected_value = try(conditions.value["expected_value"], null)
-        key            = try(conditions.value["key"], null)
-        not            = try(conditions.value["not"], null)
+        field          = try(conditions.value.field, null)
+        operation      = try(conditions.value.operation, null)
+        expected_value = try(conditions.value.expected_value, null)
+        key            = try(conditions.value.key, null)
+        not            = try(conditions.value.not, null)
       }
     }
   }

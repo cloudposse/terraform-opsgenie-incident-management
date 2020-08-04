@@ -46,7 +46,7 @@ module "owner_team" {
   provider_api_key = var.opsgenie_provider_api_key
 
   team = {
-    name        = "owner_team"
+    name        = "owner-team"
     description = "owner-team-description"
   }
 }

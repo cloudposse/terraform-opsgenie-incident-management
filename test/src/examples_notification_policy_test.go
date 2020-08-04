@@ -6,11 +6,11 @@ import (
 	"testing"
 )
 
-// Test the Terraform module in examples/api_integration using Terratest.
-func TestExamplesApiIntegration(t *testing.T) {
+// Test the Terraform module in examples/notification_policy using Terratest.
+func TestExamplesNotificationPolicy(t *testing.T) {
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
-		TerraformDir: "../../examples/api_integration",
+		TerraformDir: "../../examples/notification_policy",
 		Upgrade:      true,
 		// Variables to pass to our Terraform code using -var-file options
 		VarFiles: []string{"fixtures.us-east-2.tfvars"},
@@ -23,8 +23,8 @@ func TestExamplesApiIntegration(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the value of an output variable
-	outputApiIntegrationName := terraform.Output(t, terraformOptions, "api_integration_name")
+	outputNotificationPolicyName := terraform.Output(t, terraformOptions, "notification_policy_name")
 
 	// Verify we're getting back the outputs we expect
-	assert.Regexp(t, "^eg-test-api-integration$", outputApiIntegrationName)
+	assert.Regexp(t, "^eg-test-notification-policy$", outputNotificationPolicyName)
 }
