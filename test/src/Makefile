@@ -43,12 +43,13 @@ init: $(BASE)/vendor
 .PHONY : test
 ## Run tests
 test: init
-	cd $(BASE) && go test -v -timeout 5m -run TestExamplesNotificationPolicy
-	cd $(BASE) && go test -v -timeout 5m -run TestExamplesTeamRoutingRule
+	cd $(BASE) && go test -v -timeout 10m -run TestExamplesComplete
 	cd $(BASE) && go test -v -timeout 5m -run TestExamplesAlertPolicy
 	cd $(BASE) && go test -v -timeout 5m -run TestExamplesApiIntegration
 	cd $(BASE) && go test -v -timeout 5m -run TestExamplesEscalation
+	cd $(BASE) && go test -v -timeout 5m -run TestExamplesNotificationPolicy
 	cd $(BASE) && go test -v -timeout 5m -run TestExamplesTeam
+	cd $(BASE) && go test -v -timeout 5m -run TestExamplesTeamRoutingRule
 
 .PHONY : clean
 ## Clean up files

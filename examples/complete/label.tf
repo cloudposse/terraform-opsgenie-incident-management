@@ -9,14 +9,3 @@ module "label" {
   tags       = var.tags
 }
 
-module "team" {
-  source = "../../modules/team"
-
-  provider_api_key = var.opsgenie_provider_api_key
-
-  team = {
-    name        = module.label.id
-    description = "team-description"
-  }
-
-}
