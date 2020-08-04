@@ -43,6 +43,7 @@ init: $(BASE)/vendor
 .PHONY : test
 ## Run tests
 test: init
+	cd $(BASE) && go test -v -timeout 5m -run TestExamplesTeamRoutingRule
 	cd $(BASE) && go test -v -timeout 5m -run TestExamplesAlertPolicy
 	cd $(BASE) && go test -v -timeout 5m -run TestExamplesApiIntegration
 	cd $(BASE) && go test -v -timeout 5m -run TestExamplesEscalation

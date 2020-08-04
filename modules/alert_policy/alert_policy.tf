@@ -1,5 +1,5 @@
 variable "alert_policy" {
-  description = "This variable is used to configure opsgenie alert policy."
+  description = "This variable is used to configure Opsgenie Alert Policy."
   default     = {}
 }
 

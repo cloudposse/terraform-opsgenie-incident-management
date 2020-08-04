@@ -1,5 +1,5 @@
 variable "api_integration" {
-  description = "This variable is used to configure opsgenie API integration."
+  description = "This variable is used to configure Opsgenie API Integration."
   default     = {}
 }
 

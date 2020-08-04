@@ -1,5 +1,5 @@
 variable "escalation" {
-  description = "This variable is used to configure opsgenie escalation."
+  description = "This variable is used to configure Opsgenie Escalation."
   default     = {}
 }
 

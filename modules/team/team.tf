@@ -1,5 +1,5 @@
 variable "team" {
-  description = "This variable is used to configure opsgenie team."
+  description = "This variable is used to configure Opsgenie Team."
   default     = {}
 }
 

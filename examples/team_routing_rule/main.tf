@@ -9,19 +9,6 @@ module "label" {
   tags       = var.tags
 }
 
-module "owner_team" {
-  source = "../../modules/team"
-
-  provider_api_key = var.opsgenie_provider_api_key
-
-  team = {
-    name        = "owner-team"
-    description = "owner-team-description"
-  }
-
-
-}
-
 module "escalation_team" {
   source = "../../modules/team"
 
@@ -37,10 +24,10 @@ module "escalation_team" {
 module "escalation" {
   source = "../../modules/escalation"
 
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
+  provider_api_key = var.opsgenie_provider_api_key
 
   escalation = {
-    name          = module.label.id
+    name          = "escalation"
     owner_team_id = module.owner_team.team_id
 
     rule = {
@@ -51,4 +38,31 @@ module "escalation" {
     }
   }
 
+}
+
+module "owner_team" {
+  source = "../../modules/team"
+
+  provider_api_key = var.opsgenie_provider_api_key
+
+  team = {
+    name        = "owner_team"
+    description = "owner-team-description"
+  }
+}
+
+module "team_routing_rule" {
+  source = "../../modules/team_routing_rule"
+
+  provider_api_key = var.opsgenie_provider_api_key
+
+  team_routing_rule = {
+    name    = module.label.id
+    team_id = module.owner_team.team_id
+
+    notify = [{
+      type = "escalation"
+      id   = module.escalation.escalation_id
+    }]
+  }
 }
