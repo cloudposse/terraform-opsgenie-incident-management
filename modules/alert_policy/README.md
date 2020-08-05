@@ -40,11 +40,24 @@ module "alert_policy" {
 
 ## Inputs
 
+**Note:** `alert_policy` is a map for two reasons: 
+- to be able to put whole `alert_policy` configuration in yaml file
+- variables defined with type set are not robust enough (can't set default values)
+
 |  Name                          |  Default                          |  Description                                                                                                                    | Required |
 |:-------------------------------|:---------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------|:--------:|
+| `alert_policy`                 | `{}`                              | This variable is used to configure Opsgenie Alert Policy.                                                                       | Yes      |
+| `provider_api_key`             | ``                                | The API Key for the Opsgenie Integration. If omitted, the OPSGENIE_API_KEY environment variable is used.                        | Yes      |
+| `provider_api_url`             | `api.opsgenie.com`                | The API url for the Opsgenie.                                                                                                   | No       |
 
 
 ## Outputs
 
 | Name                        | Description                             |
 |:----------------------------|:----------------------------------------|
+| `alert_policy_id`           | The ID of the Opsgenie Alert Policy.    |
+| `alert_policy_name`         | Name of the Opsgenie Alert Policy.      |
+| `alert_policy_filter`       | Filters of the Opsgenie Alert Policy.   |
+| `alert_policy_tags`         | Tags of the Opsgenie Alert Policy.      |
+| `alert_policy_priority`     | Priority of the Opsgenie Alert Policy.  |
+| `alert_policy_responders`   | Responders of the Opsgenie Alert Policy.|
