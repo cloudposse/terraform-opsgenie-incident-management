@@ -5,7 +5,7 @@ Terraform module to configure [Opsgenie API Integration](https://registry.terraf
 
 ## Usage
 
-Create Opsgenie API Integration
+[Create Opsgenie API Integration example](../../examples/alert_policy)
 
 ```hcl
 module "api_integration" {

@@ -5,7 +5,7 @@ Terraform module to configure [Opsgenie Alert Policy](https://registry.terraform
 
 ## Usage
 
-Create Opsgenie Alert Policy
+[Create Opsgenie Alert Policy example](../../examples/alert_policy)
 
 ```hcl
 module "alert_policy" {
