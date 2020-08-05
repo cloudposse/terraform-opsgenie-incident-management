@@ -41,7 +41,7 @@ module "alert_policy" {
 ## Inputs
 
 **Note:** `alert_policy` is a map for two reasons: 
-- to be able to put whole `alert_policy` configuration in yaml file
+- to be able to put whole configuration in yaml file
 - variables defined with type set are not robust enough (can't set default values)
 
 |  Name                          |  Default                          |  Description                                                                                                                    | Required |
