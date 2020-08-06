@@ -9,3 +9,8 @@ variable "provider_api_url" {
   description = "The API url for the Opsgenie."
   default     = "api.opsgenie.com"
 }
+
+variable "team" {
+  default     = {}
+  description = "This variable is used to configure Opsgenie Team."
+}
