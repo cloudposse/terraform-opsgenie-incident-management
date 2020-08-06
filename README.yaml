@@ -58,11 +58,8 @@ description: |-
   It consist of root module which is only here as an example. Mainly this repository should be used as a set of terraform submodules which can be combined in more complex modules.
 
 # Introduction to the project
-#introduction: |-
-#  This is an introduction.
-
-# How to use this module. Should be an easy example to copy and paste.
-usage: |-
+introduction: |-
+  Available modules:
   - [Alert Policy](modules/alert_policy)
   - [API Integration](modules/api_integration)
   - [Escalation](modules/escalation)
@@ -70,11 +67,14 @@ usage: |-
   - [Team](modules/team)
   - [Team Routing Rule](modules/team_routing_rule)
 
-  Here's how to invoke this example module in your projects
+  **Note:** Root module is just an example that uses all of submodules.
+
+usage: |-
+  Here's how to invoke `team` module in your projects
 
   ```hcl
-  module "example" {
-    source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/team?ref=tags/0.1.0"
+  module "team-name" {
+    source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/team?ref=master"
 
     provider_api_key = var.opsgenie_provider_api_key
 

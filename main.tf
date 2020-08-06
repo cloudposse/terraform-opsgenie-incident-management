@@ -10,7 +10,7 @@ module "label" {
 }
 
 module "alert_policy" {
-  source = "modules/alert_policy"
+  source = "./modules/alert_policy"
 
   provider_api_key = var.opsgenie_provider_api_key
 
@@ -18,7 +18,7 @@ module "alert_policy" {
 }
 
 module "api_integration" {
-  source = "modules/api_integration"
+  source = "./modules/api_integration"
 
   provider_api_key = var.opsgenie_provider_api_key
 
@@ -26,7 +26,7 @@ module "api_integration" {
 }
 
 module "escalation" {
-  source = "modules/escalation"
+  source = "./modules/escalation"
 
   provider_api_key = var.opsgenie_provider_api_key
 
@@ -34,7 +34,7 @@ module "escalation" {
 }
 
 module "notification_policy" {
-  source = "modules/notification_policy"
+  source = "./modules/notification_policy"
 
   provider_api_key = var.opsgenie_provider_api_key
 
@@ -42,7 +42,7 @@ module "notification_policy" {
 }
 
 module "team" {
-  source = "modules/team"
+  source = "./modules/team"
 
   provider_api_key = var.opsgenie_provider_api_key
 
@@ -50,7 +50,7 @@ module "team" {
 }
 
 module "team_routing_rule" {
-  source = "modules/team_routing_rule"
+  source = "./modules/team_routing_rule"
 
   provider_api_key = var.opsgenie_provider_api_key
 
