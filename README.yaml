@@ -5,7 +5,7 @@
 #
 
 # Name of this project
-name: terraform-example-module
+name: terraform-opsgenie-incident-management
 
 # Logo for this project
 #logo: docs/logo.png
@@ -20,13 +20,13 @@ copyrights:
     year: "2020"
 
 # Canonical GitHub repo
-github_repo: cloudposse/terraform-example-module
+github_repo: cloudposse/terraform-opsgenie-incident-management
 
 # Badges to display
 badges:
   - name: "Latest Release"
-    image: "https://img.shields.io/github/release/cloudposse/terraform-example-module.svg"
-    url: "https://github.com/cloudposse/terraform-example-module/releases/latest"
+    image: "https://img.shields.io/github/release/cloudposse/terraform-opsgenie-incident-management.svg"
+    url: "https://github.com/cloudposse/terraform-opsgenie-incident-management/releases/latest"
   - name: "Slack Community"
     image: "https://slack.cloudposse.com/badge.svg"
     url: "https://slack.cloudposse.com"
@@ -36,29 +36,26 @@ badges:
 
 # List any related terraform modules that this module may be used with or that this module depends on.
 related:
-  - name: "terraform-null-label"
-    description: "Terraform module designed to generate consistent names and tags for resources. Use terraform-null-label to implement a strict naming convention."
-    url: "https://github.com/cloudposse/terraform-null-label"
+  - name: "terraform-datadog-monitor"
+    description: "Terraform module to provision Standard System Monitors (cpu, memory, swap, io, etc) in Datadog"
+    url: "https://github.com/cloudposse/terraform-datadog-monitor"
 
 # List any resources helpful for someone to get started. For example, link to the hashicorp documentation or AWS documentation.
 references:
-  - name: "Terraform Standard Module Structure"
-    description: "HashiCorp's standard module structure is a file and directory layout we recommend for reusable modules distributed in separate repositories."
-    url: "https://www.terraform.io/docs/modules/index.html#standard-module-structure"
-  - name: "Terraform Module Requirements"
-    description: "HashiCorp's guidance on all the requirements for publishing a module. Meeting the requirements for publishing a module is extremely easy."
-    url: "https://www.terraform.io/docs/registry/modules/publish.html#requirements"
-  - name: "Terraform `random_integer` Resource"
-    description: "The resource random_integer generates random values from a given range, described by the min and max attributes of a given resource."
-    url: "https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/integer"
-  - name: "Terraform Version Pinning"
-    description: "The required_version setting can be used to constrain which versions of the Terraform CLI can be used with your configuration"
-    url: "https://www.terraform.io/docs/configuration/terraform.html#specifying-a-required-terraform-version"
+  - name: "Opsgenie API Overview"
+    description: "Opsgenie APIs give you interconnectivity to process your requests and access data. View our individual documentation for our APIs to see the methods used to process relevant requests. Action-specific instructions are included to help you complete requests, along with sample requests and responses for added guidance. Additionally, view our Rate Limiting section for specific details and configurations."
+    url: "https://docs.opsgenie.com/docs/api-overview"
+  - name: "Terraform Registry Opsgenie Provider documentation"
+    description: "The Opsgenie provider is used to interact with the many resources supported by Opsgenie. The provider needs to be configured with the proper credentials before it can be used."
+    url: "https://registry.terraform.io/providers/opsgenie/opsgenie/latest/docs"
+  - name: "Github Terraform OpsGenie provider repository"
+    description: "The Opsgenie provider is used to interact with the many resources supported by Opsgenie. The provider needs to be configured with the proper credentials before it can be used."
+    url: "https://github.com/opsgenie/terraform-provider-opsgenie/"
 
 # Short description of this project
 description: |-
-  This is `terraform-example-module` project provides all the scaffolding for a typical well-built Cloud Posse module. It's a template repository you can
-  use when creating new repositories.
+  Terraform module to provision Opsgenie resources using the Opsgenie provider. The provider needs to be configured with the proper credentials before it can be used.
+  It consist of root module which is only here as an example. Mainly this repository should be used as a set of terraform submodules which can be combined in more complex modules.
 
 # Introduction to the project
 #introduction: |-
@@ -66,19 +63,42 @@ description: |-
 
 # How to use this module. Should be an easy example to copy and paste.
 usage: |-
+  - [Alert Policy](modules/alert_policy)
+  - [API Integration](modules/api_integration)
+  - [Escalation](modules/escalation)
+  - [Notification Policy](modules/notification_policy)
+  - [Team](modules/team)
+  - [Team Routing Rule](modules/team_routing_rule)
+
   Here's how to invoke this example module in your projects
 
   ```hcl
   module "example" {
-    source = "https://github.com/cloudposse/terraform-example-module.git?ref=master"
-    example = "Hello world!"
+    source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/team?ref=tags/0.1.0"
+
+    provider_api_key = var.opsgenie_provider_api_key
+
+    team = {
+      name        = "team-name"
+      description = "team-description"
+    }
+
   }
   ```
 
 # Example usage
 examples: |-
-  Here is an example of using this module:
-  - [`examples/complete`](https://github.com/cloudposse/terraform-example-module/) - complete example of using this module
+  Here is an example of using all submodules:
+  - [`examples/complete`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/complete) - complete example of using this module
+
+  Submodules examples:
+  - [`alert_policy`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/alert_policy)
+  - [`api_integration`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/api_integration)
+  - [`escalation`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/escalation)
+  - [`notification_policy`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/notification_policy)
+  - [`team`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/team)
+  - [`team_routing_rule`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/team_routing_rule)
+
 
 # How to get started quickly
 #quickstart: |-
