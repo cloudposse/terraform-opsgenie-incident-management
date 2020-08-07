@@ -4,7 +4,7 @@ variable "opsgenie_provider_api_key" {
   default     = ""
 }
 
-variable "provider_api_url" {
+variable "opsgenie_provider_api_url" {
   type        = string
   description = "The API url for the Opsgenie."
   default     = "api.opsgenie.com"

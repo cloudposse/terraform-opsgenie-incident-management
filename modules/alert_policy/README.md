@@ -11,7 +11,7 @@ Terraform module to configure [Opsgenie Alert Policy](https://registry.terraform
 module "alert_policy" {
   source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/alert_policy?ref=master"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   alert_policy = {
     name = "alert-policy"
@@ -47,8 +47,8 @@ module "alert_policy" {
 |  Name                          |  Default                          |  Description                                                                                                                    | Required |
 |:-------------------------------|:---------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------|:--------:|
 | `alert_policy`                 | `{}`                              | This variable is used to configure Opsgenie Alert Policy.                                                                       | Yes      |
-| `provider_api_key`             | ``                                | The API Key for the Opsgenie Integration. If omitted, the OPSGENIE_API_KEY environment variable is used.                        | Yes      |
-| `provider_api_url`             | `api.opsgenie.com`                | The API url for the Opsgenie.                                                                                                   | No       |
+| `opsgenie_provider_api_key`    | ``                                | The API Key for the Opsgenie Integration. If omitted, the OPSGENIE_API_KEY environment variable is used.                        | Yes      |
+| `opsgenie_provider_api_url`    | `api.opsgenie.com`                | The API url for the Opsgenie.                                                                                                   | No       |
 
 
 ## Outputs

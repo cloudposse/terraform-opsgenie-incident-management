@@ -11,7 +11,7 @@ Terraform module to configure [Opsgenie Notification Policy](https://registry.te
 module "notification_policy" {
   source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/notification_policy?ref=master"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   notification_policy = {
     name    = module.label.id
@@ -43,8 +43,8 @@ module "notification_policy" {
 |  Name                          |  Default                          |  Description                                                                                                                    | Required |
 |:-------------------------------|:---------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------|:--------:|
 | `notification_policy`          | `{}`                              | This variable is used to configure Opsgenie Notification Policy.                                                                | Yes      |
-| `provider_api_key`             | ``                                | The API Key for the Opsgenie Integration. If omitted, the OPSGENIE_API_KEY environment variable is used.                        | Yes      |
-| `provider_api_url`             | `api.opsgenie.com`                | The API url for the Opsgenie.                                                                                                   | No       |
+| `opsgenie_provider_api_key`    | ``                                | The API Key for the Opsgenie Integration. If omitted, the OPSGENIE_API_KEY environment variable is used.                        | Yes      |
+| `opsgenie_provider_api_url`    | `api.opsgenie.com`                | The API url for the Opsgenie.                                                                                                   | No       |
 
 
 ## Outputs

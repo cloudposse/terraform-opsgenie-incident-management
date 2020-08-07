@@ -12,7 +12,7 @@ module "label" {
 module "alert_policy" {
   source = "./modules/alert_policy"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   alert_policy = var.alert_policy
 }
@@ -20,7 +20,7 @@ module "alert_policy" {
 module "api_integration" {
   source = "./modules/api_integration"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   api_integration = var.api_integration
 }
@@ -28,7 +28,7 @@ module "api_integration" {
 module "escalation" {
   source = "./modules/escalation"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   escalation = var.escalation
 }
@@ -36,7 +36,7 @@ module "escalation" {
 module "notification_policy" {
   source = "./modules/notification_policy"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   notification_policy = var.notification_policy
 }
@@ -44,7 +44,7 @@ module "notification_policy" {
 module "team" {
   source = "./modules/team"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   team = var.team
 }
@@ -52,7 +52,7 @@ module "team" {
 module "team_routing_rule" {
   source = "./modules/team_routing_rule"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   team_routing_rule = var.team_routing_rule
 }

@@ -11,7 +11,7 @@ Terraform module to configure [Opsgenie API Integration](https://registry.terraf
 module "api_integration" {
   source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/api_integration?ref=master"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   api_integration = {
     name          = module.label.id
@@ -30,8 +30,8 @@ module "api_integration" {
 |  Name                          |  Default                          |  Description                                                                                                                    | Required |
 |:-------------------------------|:---------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------|:--------:|
 | `api_integration`              | `{}`                              | This variable is used to configure Opsgenie API Integration.                                                                    | Yes      |
-| `provider_api_key`             | ``                                | The API Key for the Opsgenie Integration. If omitted, the OPSGENIE_API_KEY environment variable is used.                        | Yes      |
-| `provider_api_url`             | `api.opsgenie.com`                | The API url for the Opsgenie.                                                                                                   | No       |
+| `opsgenie_provider_api_key`    | ``                                | The API Key for the Opsgenie Integration. If omitted, the OPSGENIE_API_KEY environment variable is used.                        | Yes      |
+| `opsgenie_provider_api_url`    | `api.opsgenie.com`                | The API url for the Opsgenie.                                                                                                   | No       |
 
 
 ## Outputs
