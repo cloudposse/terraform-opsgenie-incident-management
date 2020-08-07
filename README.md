@@ -28,7 +28,7 @@
 -->
 
 Terraform module to provision Opsgenie resources using the Opsgenie provider. The provider needs to be configured with the proper credentials before it can be used.
-It consist of root module which is only here as an example. Mainly this repository should be used as a set of terraform submodules which can be combined in more complex modules.
+It consist of root module which is only here as an example but can be used as a combination of all submodules. Submodules can also be combined to abstract away complexity of setting up for example a team escalation.
 
 
 ---
@@ -151,7 +151,6 @@ No provider.
 | namespace | Namespace (e.g. `eg` or `cp`) | `string` | `""` | no |
 | notification\_policy | This variable is used to configure Opsgenie Notification Policy. | `map` | `{}` | no |
 | opsgenie\_provider\_api\_key | The API Key for the Opsgenie Integration. If omitted, the OPSGENIE\_API\_KEY environment variable is used. | `string` | `""` | no |
-| region | AWS region | `string` | n/a | yes |
 | stage | Stage (e.g. `prod`, `dev`, `staging`) | `string` | `""` | no |
 | tags | Additional tags (\_e.g.\_ { BusinessUnit : ABC }) | `map(string)` | `{}` | no |
 | team | This variable is used to configure Opsgenie Team. | `map` | `{}` | no |

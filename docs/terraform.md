@@ -23,7 +23,6 @@ No provider.
 | namespace | Namespace (e.g. `eg` or `cp`) | `string` | `""` | no |
 | notification\_policy | This variable is used to configure Opsgenie Notification Policy. | `map` | `{}` | no |
 | opsgenie\_provider\_api\_key | The API Key for the Opsgenie Integration. If omitted, the OPSGENIE\_API\_KEY environment variable is used. | `string` | `""` | no |
-| region | AWS region | `string` | n/a | yes |
 | stage | Stage (e.g. `prod`, `dev`, `staging`) | `string` | `""` | no |
 | tags | Additional tags (\_e.g.\_ { BusinessUnit : ABC }) | `map(string)` | `{}` | no |
 | team | This variable is used to configure Opsgenie Team. | `map` | `{}` | no |

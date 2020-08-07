@@ -55,7 +55,7 @@ references:
 # Short description of this project
 description: |-
   Terraform module to provision Opsgenie resources using the Opsgenie provider. The provider needs to be configured with the proper credentials before it can be used.
-  It consist of root module which is only here as an example. Mainly this repository should be used as a set of terraform submodules which can be combined in more complex modules.
+  It consist of root module which is only here as an example but can be used as a combination of all submodules. Submodules can also be combined to abstract away complexity of setting up for example a team escalation.
 
 # Introduction to the project
 introduction: |-

@@ -13,7 +13,7 @@ func TestExamplesTeamRoutingRule(t *testing.T) {
 		TerraformDir: "../../examples/team_routing_rule",
 		Upgrade:      true,
 		// Variables to pass to our Terraform code using -var-file options
-		VarFiles: []string{"fixtures.us-east-2.tfvars"},
+		VarFiles: []string{"fixtures.tfvars"},
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
