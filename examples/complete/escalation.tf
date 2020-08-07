@@ -1,7 +1,7 @@
 module "escalation" {
   source = "../../modules/escalation"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   escalation = {
     name          = "${module.label.id}-escalation"

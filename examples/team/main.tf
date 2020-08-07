@@ -12,7 +12,7 @@ module "label" {
 module "team" {
   source = "../../modules/team"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   team = {
     name        = module.label.id

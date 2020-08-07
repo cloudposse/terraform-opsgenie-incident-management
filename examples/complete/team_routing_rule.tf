@@ -1,7 +1,7 @@
 module "team_routing_rule" {
   source = "../../modules/team_routing_rule"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   team_routing_rule = {
     name    = module.label.id

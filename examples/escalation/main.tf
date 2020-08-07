@@ -12,7 +12,7 @@ module "label" {
 module "owner_team" {
   source = "../../modules/team"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   team = {
     name        = "owner-team"
@@ -25,7 +25,7 @@ module "owner_team" {
 module "escalation_team" {
   source = "../../modules/team"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   team = {
     name        = "escalation-team"
@@ -37,7 +37,7 @@ module "escalation_team" {
 module "escalation" {
   source = "../../modules/escalation"
 
-  provider_api_key = var.opsgenie_provider_api_key
+  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   escalation = {
     name          = module.label.id
