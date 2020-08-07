@@ -1,9 +1,10 @@
-PACKAGE  = terraform-aws-ecs-container-definition
+PACKAGE  = terraform-opsgenie-incident-management
 GOEXE   ?= /usr/bin/go
 GOPATH   = $(CURDIR)/.gopath
 GOBIN    = $(GOPATH)/bin
 BASE     = $(GOPATH)/src/$(PACKAGE)
-PATH 	:= $(PATH):$(GOBIN)
+PATH 	  := $(PATH):$(GOBIN)
+TF_VAR_opsgenie_provider_api_key ?= ${TF_VAR_opsgenie_provider_api_key}
 
 export TF_DATA_DIR ?= $(CURDIR)/.terraform
 export TF_CLI_ARGS_init ?= -get-plugins=true
@@ -42,7 +43,13 @@ init: $(BASE)/vendor
 .PHONY : test
 ## Run tests
 test: init
-	cd $(BASE) && go test -v -timeout 30m -run TestExamplesComplete
+	cd $(BASE) && go test -v -timeout 5m -run TestExamplesAlertPolicy
+	cd $(BASE) && go test -v -timeout 5m -run TestExamplesApiIntegration
+	cd $(BASE) && go test -v -timeout 5m -run TestExamplesEscalation
+	cd $(BASE) && go test -v -timeout 5m -run TestExamplesNotificationPolicy
+	cd $(BASE) && go test -v -timeout 5m -run TestExamplesTeam
+	cd $(BASE) && go test -v -timeout 5m -run TestExamplesTeamRoutingRule
+	cd $(BASE) && go test -v -timeout 10m -run TestExamplesComplete
 
 .PHONY : clean
 ## Clean up files
