@@ -19,6 +19,7 @@ variable "stage" {
 variable "name" {
   type        = string
   description = "Name of the application"
+  default     = ""
 }
 
 variable "delimiter" {

@@ -147,7 +147,7 @@ No provider.
 | delimiter | Delimiter between `namespace`, `stage`, `name` and `attributes` | `string` | `"-"` | no |
 | enabled | Set to false to prevent the module from creating any resources | `bool` | `true` | no |
 | escalation | This variable is used to configure Opsgenie Escalation. | `map` | `{}` | no |
-| name | Name of the application | `string` | n/a | yes |
+| name | Name of the application | `string` | `""` | no |
 | namespace | Namespace (e.g. `eg` or `cp`) | `string` | `""` | no |
 | notification\_policy | This variable is used to configure Opsgenie Notification Policy. | `map` | `{}` | no |
 | opsgenie\_provider\_api\_key | The API Key for the Opsgenie Integration. If omitted, the OPSGENIE\_API\_KEY environment variable is used. | `string` | `""` | no |
