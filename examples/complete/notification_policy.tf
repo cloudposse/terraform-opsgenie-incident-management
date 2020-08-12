@@ -1,8 +1,6 @@
 module "notification_policy" {
   source = "../../modules/notification_policy"
 
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
-
   notification_policy = {
     name    = module.label.id
     team_id = module.sub_team.team_id

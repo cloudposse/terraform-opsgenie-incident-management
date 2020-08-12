@@ -1,8 +1,6 @@
 module "alert_policy" {
   source = "../../modules/alert_policy"
 
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
-
   alert_policy = {
     name    = module.label.id
     team_id = module.team.team_id
