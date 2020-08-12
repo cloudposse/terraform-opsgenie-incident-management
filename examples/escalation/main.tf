@@ -1,3 +1,7 @@
+provider "opsgenie" {
+  api_key = var.opsgenie_provider_api_key
+}
+
 module "label" {
   source = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.16.0"
 
@@ -12,8 +16,6 @@ module "label" {
 module "owner_team" {
   source = "../../modules/team"
 
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
-
   team = {
     name        = "owner-team"
     description = "owner-team-description"
@@ -25,8 +27,6 @@ module "owner_team" {
 module "escalation_team" {
   source = "../../modules/team"
 
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
-
   team = {
     name        = "escalation-team"
     description = "owner-team-description"
@@ -36,8 +36,6 @@ module "escalation_team" {
 
 module "escalation" {
   source = "../../modules/escalation"
-
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   escalation = {
     name          = module.label.id
