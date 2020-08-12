@@ -11,8 +11,6 @@ Terraform module to configure [Opsgenie Team](https://registry.terraform.io/prov
 module "team" {
   source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/team?ref=master"
 
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
-
   team = {
     name        = module.label.id
     description = "team-description"

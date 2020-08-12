@@ -1,8 +1,3 @@
-provider "opsgenie" {
-  api_key = var.opsgenie_provider_api_key
-  api_url = var.opsgenie_provider_api_url
-}
-
 resource "opsgenie_escalation" "this" {
   name          = var.escalation.name
   description   = try(var.escalation.description, var.escalation.name)

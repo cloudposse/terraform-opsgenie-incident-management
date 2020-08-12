@@ -1,3 +1,7 @@
+provider "opsgenie" {
+  api_key = var.opsgenie_provider_api_key
+}
+
 module "label" {
   source = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.16.0"
 
@@ -12,15 +16,11 @@ module "label" {
 module "alert_policy" {
   source = "./modules/alert_policy"
 
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
-
   alert_policy = var.alert_policy
 }
 
 module "api_integration" {
   source = "./modules/api_integration"
-
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   api_integration = var.api_integration
 }
@@ -28,15 +28,11 @@ module "api_integration" {
 module "escalation" {
   source = "./modules/escalation"
 
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
-
   escalation = var.escalation
 }
 
 module "notification_policy" {
   source = "./modules/notification_policy"
-
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   notification_policy = var.notification_policy
 }
@@ -44,15 +40,11 @@ module "notification_policy" {
 module "team" {
   source = "./modules/team"
 
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
-
   team = var.team
 }
 
 module "team_routing_rule" {
   source = "./modules/team_routing_rule"
-
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
 
   team_routing_rule = var.team_routing_rule
 }
