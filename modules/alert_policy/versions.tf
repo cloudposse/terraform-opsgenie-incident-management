@@ -3,7 +3,7 @@ terraform {
 
   required_providers {
     opsgenie = {
-      source  = "terraform-providers/opsgenie"
+      source  = "opsgenie/opsgenie"
       version = "~> 0.4"
     }
   }
