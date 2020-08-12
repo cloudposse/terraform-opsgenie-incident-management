@@ -6,4 +6,5 @@ terraform {
       source  = "terraform-providers/opsgenie"
       version = "~> 0.4"
     }
+  }
 }
