@@ -2,7 +2,7 @@
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.13 |
+| terraform | >= 0.12.26 |
 | opsgenie/opsgenie | ~> 0.4 |
 
 ## Providers
