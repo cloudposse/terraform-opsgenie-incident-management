@@ -128,7 +128,7 @@ Available targets:
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.13 |
+| terraform | >= 0.12.26 |
 | opsgenie | ~> 0.4 |
 
 ## Providers
