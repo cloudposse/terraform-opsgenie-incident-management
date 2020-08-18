@@ -3,7 +3,8 @@ resource "opsgenie_team_routing_rule" "this" {
     for rule in var.opsgenie_resources.team_routing_rules : rule.name => rule
   }
 
-  name     = each.value.name
+  name = each.value.name
+
   # Look up our team id by name
   team_id  = opsgenie_team.this[each.value.owner_team_name].id
   order    = try(each.value.order, 0)

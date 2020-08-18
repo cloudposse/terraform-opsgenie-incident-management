@@ -3,8 +3,9 @@ resource "opsgenie_notification_policy" "this" {
     for policy in var.opsgenie_resources.notification_policies : policy.name => policy
   }
 
-  enabled            = try(each.value.enabled, true)
-  name               = each.value.name
+  enabled = try(each.value.enabled, true)
+  name    = each.value.name
+
   # Look up our team id by name
   team_id            = opsgenie_team.this[each.value.team_name].id
   policy_description = try(each.value.description, each.value.name)

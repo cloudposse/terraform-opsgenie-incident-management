@@ -3,8 +3,9 @@ resource "opsgenie_escalation" "this" {
     for escalation in var.opsgenie_resources.escalations : escalation.name => escalation
   }
 
-  name          = each.value.name
-  description   = try(each.value.description, each.value.name)
+  name        = each.value.name
+  description = try(each.value.description, each.value.name)
+
   # Look up our team id by name
   owner_team_id = try(opsgenie_team.this[each.value.owner_team_name].id, null)
 
