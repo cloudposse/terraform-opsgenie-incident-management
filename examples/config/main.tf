@@ -16,3 +16,4 @@ module "opsgenie_config" {
 
   opsgenie_resources = local.opsgenie_resources
 }
+
