@@ -1,8 +1,3 @@
-provider "opsgenie" {
-  api_key = var.opsgenie_provider_api_key
-  api_url = var.opsgenie_provider_api_url
-}
-
 resource "opsgenie_api_integration" "this" {
   name = var.api_integration.name
   type = var.api_integration.type

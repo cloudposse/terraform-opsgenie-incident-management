@@ -86,8 +86,6 @@ Here's how to invoke `team` module in your projects
 module "team-name" {
   source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/team?ref=master"
 
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
-
   team = {
     name        = "team-name"
     description = "team-description"
@@ -130,7 +128,7 @@ Available targets:
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.12 |
+| terraform | >= 0.12.26 |
 | opsgenie | ~> 0.4 |
 
 ## Providers

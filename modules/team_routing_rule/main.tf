@@ -1,8 +1,3 @@
-provider "opsgenie" {
-  api_key = var.opsgenie_provider_api_key
-  api_url = var.opsgenie_provider_api_url
-}
-
 resource "opsgenie_team_routing_rule" "this" {
   name     = var.team_routing_rule.name
   team_id  = var.team_routing_rule.team_id
