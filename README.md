@@ -66,6 +66,7 @@ We literally have [*hundreds of terraform modules*][terraform_modules] that are 
 Available modules:
 - [Alert Policy](modules/alert_policy)
 - [API Integration](modules/api_integration)
+- [Config](modules/config)
 - [Escalation](modules/escalation)
 - [Notification Policy](modules/notification_policy)
 - [Team](modules/team)
@@ -111,6 +112,9 @@ Submodules examples:
 - [`notification_policy`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/notification_policy)
 - [`team`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/team)
 - [`team_routing_rule`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/team_routing_rule)
+
+Here is an example of using the `config` module, which incorporates all resource declarations into a single module:
+- [`examples/config`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/config)
 
 
 
