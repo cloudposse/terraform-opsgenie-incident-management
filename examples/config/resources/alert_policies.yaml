@@ -1,0 +1,15 @@
+alert_policies:
+- name: "prioritize-env-prod-critical-alerts"
+  owner_team_name: acme.dev
+  tags:
+    - "ManagedBy:terraform"
+  filter:
+    type: match-all-conditions
+    conditions:
+      - field: source
+        operation: matches
+        expected_value: ".*prod.acme.*"
+      - field: tags
+        operation: contains
+        expected_value: "severity:critical"
+  priority: P1

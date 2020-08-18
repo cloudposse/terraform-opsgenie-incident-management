@@ -1,0 +1,4 @@
+api_integrations:
+- name: acme-dev-opsgenie-sns-integration
+  type: AmazonSns
+  owner_team_name: acme.dev
