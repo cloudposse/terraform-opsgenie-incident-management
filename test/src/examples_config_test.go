@@ -5,8 +5,8 @@ import (
 	"testing"
 )
 
-// Test the Terraform module in examples/complete using Terratest.
-func TestExamplesComplete(t *testing.T) {
+// Test the Terraform module in examples/config using Terratest.
+func TestExamplesConfig(t *testing.T) {
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "../../examples/config",

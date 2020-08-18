@@ -50,6 +50,7 @@ test: init
 	cd $(BASE) && go test -v -timeout 5m -run TestExamplesTeam
 	cd $(BASE) && go test -v -timeout 5m -run TestExamplesTeamRoutingRule
 	cd $(BASE) && go test -v -timeout 10m -run TestExamplesComplete
+	cd $(BASE) && go test -v -timeout 10m -run TestExamplesConfig
 
 .PHONY : clean
 ## Clean up files
