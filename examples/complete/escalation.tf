@@ -1,8 +1,6 @@
 module "escalation" {
   source = "../../modules/escalation"
 
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
-
   escalation = {
     name          = "${module.label.id}-escalation"
     owner_team_id = module.team.team_id

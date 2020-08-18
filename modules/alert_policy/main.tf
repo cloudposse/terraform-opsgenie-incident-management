@@ -1,8 +1,3 @@
-provider "opsgenie" {
-  api_key = var.opsgenie_provider_api_key
-  api_url = var.opsgenie_provider_api_url
-}
-
 resource "opsgenie_alert_policy" "this" {
   name               = var.alert_policy.name
   policy_description = try(var.alert_policy.description, var.alert_policy.name)
