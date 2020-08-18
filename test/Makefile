@@ -30,7 +30,7 @@ clean:
 	[ "$(TEST_HARNESS_PATH)" == "/" ] || rm -rf $(TEST_HARNESS_PATH)
 
 ## Run all tests
-all: module examples/complete
+all: module examples/complete examples/config
 
 ## Run basic sanity checks against the module itself
 module: export TESTS ?= installed lint get-modules module-pinning get-plugins provider-pinning validate terraform-docs input-descriptions output-descriptions
@@ -41,3 +41,9 @@ module: deps
 examples/complete: export TESTS ?= installed lint get-modules get-plugins validate
 examples/complete: deps
 	$(call RUN_TESTS, ../$@)
+
+## Run tests against config module
+examples/config: export TESTS ?= installed lint get-modules get-plugins validate
+examples/config: deps
+	$(call RUN_TESTS, ../$@)
+
