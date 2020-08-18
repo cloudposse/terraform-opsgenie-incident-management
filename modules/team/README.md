@@ -11,8 +11,6 @@ Terraform module to configure [Opsgenie Team](https://registry.terraform.io/prov
 module "team" {
   source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/team?ref=master"
 
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
-
   team = {
     name        = module.label.id
     description = "team-description"
@@ -31,8 +29,6 @@ module "team" {
 |  Name                          |  Default                          |  Description                                                                                                                    | Required |
 |:-------------------------------|:---------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------|:--------:|
 | `team`                         | `{}`                              | This variable is used to configure Opsgenie Team.                                                                               | Yes      |
-| `opsgenie_provider_api_key`    | ``                                | The API Key for the Opsgenie Integration. If omitted, the OPSGENIE_API_KEY environment variable is used.                        | Yes      |
-| `opsgenie_provider_api_url`    | `api.opsgenie.com`                | The API url for the Opsgenie.                                                                                                   | No       |
 
 
 ## Outputs

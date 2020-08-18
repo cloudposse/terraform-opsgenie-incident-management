@@ -11,8 +11,6 @@ Terraform module to configure [Opsgenie Escalation](https://registry.terraform.i
 module "escalation" {
   source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/escalation?ref=master"
 
-  opsgenie_provider_api_key = var.opsgenie_provider_api_key
-
   escalation = {
     name          = module.label.id
     owner_team_id = module.owner_team.team_id
@@ -38,8 +36,6 @@ module "escalation" {
 |  Name                          |  Default                          |  Description                                                                                                                    | Required |
 |:-------------------------------|:---------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------|:--------:|
 | `escalation`                   | `{}`                              | This variable is used to configure Opsgenie Escalation.                                                                         | Yes      |
-| `opsgenie_provider_api_key`    | ``                                | The API Key for the Opsgenie Integration. If omitted, the OPSGENIE_API_KEY environment variable is used.                        | Yes      |
-| `opsgenie_provider_api_url`    | `api.opsgenie.com`                | The API url for the Opsgenie.                                                                                                   | No       |
 
 
 ## Outputs
