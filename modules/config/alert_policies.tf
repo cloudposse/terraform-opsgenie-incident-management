@@ -7,7 +7,7 @@ resource "opsgenie_alert_policy" "this" {
   policy_description = try(each.value.description, each.value.name)
 
   # Look up our team id by name
-  team_id  = try(opsgenie_team.this[each.value.owner_team_name].id, null)
+  team_id = try(opsgenie_team.this[each.value.owner_team_name].id, null)
 
   enabled         = try(each.value.enabled, true)
   continue_policy = try(each.value.continue, true)
