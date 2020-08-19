@@ -10,6 +10,14 @@ output "api_integrations" {
   }
 }
 
+output "api_integration_keys" {
+  value = {
+    for integration in opsgenie_api_integration.this : integration.name => integration.api_key
+  }
+  description = "A map of Opsgenie API integration names and generated API keys."
+  sensitive   = true
+}
+
 output "escalations" {
   value = {
     for escalation in opsgenie_escalation.this : escalation.id => escalation.name
