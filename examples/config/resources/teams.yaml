@@ -1,0 +1,7 @@
+teams:
+- name: acme
+  description: Global Team for Acme Co.
+- name: acme.dev
+  description: Acme Dev Team
+- name: acme.dev.some-service
+  description: "repo: https://github.com/acme/some-service;owner:David Lightman @David Lightman"
