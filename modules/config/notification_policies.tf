@@ -1,6 +1,6 @@
 resource "opsgenie_notification_policy" "this" {
   for_each = {
-    for policy in var.opsgenie_resources.notification_policies : policy.name => policy
+    for policy in local.notification_policies : policy.name => policy
   }
 
   enabled = try(each.value.enabled, true)
