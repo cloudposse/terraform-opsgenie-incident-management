@@ -1,6 +1,6 @@
 resource "opsgenie_team_routing_rule" "this" {
   for_each = {
-    for rule in var.opsgenie_resources.team_routing_rules : rule.name => rule
+    for rule in local.team_routing_rules : rule.name => rule
   }
 
   name = each.value.name

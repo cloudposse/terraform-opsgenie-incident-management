@@ -1,6 +1,6 @@
 resource "opsgenie_escalation" "this" {
   for_each = {
-    for escalation in var.opsgenie_resources.escalations : escalation.name => escalation
+    for escalation in local.escalations : escalation.name => escalation
   }
 
   name        = each.value.name

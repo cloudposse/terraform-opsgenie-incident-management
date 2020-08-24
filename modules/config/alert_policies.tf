@@ -1,6 +1,6 @@
 resource "opsgenie_alert_policy" "this" {
   for_each = {
-    for policy in var.opsgenie_resources.alert_policies : policy.name => policy
+    for policy in local.alert_policies : policy.name => policy
   }
 
   name               = each.value.name
