@@ -1,9 +1,10 @@
+<!-- markdownlint-disable -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | terraform | >= 0.12.26 |
-| opsgenie/opsgenie | ~> 0.4 |
+| opsgenie | ~> 0.4 |
 
 ## Providers
 
@@ -32,3 +33,4 @@ No provider.
 
 No output.
 
+<!-- markdownlint-restore -->
