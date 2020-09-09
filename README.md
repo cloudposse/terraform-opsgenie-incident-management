@@ -128,6 +128,7 @@ Available targets:
 
 ```
 <!-- markdownlint-restore -->
+<!-- markdownlint-disable -->
 ## Requirements
 
 | Name | Version |
@@ -162,6 +163,7 @@ No provider.
 
 No output.
 
+<!-- markdownlint-restore -->
 
 
 

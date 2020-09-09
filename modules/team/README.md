@@ -18,6 +18,18 @@ module "team" {
 
 }
 
+module "ui_managed_team" {
+  source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/team?ref=master"
+
+  team = {
+    name                     = module.label.id
+    description              = "team-description"
+    delete_default_resources = true
+    ignore_members           = true
+  }
+
+}
+
 ```
 
 ## Inputs
