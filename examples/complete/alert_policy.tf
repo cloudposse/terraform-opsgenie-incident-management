@@ -2,7 +2,7 @@ module "alert_policy" {
   source = "../../modules/alert_policy"
 
   alert_policy = {
-    name    = module.label.id
+    name    = module.this.id
     team_id = module.team.team_id
     filter = {
       type = "match-all"
@@ -21,6 +21,4 @@ module "alert_policy" {
       priority = "P5"
     }
   }
-
-
 }

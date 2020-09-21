@@ -18,4 +18,3 @@ resource "opsgenie_api_integration" "this" {
 
   owner_team_id = try(var.api_integration.owner_team_id, null)
 }
-

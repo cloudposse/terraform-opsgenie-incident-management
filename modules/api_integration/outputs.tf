@@ -5,11 +5,11 @@ output "api_integration_api_key" {
 }
 
 output "api_integration_name" {
-  description = "The name of the Opsgenie API Integration."
+  description = "The name of the Opsgenie API Integration"
   value       = opsgenie_api_integration.this.name
 }
 
 output "api_integration_id" {
-  description = "The ID of the Opsgenie API Integration."
+  description = "The ID of the Opsgenie API Integration"
   value       = opsgenie_api_integration.this.id
 }

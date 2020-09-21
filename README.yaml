@@ -87,19 +87,23 @@ usage: |-
 
 # Example usage
 examples: |-
-  Here is an example of using all submodules:
-  - [`examples/complete`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/complete) - complete example of using this module
+  Here are examples of using the module:
+
+  - [`complete`](examples/complete) - complete example of using this module
 
   Submodules examples:
-  - [`alert_policy`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/alert_policy)
-  - [`api_integration`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/api_integration)
-  - [`escalation`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/escalation)
-  - [`notification_policy`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/notification_policy)
-  - [`team`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/team)
-  - [`team_routing_rule`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/team_routing_rule)
+  - [`alert_policy`](examples/alert_policy)
+  - [`api_integration`](examples/api_integration)
+  - [`escalation`](examples/escalation)
+  - [`notification_policy`](examples/notification_policy)
+  - [`team`](examples/team)
+  - [`team_routing_rule`](examples/team_routing_rule)
 
   Here is an example of using the `config` module, which incorporates all resource declarations into a single module:
-  - [`examples/config`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/config)
+  - [`config`](examples/config)
+
+  Here are automated tests for the examples using [bats](https://github.com/bats-core/bats-core) and [Terratest](https://github.com/gruntwork-io/terratest) (which tests and provisions the examples):
+   - [test](test)
 
 # How to get started quickly
 #quickstart: |-
@@ -114,3 +118,9 @@ include:
 contributors:
   - name: "Marcin Brański"
     github: "3h4x"
+  - name: "Erik Osterman"
+    github: "osterman"
+  - name: "Andriy Knysh"
+    github: "aknysh"
+  - name: "Igor Rodionov"
+    github: "goruha"

@@ -2,7 +2,7 @@ module "escalation" {
   source = "../../modules/escalation"
 
   escalation = {
-    name          = "${module.label.id}-escalation"
+    name          = "${module.this.id}-escalation"
     owner_team_id = module.team.team_id
 
     rule = {
@@ -12,5 +12,4 @@ module "escalation" {
       }]
     }
   }
-
 }

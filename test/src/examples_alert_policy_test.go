@@ -29,14 +29,14 @@ func TestExamplesAlertPolicy(t *testing.T) {
 	outputAlertPolicyPriority := terraform.Output(t, terraformOptions, "alert_policy_priority")
 	assert.Equal(t, "P1", outputAlertPolicyPriority)
 
-  expectedAlertPolicyTags := `[
+	expectedAlertPolicyTags := `[
   "test1",
   "test2",
 ]`
 	outputAlertPolicyTags := terraform.Output(t, terraformOptions, "alert_policy_tags")
 	assert.Equal(t, expectedAlertPolicyTags, outputAlertPolicyTags)
 
-  expectedAlertPolicyFilter := `[
+	expectedAlertPolicyFilter := `[
   {
     "conditions" = [
       {
@@ -62,7 +62,7 @@ func TestExamplesAlertPolicy(t *testing.T) {
 	outputAlertPolicyFilter := terraform.Output(t, terraformOptions, "alert_policy_filter")
 	assert.Equal(t, expectedAlertPolicyFilter, outputAlertPolicyFilter)
 
-  expectedAlertPolicyResponders := `[
+	expectedAlertPolicyResponders := `[
   {
     "id" = .*
     "name" = ""
