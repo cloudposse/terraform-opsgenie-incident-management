@@ -101,18 +101,21 @@ module "team-name" {
 ## Examples
 
 Here is an example of using all submodules:
-- [`examples/complete`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/complete) - complete example of using this module
+
+- [`complete`](examples/complete) - complete example of using this module
 
 Submodules examples:
-- [`alert_policy`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/alert_policy)
-- [`api_integration`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/api_integration)
-- [`escalation`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/escalation)
-- [`notification_policy`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/notification_policy)
-- [`team`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/team)
-- [`team_routing_rule`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/team_routing_rule)
+- [`alert_policy`](examples/alert_policy)
+- [`api_integration`](examples/api_integration)
+- [`escalation`](examples/escalation)
+- [`notification_policy`](examples/notification_policy)
+- [`team`](examples/team)
+- [`team_routing_rule`](examples/team_routing_rule)
 
 Here is an example of using the `config` module, which incorporates all resource declarations into a single module:
-- [`examples/config`](https://github.com/cloudposse/terraform-opsgenie-incident-management/examples/config)
+- [`config`](examples/config)
+
+For automated tests of the examples using [bats](https://github.com/bats-core/bats-core) and [Terratest](https://github.com/gruntwork-io/terratest) (which tests and deploys the examples on AWS), see [test](test).
 
 
 
@@ -323,11 +326,17 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
 
 ### Contributors
 
-|  [![Marcin Brański][3h4x_avatar]][3h4x_homepage]<br/>[Marcin Brański][3h4x_homepage] |
-|---|
+|  [![Marcin Brański][3h4x_avatar]][3h4x_homepage]<br/>[Marcin Brański][3h4x_homepage] | [![Erik Osterman][osterman_avatar]][osterman_homepage]<br/>[Erik Osterman][osterman_homepage] | [![Andriy Knysh][aknysh_avatar]][aknysh_homepage]<br/>[Andriy Knysh][aknysh_homepage] | [![Igor Rodionov][goruha_avatar]][goruha_homepage]<br/>[Igor Rodionov][goruha_homepage] |
+|---|---|---|---|
 
   [3h4x_homepage]: https://github.com/3h4x
   [3h4x_avatar]: https://img.cloudposse.com/150x150/https://github.com/3h4x.png
+  [osterman_homepage]: https://github.com/osterman
+  [osterman_avatar]: https://img.cloudposse.com/150x150/https://github.com/osterman.png
+  [aknysh_homepage]: https://github.com/aknysh
+  [aknysh_avatar]: https://img.cloudposse.com/150x150/https://github.com/aknysh.png
+  [goruha_homepage]: https://github.com/goruha
+  [goruha_avatar]: https://img.cloudposse.com/150x150/https://github.com/goruha.png
 
 [![README Footer][readme_footer_img]][readme_footer_link]
 [![Beacon][beacon]][website]
