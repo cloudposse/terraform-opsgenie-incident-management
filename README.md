@@ -100,7 +100,7 @@ module "team-name" {
 
 ## Examples
 
-Here is an example of using all submodules:
+Here are examples of using the module:
 
 - [`complete`](examples/complete) - complete example of using this module
 
@@ -115,7 +115,8 @@ Submodules examples:
 Here is an example of using the `config` module, which incorporates all resource declarations into a single module:
 - [`config`](examples/config)
 
-For automated tests of the examples using [bats](https://github.com/bats-core/bats-core) and [Terratest](https://github.com/gruntwork-io/terratest) (which tests and deploys the examples on AWS), see [test](test).
+Here are automated tests for the examples using [bats](https://github.com/bats-core/bats-core) and [Terratest](https://github.com/gruntwork-io/terratest) (which tests and provisions the examples):
+ - [test](test)
 
 
 
