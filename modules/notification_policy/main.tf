@@ -1,8 +1,3 @@
-variable "notification_policy" {
-  default     = {}
-  description = "This variable is used to configure Opsgenie Notification Policy."
-}
-
 resource "opsgenie_notification_policy" "this" {
   enabled            = try(var.notification_policy.enabled, true)
   name               = var.notification_policy.name

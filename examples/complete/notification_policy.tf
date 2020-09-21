@@ -2,7 +2,7 @@ module "notification_policy" {
   source = "../../modules/notification_policy"
 
   notification_policy = {
-    name    = module.label.id
+    name    = module.this.id
     team_id = module.sub_team.team_id
 
     filter = {
