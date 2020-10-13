@@ -5,4 +5,5 @@ locals {
   notification_policies = try(var.opsgenie_resources.notification_policies, [])
   team_routing_rules    = try(var.opsgenie_resources.team_routing_rules, [])
   teams                 = try(var.opsgenie_resources.teams, [])
+  users                 = try(var.opsgenie_resources.users, [])
 }

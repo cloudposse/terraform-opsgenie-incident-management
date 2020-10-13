@@ -67,6 +67,7 @@ introduction: |-
   - [Notification Policy](modules/notification_policy)
   - [Team](modules/team)
   - [Team Routing Rule](modules/team_routing_rule)
+  - [User](modules/user)
 
   **Note:** Root module is just an example that uses all of submodules.
 
@@ -81,7 +82,6 @@ usage: |-
       name        = "team-name"
       description = "team-description"
     }
-
   }
   ```
 
@@ -98,6 +98,7 @@ examples: |-
   - [`notification_policy`](examples/notification_policy)
   - [`team`](examples/team)
   - [`team_routing_rule`](examples/team_routing_rule)
+  - [`user`](examples/user)
 
   Here is an example of using the `config` module, which incorporates all resource declarations into a single module:
   - [`config`](examples/config)

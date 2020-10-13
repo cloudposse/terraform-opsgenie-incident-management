@@ -22,3 +22,6 @@ output "teams" {
   value = module.opsgenie_config.teams
 }
 
+output "users" {
+  value = module.opsgenie_config.users
+}

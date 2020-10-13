@@ -4,11 +4,6 @@ variable "opsgenie_provider_api_key" {
   default     = null
 }
 
-variable "opsgenie_team" {
-  description = "This variable is used to configure opsgenie team"
-  default     = {}
-}
-
 variable "ignore_members" {
   type        = bool
   description = "Set to true to ignore any configured member blocks and any team member added/updated/removed via OpsGenie web UI"

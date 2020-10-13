@@ -45,5 +45,12 @@ output "teams" {
   value = {
     for team in opsgenie_team.this : team.id => team.name
   }
-  description = "Team names"
+  description = "Teams"
+}
+
+output "users" {
+  value = [
+    for user in opsgenie_user.this : user.id
+  ]
+  description = "User IDs"
 }
