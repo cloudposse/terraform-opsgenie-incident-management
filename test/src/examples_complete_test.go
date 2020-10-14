@@ -2,6 +2,7 @@ package test
 
 import (
 	"github.com/gruntwork-io/terratest/modules/terraform"
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
@@ -20,4 +21,40 @@ func TestExamplesComplete(t *testing.T) {
 
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
+
+	// Run `terraform output` to get the value of an output variable
+	outputApiIntegrationName := terraform.Output(t, terraformOptions, "api_integration_name")
+
+	// Verify we're getting back the outputs we expect
+	assert.Regexp(t, "^eg-test-api-integration$", outputApiIntegrationName)
+
+	// Run `terraform output` to get the value of an output variable
+	outputEscalationName := terraform.Output(t, terraformOptions, "escalation_name")
+
+	// Verify we're getting back the outputs we expect
+	assert.Regexp(t, "^eg-test-escalation$", outputEscalationName)
+
+	// Run `terraform output` to get the value of an output variable
+	outputNotificationPolicyName := terraform.Output(t, terraformOptions, "notification_policy_name")
+
+	// Verify we're getting back the outputs we expect
+	assert.Regexp(t, "^eg-test-notification-policy$", outputNotificationPolicyName)
+
+	// Run `terraform output` to get the value of an output variable
+	outputTeamRoutingRuleName := terraform.Output(t, terraformOptions, "team_routing_rule_name")
+
+	// Verify we're getting back the outputs we expect
+	assert.Regexp(t, "^eg-test-team-routing-rule$", outputTeamRoutingRuleName)
+
+	// Run `terraform output` to get the value of an output variable
+	outputTeamName := terraform.Output(t, terraformOptions, "team_name")
+
+	// Verify we're getting back the outputs we expect
+	assert.Regexp(t, "^eg-test-team$", outputTeamName)
+
+	// Run `terraform output` to get the value of an output variable
+	userId := terraform.Output(t, terraformOptions, "user_id")
+
+	// Verify we're getting back the outputs we expect
+	assert.NotEmpty(t, userId)
 }

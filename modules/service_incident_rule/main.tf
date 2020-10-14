@@ -1,4 +1,6 @@
 resource "opsgenie_service_incident_rule" "this" {
+  count = module.this.enabled ? 1 : 0
+
   service_id = var.service_incident_rule.service_id
 
   incident_rule {

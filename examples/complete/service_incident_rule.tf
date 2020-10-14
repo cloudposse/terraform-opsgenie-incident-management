@@ -1,6 +1,9 @@
 module "service_incident_rule" {
   source = "../../modules/service_incident_rule"
 
+  # Services are Opsgenie Enterprise feature, disable it for now
+  enabled = false
+
   service_incident_rule = {
     service_id = module.service.service_id
 
