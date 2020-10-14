@@ -6,30 +6,45 @@ variable "opsgenie_provider_api_key" {
 
 variable "alert_policy" {
   default     = {}
-  description = "This variable is used to configure Opsgenie Alert Policy"
+  description = "Opsgenie Alert Policy configuration"
 }
 
 variable "api_integration" {
   default     = {}
-  description = "This variable is used to configure Opsgenie API Integration"
+  description = "Opsgenie API Integration configuration"
 }
 
 variable "escalation" {
   default     = {}
-  description = "This variable is used to configure Opsgenie Escalation"
+  description = "Opsgenie Escalation configuration"
 }
 
 variable "notification_policy" {
   default     = {}
-  description = "This variable is used to configure Opsgenie Notification Policy"
+  description = "Opsgenie Notification Policy configuration"
 }
 
 variable "team" {
   default     = {}
-  description = "This variable is used to configure Opsgenie Team"
+  description = "Opsgenie Team configuration"
 }
 
 variable "team_routing_rule" {
   default     = {}
-  description = "This variable is used to configure Opsgenie Team Routing Rule"
+  description = "Opsgenie Team Routing Rule configuration"
+}
+
+variable "user" {
+  default     = {}
+  description = "Opsgenie User configuration"
+}
+
+variable "service" {
+  default     = {}
+  description = "Opsgenie Service configuration"
+}
+
+variable "service_incident_rule" {
+  default     = {}
+  description = "Opsgenie Service Incident Rule configuration"
 }

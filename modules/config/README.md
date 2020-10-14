@@ -1,8 +1,12 @@
 ## Config
 
-A Terraform module that configures a multitude of [Opsgenie resources](https://registry.terraform.io/providers/opsgenie/opsgenie/latest/docs). Many resources have cross-resource dependencies, which may be simpler to handle within a single module in certain cases, such as using YAML configurations.
+Terraform module that configures a multitude of [Opsgenie resources](https://registry.terraform.io/providers/opsgenie/opsgenie/latest/docs). 
+Many resources have cross-resource dependencies, which may be simpler to handle within a single module in certain cases, such as using YAML configurations.
 
-This module is designed to accept an input configuration map. One nice way of handling this by passing resource definitions from a YAML configuration file. See below for details & examples.
+This module is designed to accept an input configuration map. 
+One nice way of handling this is by passing resource definitions from a YAML configuration file. 
+
+See below for details & examples.
 
 ## YAML Examples
 
@@ -98,6 +102,50 @@ teams:
   description: "repo: https://github.com/acme/some-service;owner:David Lightman @David Lightman"
 ```
 
+### `users.yaml`
+
+```yaml
+users:
+- username: opsgenie-test@cloudposse.com
+  full_name: Opsgenie Test User
+  role: User
+  locale: "en_US"
+  timezone: "America/New_York"
+```
+
+### `services.yaml`
+
+```yaml
+services:
+- name: frontend
+  team_id: "..."
+  description: Frontend service
+```
+
+### `service_incident_rules.yaml`
+
+```yaml
+service_incident_rules:
+- service_name: frontend
+  incident_rule:
+    condition_match_type: match-all
+
+    conditions:
+      - field: source
+        operation: matches
+        expected_value: ".*stage.*"
+      - field: tags
+        operation: contains
+        expected_value: "severity:info"
+
+    incident_properties:
+      message: This is a test message
+      priority: P3
+
+      stakeholder_properties:
+        message: Message for stakeholders
+        enable: true
+```
 
 ## Usage
 
@@ -129,11 +177,15 @@ module "opsgenie" {
 
 ## Outputs
 
-| Name                        | Description                             |
-|:------------------------|:--------------------------------------------|
-| `alert_policies`        | `name` and `id` of each alert policy        |
-| `api_integrations`      | `name` and `id` of each API integration     |
-| `escalations`           | `name` and `id` of each escalation          |
-| `notification_policies` | `name` and `id` of each notification policy |
-| `team_routing_rules`    | `name` and `id` of each team routing rule   |
-| `teams`                 | `name` and `id` of each team                |
+| Name                        | Description                                 |
+|:----------------------------|:--------------------------------------------|
+| `alert_policies`            | `name` and `id` of each alert policy        |
+| `api_integrations`          | `name` and `id` of each API integration     |
+| `escalations`               | `name` and `id` of each escalation          |
+| `notification_policies`     | `name` and `id` of each notification policy |
+| `team_routing_rules`        | `name` and `id` of each team routing rule   |
+| `teams`                     | `name` and `id` of each team                |
+| `users`                     | `name` and `id` of each user                |
+| `services`                  | `name` and `id` of each service             |
+| `services`                  | `name` and `id` of each service             |
+| `service_incident_rule_ids` | `id` of each service incident rule          |

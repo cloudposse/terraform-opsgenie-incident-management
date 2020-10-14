@@ -1,0 +1,4 @@
+services:
+  - name: frontend
+    description: Frontend service
+    team_name: acme

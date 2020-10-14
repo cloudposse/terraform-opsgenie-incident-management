@@ -4,7 +4,7 @@ module "team" {
   team = {
     name           = module.this.id
     description    = "team-description"
-    ignore_members = var.ignore_members
+    ignore_members = false
   }
 }
 

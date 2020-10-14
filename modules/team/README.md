@@ -15,7 +15,6 @@ module "team" {
     name        = module.label.id
     description = "team-description"
   }
-
 }
 
 module "ui_managed_team" {
@@ -27,7 +26,6 @@ module "ui_managed_team" {
     delete_default_resources = true
     ignore_members           = true
   }
-
 }
 
 ```

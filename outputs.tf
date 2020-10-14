@@ -83,3 +83,28 @@ output "team_routing_rule_name" {
   description = "The name of the Opsgenie Team Routing Rule"
   value       = module.team_routing_rule.team_routing_rule_name
 }
+
+output "user_id" {
+  description = "The ID of the Opsgenie User"
+  value       = module.user.user_id
+}
+
+output "user_name" {
+  description = "The name of the Opsgenie User"
+  value       = module.user.user_name
+}
+
+output "service_id" {
+  description = "The ID of the Opsgenie Service"
+  value       = module.service.service_id
+}
+
+output "service_name" {
+  description = "The name of the Opsgenie Service"
+  value       = module.service.service_name
+}
+
+output "service_incident_rule_id" {
+  description = "The ID of the Opsgenie Service Incident Rule"
+  value       = module.service_incident_rule.service_incident_rule_id
+}

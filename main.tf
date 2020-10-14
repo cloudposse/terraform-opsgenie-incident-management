@@ -37,3 +37,21 @@ module "team_routing_rule" {
 
   team_routing_rule = var.team_routing_rule
 }
+
+module "user" {
+  source = "./modules/user"
+
+  user = var.user
+}
+
+module "service" {
+  source = "./modules/service"
+
+  service = var.service
+}
+
+module "service_incident_rule" {
+  source = "./modules/service_incident_rule"
+
+  service_incident_rule = var.service_incident_rule
+}

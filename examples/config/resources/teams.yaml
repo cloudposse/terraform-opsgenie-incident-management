@@ -1,11 +1,19 @@
 teams:
 - name: acme
   description: Global Team for Acme Co.
+  members:
+    username: opsgenie-test@cloudposse.com
+    role: admin
 - name: acme.dev
   description: Acme Dev Team
   delete_default_resources: true
+  members:
+    username: opsgenie-test@cloudposse.com
+    role: admin
 - name: acme.dev.some-service
   description: "repo: https://github.com/acme/some-service;owner:David Lightman @David Lightman"
   ignore_members: true
   delete_default_resources: true
-
+  members:
+    username: opsgenie-test@cloudposse.com
+    role: admin

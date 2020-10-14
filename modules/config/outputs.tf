@@ -45,5 +45,26 @@ output "teams" {
   value = {
     for team in opsgenie_team.this : team.id => team.name
   }
-  description = "Team names"
+  description = "Teams"
+}
+
+output "users" {
+  value = {
+    for user in opsgenie_user.this : user.id => user.username
+  }
+  description = "Users"
+}
+
+output "services" {
+  value = {
+    for service in opsgenie_service.this : service.id => service.name
+  }
+  description = "Services"
+}
+
+output "service_incident_rule_ids" {
+  value = [
+    for service_incident_rule in opsgenie_service_incident_rule.this : service_incident_rule.id
+  ]
+  description = "Service Incident Rule IDs"
 }
