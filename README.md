@@ -72,6 +72,7 @@ Available modules:
 - [Team](modules/team)
 - [Team Routing Rule](modules/team_routing_rule)
 - [User](modules/user)
+- [Service](modules/service)
 
 **Note:** Root module is just an example that uses all of submodules.
 
@@ -112,6 +113,7 @@ Submodules examples:
 - [`team`](examples/team)
 - [`team_routing_rule`](examples/team_routing_rule)
 - [`user`](examples/user)
+- [`service`](examples/service)
 
 Here is an example of using the `config` module, which incorporates all resource declarations into a single module:
 - [`config`](examples/config)
@@ -165,6 +167,7 @@ No provider.
 | notification\_policy | Opsgenie Notification Policy configuration | `map` | `{}` | no |
 | opsgenie\_provider\_api\_key | The API Key for the Opsgenie Integration. If omitted, the OPSGENIE\_API\_KEY environment variable is used | `string` | `""` | no |
 | regex\_replace\_chars | Regex to replace chars with empty string in `namespace`, `environment`, `stage` and `name`.<br>If not set, `"/[^a-zA-Z0-9-]/"` is used to remove all characters other than hyphens, letters and digits. | `string` | `null` | no |
+| service | Opsgenie Service configuration | `map` | `{}` | no |
 | stage | Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
 | tags | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
 | team | Opsgenie Team configuration | `map` | `{}` | no |
@@ -188,10 +191,12 @@ No provider.
 | escalation\_name | Name of the Opsgenie Escalation |
 | notification\_policy\_id | The ID of the Opsgenie Notification Policy |
 | notification\_policy\_name | The name of the Opsgenie Notification Policy |
+| service\_id | The ID of the Opsgenie Service |
 | team\_id | The ID of the Opsgenie Team |
 | team\_name | The name of the Opsgenie Team |
 | team\_routing\_rule\_id | The ID of the Opsgenie Team Routing Rule |
 | team\_routing\_rule\_name | The name of the Opsgenie Team Routing Rule |
+| user\_id | The ID of the Opsgenie User |
 
 <!-- markdownlint-restore -->
 
