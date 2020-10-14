@@ -89,7 +89,17 @@ output "user_id" {
   value       = module.user.user_id
 }
 
+output "user_name" {
+  description = "The name of the Opsgenie User"
+  value       = module.user.user_name
+}
+
 output "service_id" {
   description = "The ID of the Opsgenie Service"
   value       = module.service.service_id
+}
+
+output "service_name" {
+  description = "The name of the Opsgenie Service"
+  value       = module.service.service_name
 }

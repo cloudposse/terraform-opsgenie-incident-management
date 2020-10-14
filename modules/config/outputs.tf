@@ -49,15 +49,15 @@ output "teams" {
 }
 
 output "users" {
-  value = [
-    for user in opsgenie_user.this : user.id
-  ]
-  description = "User IDs"
+  value = {
+    for user in opsgenie_user.this : user.id => user.username
+  }
+  description = "Users"
 }
 
 output "services" {
-  value = [
-    for service in opsgenie_service.this : service.id
-  ]
-  description = "Service IDs"
+  value = {
+    for service in opsgenie_service.this : service.id => service.name
+  }
+  description = "Services"
 }

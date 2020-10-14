@@ -192,11 +192,13 @@ No provider.
 | notification\_policy\_id | The ID of the Opsgenie Notification Policy |
 | notification\_policy\_name | The name of the Opsgenie Notification Policy |
 | service\_id | The ID of the Opsgenie Service |
+| service\_name | The name of the Opsgenie Service |
 | team\_id | The ID of the Opsgenie Team |
 | team\_name | The name of the Opsgenie Team |
 | team\_routing\_rule\_id | The ID of the Opsgenie Team Routing Rule |
 | team\_routing\_rule\_name | The name of the Opsgenie Team Routing Rule |
 | user\_id | The ID of the Opsgenie User |
+| user\_name | The name of the Opsgenie User |
 
 <!-- markdownlint-restore -->
 
