@@ -37,3 +37,9 @@ module "team_routing_rule" {
 
   team_routing_rule = var.team_routing_rule
 }
+
+module "user" {
+  source = "./modules/user"
+
+  user = var.user
+}

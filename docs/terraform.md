@@ -34,6 +34,7 @@ No provider.
 | tags | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
 | team | Opsgenie Team configuration | `map` | `{}` | no |
 | team\_routing\_rule | Opsgenie Team Routing Rule configuration | `map` | `{}` | no |
+| user | Opsgenie User configuration | `map` | `{}` | no |
 
 ## Outputs
 

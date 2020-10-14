@@ -7,4 +7,13 @@ resource "opsgenie_team" "this" {
   description              = try(each.value.description, each.value.name)
   ignore_members           = try(each.value.ignore_members, false)
   delete_default_resources = try(each.value.delete_default_resources, false)
+
+  dynamic member {
+    for_each = try(each.value.members, [])
+
+    content {
+      id   = member.id
+      role = member.role
+    }
+  }
 }

@@ -8,4 +8,3 @@ teams:
   description: "repo: https://github.com/acme/some-service;owner:David Lightman @David Lightman"
   ignore_members: true
   delete_default_resources: true
-
