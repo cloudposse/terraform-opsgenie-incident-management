@@ -32,7 +32,7 @@ func TestExamplesComplete(t *testing.T) {
 	outputEscalationName := terraform.Output(t, terraformOptions, "escalation_name")
 
 	// Verify we're getting back the outputs we expect
-	assert.Regexp(t, "^eg-test-incident-management-workflow$", outputEscalationName)
+	assert.Regexp(t, "^eg-test-incident-management-workflow-escalation$", outputEscalationName)
 
 	// Run `terraform output` to get the value of an output variable
 	outputNotificationPolicyName := terraform.Output(t, terraformOptions, "notification_policy_name")
