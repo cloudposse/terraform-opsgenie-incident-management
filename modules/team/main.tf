@@ -8,8 +8,8 @@ resource "opsgenie_team" "this" {
     for_each = try(var.team.members, [])
 
     content {
-      id   = member.id
-      role = member.role
+      id   = member.value.id
+      role = member.value.role
     }
   }
 }
