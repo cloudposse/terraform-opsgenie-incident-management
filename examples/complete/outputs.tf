@@ -51,3 +51,7 @@ output "team_name" {
 output "user_id" {
   value = module.user.user_id
 }
+
+output "service_id" {
+  value = module.service.service_id
+}

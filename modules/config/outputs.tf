@@ -54,3 +54,10 @@ output "users" {
   ]
   description = "User IDs"
 }
+
+output "services" {
+  value = [
+    for service in opsgenie_service.this : service.id
+  ]
+  description = "Service IDs"
+}

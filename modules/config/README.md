@@ -113,6 +113,15 @@ users:
   timezone: "America/New_York"
 ```
 
+### `services.yaml`
+
+```yaml
+services:
+- name: frontend
+  team_id: "..."
+  description: Frontend service
+```
+
 
 ## Usage
 
@@ -153,3 +162,4 @@ module "opsgenie" {
 | `team_routing_rules`    | `name` and `id` of each team routing rule   |
 | `teams`                 | `name` and `id` of each team                |
 | `users`                 | `id` of each user                           |
+| `services`              | `id` of each service                           |

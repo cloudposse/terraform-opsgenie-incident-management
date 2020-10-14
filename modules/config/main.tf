@@ -6,4 +6,5 @@ locals {
   team_routing_rules    = try(var.opsgenie_resources.team_routing_rules, [])
   teams                 = try(var.opsgenie_resources.teams, [])
   users                 = try(var.opsgenie_resources.users, [])
+  services              = try(var.opsgenie_resources.services, [])
 }

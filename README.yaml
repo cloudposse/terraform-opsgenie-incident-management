@@ -68,6 +68,7 @@ introduction: |-
   - [Team](modules/team)
   - [Team Routing Rule](modules/team_routing_rule)
   - [User](modules/user)
+  - [Service](modules/service)
 
   **Note:** Root module is just an example that uses all of submodules.
 
@@ -99,6 +100,7 @@ examples: |-
   - [`team`](examples/team)
   - [`team_routing_rule`](examples/team_routing_rule)
   - [`user`](examples/user)
+  - [`service`](examples/service)
 
   Here is an example of using the `config` module, which incorporates all resource declarations into a single module:
   - [`config`](examples/config)

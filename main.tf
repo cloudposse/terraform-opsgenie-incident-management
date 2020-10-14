@@ -43,3 +43,9 @@ module "user" {
 
   user = var.user
 }
+
+module "service" {
+  source = "./modules/service"
+
+  service = var.service
+}

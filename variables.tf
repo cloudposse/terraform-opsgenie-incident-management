@@ -38,3 +38,8 @@ variable "user" {
   default     = {}
   description = "Opsgenie User configuration"
 }
+
+variable "service" {
+  default     = {}
+  description = "Opsgenie Service configuration"
+}
