@@ -51,10 +51,4 @@ func TestExamplesComplete(t *testing.T) {
 
 	// Verify we're getting back the outputs we expect
 	assert.Regexp(t, "^eg-test-incident-management-workflow$", outputTeamName)
-
-	// Run `terraform output` to get the value of an output variable
-	userId := terraform.Output(t, terraformOptions, "user_id")
-
-	// Verify we're getting back the outputs we expect
-	assert.NotEmpty(t, userId)
 }

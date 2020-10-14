@@ -12,7 +12,7 @@ module "user" {
   source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/user?ref=master"
 
   user = {
-    username  = "opsgenie-test-2@cloudposse.com"
+    username  = "opsgenie-test@cloudposse.com"
     full_name = "Opsgenie Test User"
     role      = "User"
     locale    = "en_US"
