@@ -106,7 +106,7 @@ teams:
 
 ```yaml
 users:
-- username: opsgenie_test@cloudposse.com
+- username: opsgenie-test-2@cloudposse.com
   full_name: Opsgenie Test User
   role: User
   locale: "en_US"
