@@ -106,8 +106,8 @@ teams:
 
 ```yaml
 users:
-- username: test@example.com
-  full_name: Test User
+- username: opsgenie_test@cloudposse.com
+  full_name: Opsgenie Test User
   role: User
   locale: "en_US"
   timezone: "America/New_York"
