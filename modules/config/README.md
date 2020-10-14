@@ -122,6 +122,30 @@ services:
   description: Frontend service
 ```
 
+### `service_incident_rules.yaml`
+
+```yaml
+service_incident_rules:
+- service_name: frontend
+  incident_rule:
+    condition_match_type: match-all
+
+    conditions:
+      - field: source
+        operation: matches
+        expected_value: ".*stage.*"
+      - field: tags
+        operation: contains
+        expected_value: "severity:info"
+
+    incident_properties:
+      message: This is a test message
+      priority: P3
+
+      stakeholder_properties:
+        message: Message for stakeholders
+        enable: true
+```
 
 ## Usage
 
@@ -153,13 +177,15 @@ module "opsgenie" {
 
 ## Outputs
 
-| Name                        | Description                             |
-|:------------------------|:--------------------------------------------|
-| `alert_policies`        | `name` and `id` of each alert policy        |
-| `api_integrations`      | `name` and `id` of each API integration     |
-| `escalations`           | `name` and `id` of each escalation          |
-| `notification_policies` | `name` and `id` of each notification policy |
-| `team_routing_rules`    | `name` and `id` of each team routing rule   |
-| `teams`                 | `name` and `id` of each team                |
-| `users`                 | `id` of each user                           |
-| `services`              | `id` of each service                           |
+| Name                        | Description                                 |
+|:----------------------------|:--------------------------------------------|
+| `alert_policies`            | `name` and `id` of each alert policy        |
+| `api_integrations`          | `name` and `id` of each API integration     |
+| `escalations`               | `name` and `id` of each escalation          |
+| `notification_policies`     | `name` and `id` of each notification policy |
+| `team_routing_rules`        | `name` and `id` of each team routing rule   |
+| `teams`                     | `name` and `id` of each team                |
+| `users`                     | `name` and `id` of each user                |
+| `services`                  | `name` and `id` of each service             |
+| `services`                  | `name` and `id` of each service             |
+| `service_incident_rule_ids` | `id` of each service incident rule          |

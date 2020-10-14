@@ -5,8 +5,6 @@ Terraform module to configure [Opsgenie Service](https://registry.terraform.io/p
 
 ## Usage
 
-[Create Opsgenie Service example](../../examples/service)
-
 ```hcl
 module "service" {
   source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/service?ref=master"
@@ -34,4 +32,5 @@ module "service" {
 
 | Name                        | Description                              |
 |:----------------------------|:-----------------------------------------|
-| `service_id`                | The ID of the Opsgenie Service              |
+| `service_id`                | The ID of the Opsgenie Service           |
+| `service_name`              | The name of the Opsgenie Service         |

@@ -49,3 +49,9 @@ module "service" {
 
   service = var.service
 }
+
+module "service_incident_rule" {
+  source = "./modules/service_incident_rule"
+
+  service_incident_rule = var.service_incident_rule
+}

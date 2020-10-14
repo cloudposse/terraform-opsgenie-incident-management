@@ -1,33 +1,31 @@
 resource "opsgenie_service_incident_rule" "this" {
-  name     = var.team_routing_rule.name
-  team_id  = var.team_routing_rule.team_id
-  order    = try(var.team_routing_rule.order, 0)
-  timezone = try(var.team_routing_rule.timezone, "America/Los_Angeles")
+  service_id = var.service_incident_rule.service_id
 
-  criteria {
-    type = try(var.team_routing_rule.criteria.type, "match-all")
+  incident_rule {
+    condition_match_type = try(var.service_incident_rule.incident_rule.condition_match_type, "match-all")
 
     dynamic conditions {
-      for_each = try(var.team_routing_rule.criteria.conditions, [])
+      for_each = try(var.service_incident_rule.incident_rule.conditions, [])
 
       content {
         expected_value = try(conditions.value.expected_value, null)
-        field          = try(conditions.value.field, null)
-        key            = try(conditions.value.key, null)
+        field          = conditions.value.field
         not            = try(conditions.value.not, null)
-        operation      = try(conditions.value.operation, null)
+        operation      = conditions.value.operation
       }
     }
-  }
 
-  dynamic notify {
-    for_each = try(var.team_routing_rule.notify, [])
+    incident_properties {
+      message  = var.service_incident_rule.incident_rule.incident_properties.message
+      priority = var.service_incident_rule.incident_rule.incident_properties.priority
+      tags     = try(var.service_incident_rule.incident_rule.incident_properties.tags, null)
+      details  = try(var.service_incident_rule.incident_rule.incident_properties.details, null)
 
-    content {
-      # name and id parameters are mutually exclusive
-      id   = try(notify.value.id, null)
-      name = try(notify.value.name, null)
-      type = notify.value.type
+      stakeholder_properties {
+        message     = var.service_incident_rule.incident_rule.incident_properties.stakeholder_properties.message
+        description = try(var.service_incident_rule.incident_rule.incident_properties.stakeholder_properties.description, null)
+        enable      = try(var.service_incident_rule.incident_rule.incident_properties.stakeholder_properties.enable, null)
+      }
     }
   }
 }

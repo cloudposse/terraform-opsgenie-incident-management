@@ -61,3 +61,10 @@ output "services" {
   }
   description = "Services"
 }
+
+output "service_incident_rule_ids" {
+  value = [
+    for service_incident_rule in opsgenie_service_incident_rule.this : service_incident_rule.id
+  ]
+  description = "Service Incident Rule IDs"
+}

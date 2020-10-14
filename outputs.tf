@@ -103,3 +103,8 @@ output "service_name" {
   description = "The name of the Opsgenie Service"
   value       = module.service.service_name
 }
+
+output "service_incident_rule_id" {
+  description = "The ID of the Opsgenie Service Incident Rule"
+  value       = module.service_incident_rule.service_incident_rule_id
+}

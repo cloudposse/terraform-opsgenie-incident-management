@@ -37,3 +37,4 @@ module "user" {
 | Name                        | Description                              |
 |:----------------------------|:-----------------------------------------|
 | `user_id`                   | The ID of the Opsgenie User              |
+| `user_name`                 | The name of the Opsgenie User            |
