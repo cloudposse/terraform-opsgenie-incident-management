@@ -22,7 +22,7 @@ resource "opsgenie_alert_policy" "this" {
     for_each = try(var.alert_policy.responders, [])
 
     content {
-      id       = try(responders.value.id, null)
+      id       = responders.value.id
       name     = try(responders.value.name, null)
       type     = responders.value.type
       username = try(responders.value.username, null)
