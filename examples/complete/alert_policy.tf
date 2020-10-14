@@ -8,6 +8,7 @@ module "alert_policy" {
       type = "match-all"
       conditions = [
         {
+          # Possible values are "message", "alias", "description", "source", "entity", "tags", "actions", "details", "extra-properties", "recipients", "teams", "priority"
           field          = "source"
           operation      = "matches"
           expected_value = ".*stage.*"

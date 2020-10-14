@@ -9,7 +9,8 @@ module "service_incident_rule" {
 
       conditions = [
         {
-          field          = "source"
+          # Possibke values: message, description, tags, extra-properties, recipients, teams, priority
+          field          = "message"
           operation      = "matches"
           expected_value = ".*stage.*"
         },

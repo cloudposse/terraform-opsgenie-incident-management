@@ -4,7 +4,7 @@ service_incident_rules:
       condition_match_type: match-all
 
       conditions:
-        - field: source
+        - field: message
           operation: matches
           expected_value: ".*stage.*"
         - field: tags
