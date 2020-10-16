@@ -1,5 +1,7 @@
 resource "opsgenie_api_integration" "this" {
-  for_each = local.api_integrations != null ? { for integration in local.api_integrations : integration.name => integration } : {}
+  for_each = {
+    for integration in local.api_integrations : integration.name => integration
+  }
 
   name = each.value.name
   type = each.value.type

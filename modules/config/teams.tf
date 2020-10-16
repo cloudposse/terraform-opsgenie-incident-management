@@ -1,5 +1,7 @@
 resource "opsgenie_team" "this" {
-  for_each = local.teams != null ? { for team in local.teams : team.name => team } : {}
+  for_each = {
+    for team in local.teams : team.name => team
+  }
 
   name                     = each.value.name
   description              = try(each.value.description, each.value.name)

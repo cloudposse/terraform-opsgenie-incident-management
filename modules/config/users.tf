@@ -1,5 +1,7 @@
 resource "opsgenie_user" "this" {
-  for_each = local.users != null ? { for user in local.users : user.username => user } : {}
+  for_each = {
+    for user in local.users : user.username => user
+  }
 
   username  = each.value.username
   full_name = each.value.full_name
