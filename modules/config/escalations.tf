@@ -1,7 +1,5 @@
 resource "opsgenie_escalation" "this" {
-  for_each = {
-    for escalation in local.escalations : escalation.name => escalation
-  }
+  for_each = local.escalations != null ? { for escalation in local.escalations : escalation.name => escalation } : {}
 
   name        = each.value.name
   description = try(each.value.description, each.value.name)

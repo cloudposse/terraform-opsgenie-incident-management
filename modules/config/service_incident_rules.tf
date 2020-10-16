@@ -1,5 +1,5 @@
 resource "opsgenie_service_incident_rule" "this" {
-  for_each = toset(local.service_incident_rules)
+  for_each = local.service_incident_rules != null ? toset(local.service_incident_rules) : []
 
   service_id = opsgenie_service.this[each.value.service_name].id
 

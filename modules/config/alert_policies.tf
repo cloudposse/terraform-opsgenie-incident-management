@@ -1,7 +1,5 @@
 resource "opsgenie_alert_policy" "this" {
-  for_each = {
-    for policy in local.alert_policies : policy.name => policy
-  }
+  for_each = local.alert_policies != null ? { for policy in local.alert_policies : policy.name => policy } : {}
 
   name               = each.value.name
   policy_description = try(each.value.description, each.value.name)
