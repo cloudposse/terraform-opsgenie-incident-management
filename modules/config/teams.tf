@@ -12,8 +12,8 @@ resource "opsgenie_team" "this" {
     for_each = try(each.value.members, [])
 
     content {
-      id   = opsgenie_user.this[member.value.username].id
-      role = member.value.role
+      id   = try(opsgenie_user.this[member.value.username].id, data.opsgenie_user.this[member.value.username].id)
+      role = try(member.value.role, null)
     }
   }
 }
