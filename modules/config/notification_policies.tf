@@ -7,7 +7,7 @@ resource "opsgenie_notification_policy" "this" {
   name    = each.value.name
 
   # Look up our team id by name
-  team_id            = try(opsgenie_team.this[each.value.team_name].id, null)
+  team_id            = opsgenie_team.this[each.value.team_name].id
   policy_description = try(each.value.description, each.value.name)
 
   filter {
