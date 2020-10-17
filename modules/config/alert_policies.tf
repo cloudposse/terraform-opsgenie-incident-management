@@ -33,9 +33,9 @@ resource "opsgenie_alert_policy" "this" {
       type = responders.value.type
 
       id = lookup(responders.value, "id", null) != null ? responders.value.id : (
-        responders.value.type == "team" ? opsgenie_team.this[responders.value.name].id : (
-          responders.value.type == "user" ? try(opsgenie_user.this[responders.value.username].id, data.opsgenie_user.this[responders.value.username].id) : (
-            responders.value.type == "escalation" ? opsgenie_escalation.this[responders.value.name].id : (
+        responders.value.type == "team" ? opsgenie_team.this[responders.value.team_name].id : (
+          responders.value.type == "user" ? try(opsgenie_user.this[responders.value.user_name].id, data.opsgenie_user.this[responders.value.user_name].id) : (
+            responders.value.type == "escalation" ? opsgenie_escalation.this[responders.value.escalation_name].id : (
               null
             )
           )
