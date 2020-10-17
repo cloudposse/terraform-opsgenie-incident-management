@@ -1,3 +1,5 @@
+# https://docs.opsgenie.com/docs/alert-api
+
 resource "opsgenie_alert_policy" "this" {
   for_each = {
     for policy in local.alert_policies : policy.name => policy
@@ -28,9 +30,19 @@ resource "opsgenie_alert_policy" "this" {
     for_each = try(each.value.responders, [])
 
     content {
-      id       = try(responders.value.id, null)
+      type = responders.value.type
+
+      id = lookup(responders.value, "id", null) != null ? responders.value.id : (
+        responders.value.type == "team" ? opsgenie_team.this[responders.value.name].id : (
+          responders.value.type == "user" ? try(opsgenie_user.this[responders.value.username].id, data.opsgenie_user.this[responders.value.username].id) : (
+            responders.value.type == "escalation" ? opsgenie_escalation.this[responders.value.name].id : (
+              null
+            )
+          )
+        )
+      )
+
       name     = try(responders.value.name, null)
-      type     = responders.value.type
       username = try(responders.value.username, null)
     }
   }
