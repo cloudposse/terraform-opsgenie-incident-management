@@ -135,7 +135,8 @@ services:
 
 ```yaml
 service_incident_rules:
-- service_name: frontend
+- name: frontend-service-incident-rule-1
+  service_name: frontend
   incident_rule:
     condition_match_type: match-all
 
