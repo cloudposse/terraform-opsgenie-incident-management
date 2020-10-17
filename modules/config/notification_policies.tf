@@ -30,7 +30,7 @@ resource "opsgenie_notification_policy" "this" {
   auto_close_action {
     duration {
       time_amount = try(each.value.auto_close_action.time_amount, null)
-      time_unit   = try(each.value.auto_close_action.time_unit, null)
+      time_unit   = try(each.value.auto_close_action.time_unit, "minutes")
     }
   }
 }
