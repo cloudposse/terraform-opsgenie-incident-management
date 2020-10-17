@@ -18,9 +18,17 @@ resource "opsgenie_escalation" "this" {
       for_each = try(each.value.rule.recipients, [])
 
       content {
-        # Look up our team id by name
-        id   = opsgenie_team.this[recipient.value.team_name].id
         type = recipient.value.type
+
+        id = lookup(recipient.value, "id", null) != null ? recipient.value.id : (
+          recipient.value.type == "team" ? opsgenie_team.this[recipient.value.team_name].id : (
+            recipient.value.type == "user" ? try(opsgenie_user.this[recipient.value.user_name].id, data.opsgenie_user.this[recipient.value.user_name].id) : (
+              recipient.value.type == "escalation" ? opsgenie_escalation.this[recipient.value.escalation_name].id : (
+                null
+              )
+            )
+          )
+        )
       }
     }
   }
