@@ -21,5 +21,5 @@ resource "opsgenie_api_integration" "this" {
   suppress_notifications         = try(each.value.suppress_notifications, false)
 
   # Look up our team id by name
-  owner_team_id = opsgenie_team.this[each.value.owner_team_name].id
+  owner_team_id = try(opsgenie_team.this[each.value.owner_team_name].id, null)
 }

@@ -5,8 +5,9 @@ resource "opsgenie_team_routing_rule" "this" {
 
   name = each.value.name
 
-  # Look up our team id by name
-  team_id  = opsgenie_team.this[each.value.owner_team_name].id
+  # Look up Team ID by name
+  team_id = opsgenie_team.this[each.value.owner_team_name].id
+
   order    = try(each.value.order, 0)
   timezone = try(each.value.timezone, "America/Los_Angeles")
 
@@ -22,6 +23,7 @@ resource "opsgenie_team_routing_rule" "this" {
         key            = try(conditions.value.key, null)
         not            = try(conditions.value.not, null)
         operation      = try(conditions.value.operation, null)
+        order          = try(conditions.value.order, null)
       }
     }
   }
@@ -30,9 +32,8 @@ resource "opsgenie_team_routing_rule" "this" {
     for_each = try(each.value.notify, [])
 
     content {
-      # Look up our escalation id by name
-      id   = opsgenie_escalation.this[notify.value.name].id
       type = notify.value.type
+      id   = opsgenie_escalation.this[notify.value.name].id
     }
   }
 }

@@ -16,6 +16,7 @@ resource "opsgenie_team_routing_rule" "this" {
         key            = try(conditions.value.key, null)
         not            = try(conditions.value.not, null)
         operation      = try(conditions.value.operation, null)
+        order          = try(conditions.value.order, null)
       }
     }
   }
@@ -24,10 +25,10 @@ resource "opsgenie_team_routing_rule" "this" {
     for_each = try(var.team_routing_rule.notify, [])
 
     content {
+      type = notify.value.type
       # name and id parameters are mutually exclusive
       id   = try(notify.value.id, null)
       name = try(notify.value.name, null)
-      type = notify.value.type
     }
   }
 }

@@ -1,3 +1,5 @@
+# https://docs.opsgenie.com/docs/alert-api
+
 resource "opsgenie_alert_policy" "this" {
   for_each = {
     for policy in local.alert_policies : policy.name => policy
@@ -14,7 +16,7 @@ resource "opsgenie_alert_policy" "this" {
 
   alias    = try(each.value.alias, null)
   entity   = try(each.value.entity, null)
-  message  = try(each.value.message, "{{ message }}")
+  message  = try(each.value.message, "{{message}}")
   priority = try(each.value.priority, null)
   source   = try(each.value.source, null)
   tags     = try(each.value.tags, null)
@@ -28,9 +30,19 @@ resource "opsgenie_alert_policy" "this" {
     for_each = try(each.value.responders, [])
 
     content {
-      id       = try(responders.value.id, null)
+      type = responders.value.type
+
+      id = lookup(responders.value, "id", null) != null ? responders.value.id : (
+        responders.value.type == "team" ? opsgenie_team.this[responders.value.team_name].id : (
+          responders.value.type == "user" ? try(opsgenie_user.this[responders.value.user_name].id, data.opsgenie_user.this[responders.value.user_name].id) : (
+            responders.value.type == "escalation" ? opsgenie_escalation.this[responders.value.escalation_name].id : (
+              null
+            )
+          )
+        )
+      )
+
       name     = try(responders.value.name, null)
-      type     = responders.value.type
       username = try(responders.value.username, null)
     }
   }

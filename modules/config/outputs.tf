@@ -55,6 +55,13 @@ output "users" {
   description = "Users"
 }
 
+output "existing_users" {
+  value = {
+    for user in data.opsgenie_user.this : user.id => user.username
+  }
+  description = "Users that already exist in Opsgenie"
+}
+
 output "services" {
   value = {
     for service in opsgenie_service.this : service.id => service.name
