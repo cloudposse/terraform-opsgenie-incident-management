@@ -16,7 +16,7 @@ resource "opsgenie_alert_policy" "this" {
 
   alias    = try(each.value.alias, null)
   entity   = try(each.value.entity, null)
-  message  = try(each.value.message, "{{ message }}")
+  message  = try(each.value.message, "{{message}}")
   priority = try(each.value.priority, null)
   source   = try(each.value.source, null)
   tags     = try(each.value.tags, null)
