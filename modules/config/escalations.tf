@@ -32,7 +32,7 @@ resource "opsgenie_escalation" "this" {
   }
 
   dynamic repeat {
-    for_each = try(each.value.repeat, [])
+    for_each = try(each.value.repeat, {})
 
     content {
       wait_interval          = repeat.value.wait_interval
