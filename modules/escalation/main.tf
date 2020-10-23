@@ -22,10 +22,10 @@ resource "opsgenie_escalation" "this" {
     for_each = try(var.escalation.repeat, {})
 
     content {
-      wait_interval          = repeat.value.wait_interval
-      count                  = repeat.value.count
-      reset_recipient_states = repeat.value.reset_recipient_states
-      close_alert_after_all  = repeat.value.close_alert_after_all
+      wait_interval          = repeat.wait_interval
+      count                  = repeat.count
+      reset_recipient_states = repeat.reset_recipient_states
+      close_alert_after_all  = repeat.close_alert_after_all
     }
   }
 }
