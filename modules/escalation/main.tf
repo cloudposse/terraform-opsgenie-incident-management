@@ -19,13 +19,13 @@ resource "opsgenie_escalation" "this" {
   }
 
   dynamic repeat {
-    for_each = try(var.escalation.repeat, {})
+    for_each = try(var.escalation.repeat, null) != null ? ["true"] : []
 
     content {
-      wait_interval          = repeat.wait_interval
-      count                  = repeat.count
-      reset_recipient_states = repeat.reset_recipient_states
-      close_alert_after_all  = repeat.close_alert_after_all
+      wait_interval          = lookup(var.escalation.repeat, "wait_interval", 5)
+      count                  = lookup(var.escalation.repeat, "count", 0)
+      reset_recipient_states = lookup(var.escalation.repeat, "reset_recipient_states", true)
+      close_alert_after_all  = lookup(var.escalation.repeat, "close_alert_after_all", true)
     }
   }
 }
