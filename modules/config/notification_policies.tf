@@ -13,7 +13,7 @@ resource "opsgenie_notification_policy" "this" {
   filter {
     type = try(each.value.filter.type, "match-all")
 
-    dynamic conditions {
+    dynamic "conditions" {
       for_each = try(each.value.filter.conditions, [])
 
       content {

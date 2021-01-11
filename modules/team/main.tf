@@ -4,7 +4,7 @@ resource "opsgenie_team" "this" {
   ignore_members           = try(var.team.ignore_members, false)
   delete_default_resources = try(var.team.delete_default_resources, false)
 
-  dynamic member {
+  dynamic "member" {
     for_each = try(var.team.members, [])
 
     content {

@@ -7,7 +7,7 @@ resource "opsgenie_team_routing_rule" "this" {
   criteria {
     type = try(var.team_routing_rule.criteria.type, "match-all")
 
-    dynamic conditions {
+    dynamic "conditions" {
       for_each = try(var.team_routing_rule.criteria.conditions, [])
 
       content {
@@ -21,7 +21,7 @@ resource "opsgenie_team_routing_rule" "this" {
     }
   }
 
-  dynamic notify {
+  dynamic "notify" {
     for_each = try(var.team_routing_rule.notify, [])
 
     content {

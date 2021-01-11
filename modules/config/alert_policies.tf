@@ -26,7 +26,7 @@ resource "opsgenie_alert_policy" "this" {
   ignore_original_responders = try(each.value.ignore_original_responders, false)
   ignore_original_tags       = try(each.value.ignore_original_tags, false)
 
-  dynamic responders {
+  dynamic "responders" {
     for_each = try(each.value.responders, [])
 
     content {
@@ -50,7 +50,7 @@ resource "opsgenie_alert_policy" "this" {
   filter {
     type = try(each.value.filter.type, "match-all")
 
-    dynamic conditions {
+    dynamic "conditions" {
       for_each = try(each.value.filter.conditions, [])
 
       content {
