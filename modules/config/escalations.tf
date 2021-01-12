@@ -14,7 +14,7 @@ resource "opsgenie_escalation" "this" {
     notify_type = try(each.value.rule.notify_type, "default")
     delay       = try(each.value.rule.delay, 0)
 
-    dynamic recipient {
+    dynamic "recipient" {
       for_each = try(each.value.rule.recipients, [])
 
       content {
@@ -31,7 +31,7 @@ resource "opsgenie_escalation" "this" {
     }
   }
 
-  dynamic repeat {
+  dynamic "repeat" {
     for_each = try(each.value.repeat, null) != null ? ["true"] : []
 
     content {

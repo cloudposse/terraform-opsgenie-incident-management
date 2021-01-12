@@ -6,7 +6,7 @@ resource "opsgenie_service_incident_rule" "this" {
   incident_rule {
     condition_match_type = try(var.service_incident_rule.incident_rule.condition_match_type, "match-all")
 
-    dynamic conditions {
+    dynamic "conditions" {
       for_each = try(var.service_incident_rule.incident_rule.conditions, [])
 
       content {

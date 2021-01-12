@@ -7,7 +7,7 @@ resource "opsgenie_notification_policy" "this" {
   filter {
     type = try(var.notification_policy.filter.type, "match-all")
 
-    dynamic conditions {
+    dynamic "conditions" {
       for_each = try(var.notification_policy.filter.conditions, [])
 
       content {

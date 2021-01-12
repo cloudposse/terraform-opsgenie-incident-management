@@ -6,7 +6,7 @@ resource "opsgenie_api_integration" "this" {
   name = each.value.name
   type = each.value.type
 
-  dynamic responders {
+  dynamic "responders" {
     for_each = try(each.value.responders, [])
 
     content {

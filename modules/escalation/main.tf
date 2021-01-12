@@ -8,7 +8,7 @@ resource "opsgenie_escalation" "this" {
     notify_type = try(var.escalation.rule.notify_type, "default")
     delay       = try(var.escalation.rule.delay, 0)
 
-    dynamic recipient {
+    dynamic "recipient" {
       for_each = try(var.escalation.rule.recipients, [])
 
       content {
@@ -18,7 +18,7 @@ resource "opsgenie_escalation" "this" {
     }
   }
 
-  dynamic repeat {
+  dynamic "repeat" {
     for_each = try(var.escalation.repeat, null) != null ? ["true"] : []
 
     content {
