@@ -17,7 +17,7 @@ license: "APACHE2"
 copyrights:
   - name: "Cloud Posse, LLC"
     url: "https://cloudposse.com"
-    year: "2020"
+    year: "2021"
 
 # Canonical GitHub repo
 github_repo: cloudposse/terraform-opsgenie-incident-management
@@ -78,7 +78,9 @@ usage: |-
 
   ```hcl
   module "team-name" {
-    source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/team?ref=master"
+    source  = "cloudposse/incident-management/opsgenie//modules/team"
+    # Cloud Posse recommends pinning every module to a specific version
+    # version     = "x.x.x"
 
     team = {
       name        = "team-name"
@@ -127,3 +129,5 @@ contributors:
     github: "aknysh"
   - name: "Igor Rodionov"
     github: "goruha"
+  - name: "Yonatan Koren"
+    github: "korenyoni"

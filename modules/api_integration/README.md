@@ -9,7 +9,9 @@ Terraform module to configure [Opsgenie API Integration](https://registry.terraf
 
 ```hcl
 module "api_integration" {
-  source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/api_integration?ref=master"
+  source  = "cloudposse/incident-management/opsgenie//modules/api_integration"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version     = "x.x.x"
 
   api_integration = {
     name          = module.label.id

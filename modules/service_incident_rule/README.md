@@ -9,7 +9,9 @@ Terraform module to configure [Opsgenie Service Incident Rule](https://registry.
 
 ```hcl
 module "service_incident_rule" {
-  source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/service_incident_rule?ref=master"
+  source  = "cloudposse/incident-management/opsgenie//modules/service_incident_rule"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version     = "x.x.x"
 
   service_incident_rule = {
     service_id = "..."

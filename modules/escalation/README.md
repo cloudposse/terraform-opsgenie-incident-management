@@ -9,7 +9,9 @@ Terraform module to configure [Opsgenie Escalation](https://registry.terraform.i
 
 ```hcl
 module "escalation" {
-  source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/escalation?ref=master"
+  source  = "cloudposse/incident-management/opsgenie//modules/escalation"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version     = "x.x.x"
 
   escalation = {
     name          = module.label.id

@@ -1,7 +1,5 @@
 resource "opsgenie_team_routing_rule" "this" {
-  for_each = {
-    for rule in local.team_routing_rules : rule.name => rule
-  }
+  for_each = module.this.enabled ? {for rule in local.team_routing_rules : rule.name => rule} : {}
 
   name = each.value.name
 

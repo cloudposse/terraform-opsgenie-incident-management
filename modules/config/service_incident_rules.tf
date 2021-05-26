@@ -1,7 +1,5 @@
 resource "opsgenie_service_incident_rule" "this" {
-  for_each = {
-    for service_incident_rule in local.service_incident_rules : service_incident_rule.name => service_incident_rule
-  }
+  for_each = module.this.enabled ? {for service_incident_rule in local.service_incident_rules : service_incident_rule.name => service_incident_rule} : {}
 
   service_id = opsgenie_service.this[each.value.service_name].id
 

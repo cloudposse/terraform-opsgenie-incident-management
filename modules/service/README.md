@@ -7,7 +7,9 @@ Terraform module to configure [Opsgenie Service](https://registry.terraform.io/p
 
 ```hcl
 module "service" {
-  source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/service?ref=master"
+  source  = "cloudposse/incident-management/opsgenie//modules/service"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version     = "x.x.x"
 
   service = {
       name        = "frontend"

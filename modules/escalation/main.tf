@@ -1,4 +1,6 @@
 resource "opsgenie_escalation" "this" {
+  count = module.this.enabled ? 1 : 0
+
   name          = var.escalation.name
   description   = try(var.escalation.description, var.escalation.name)
   owner_team_id = try(var.escalation.owner_team_id, null)

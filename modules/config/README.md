@@ -172,7 +172,9 @@ locals {
 }
 
 module "opsgenie" {
-  source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/config?ref=master"
+  source  = "cloudposse/incident-management/opsgenie//modules/config"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version     = "x.x.x"
 
   opsgenie_resources = local.opsgenie_resources
 }

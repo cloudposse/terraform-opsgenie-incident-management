@@ -1,4 +1,6 @@
 resource "opsgenie_alert_policy" "this" {
+  count = module.this.enabled ? 1 : 0
+
   name               = var.alert_policy.name
   policy_description = try(var.alert_policy.description, var.alert_policy.name)
   team_id            = try(var.alert_policy.team_id, null)

@@ -1,4 +1,6 @@
 resource "opsgenie_team" "this" {
+  count = module.this.enabled ? 1 : 0
+
   name                     = var.team.name
   description              = try(var.team.description, var.team.name)
   ignore_members           = try(var.team.ignore_members, false)

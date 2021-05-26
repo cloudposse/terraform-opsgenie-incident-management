@@ -1,9 +1,9 @@
 output "team_id" {
   description = "The ID of the Opsgenie Team"
-  value       = opsgenie_team.this.id
+  value       = try(opsgenie_team.this[0].id, null)
 }
 
 output "team_name" {
   description = "The name of the Opsgenie Team"
-  value       = opsgenie_team.this.name
+  value       = try(opsgenie_team.this[0].name, null)
 }
