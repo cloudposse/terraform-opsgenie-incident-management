@@ -9,7 +9,9 @@ Terraform module to configure [Opsgenie User](https://registry.terraform.io/prov
 
 ```hcl
 module "user" {
-  source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/user?ref=master"
+  source  = "cloudposse/incident-management/opsgenie//modules/user"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version     = "x.x.x"
 
   user = {
     username  = "opsgenie-test@cloudposse.com"

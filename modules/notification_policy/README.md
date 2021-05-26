@@ -9,7 +9,9 @@ Terraform module to configure [Opsgenie Notification Policy](https://registry.te
 
 ```hcl
 module "notification_policy" {
-  source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/notification_policy?ref=master"
+  source  = "cloudposse/incident-management/opsgenie//modules/notification_policy"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version     = "x.x.x"
 
   notification_policy = {
     name    = module.label.id

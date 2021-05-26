@@ -1,4 +1,6 @@
 resource "opsgenie_notification_policy" "this" {
+  count = module.this.enabled ? 1 : 0
+
   enabled            = try(var.notification_policy.enabled, true)
   name               = var.notification_policy.name
   team_id            = var.notification_policy.team_id

@@ -1,4 +1,6 @@
 resource "opsgenie_team_routing_rule" "this" {
+  count = module.this.enabled ? 1 : 0
+
   name     = var.team_routing_rule.name
   team_id  = var.team_routing_rule.team_id
   order    = try(var.team_routing_rule.order, 0)

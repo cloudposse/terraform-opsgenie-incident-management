@@ -9,7 +9,9 @@ Terraform module to configure [Opsgenie Team](https://registry.terraform.io/prov
 
 ```hcl
 module "team" {
-  source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/team?ref=master"
+  source  = "cloudposse/incident-management/opsgenie//modules/team"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version     = "x.x.x"
 
   team = {
     name        = module.label.id
@@ -18,7 +20,9 @@ module "team" {
 }
 
 module "ui_managed_team" {
-  source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/team?ref=master"
+  source  = "cloudposse/incident-management/opsgenie//modules/team"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version     = "x.x.x"
 
   team = {
     name                     = module.label.id

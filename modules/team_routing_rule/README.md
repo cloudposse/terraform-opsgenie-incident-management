@@ -9,7 +9,9 @@ Terraform module to configure [Opsgenie Team Routing Rule](https://registry.terr
 
 ```hcl
 module "team_routing_rule" {
-  source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/team_routing_rule?ref=master"
+  source  = "cloudposse/incident-management/opsgenie//modules/team_routing_rule"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version     = "x.x.x"
 
   team_routing_rule = {
     name    = module.label.id

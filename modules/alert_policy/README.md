@@ -9,7 +9,9 @@ Terraform module to configure [Opsgenie Alert Policy](https://registry.terraform
 
 ```hcl
 module "alert_policy" {
-  source = "git::https://github.com/cloudposse/terraform-opsgenie-incident-management.git//modules/alert_policy?ref=master"
+  source  = "cloudposse/incident-management/opsgenie//modules/alert_policy"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version     = "x.x.x"
 
   alert_policy = {
     name = "alert-policy"

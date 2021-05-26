@@ -1,7 +1,5 @@
 resource "opsgenie_team" "this" {
-  for_each = {
-    for team in local.teams : team.name => team
-  }
+  for_each = module.this.enabled ? { for team in local.teams : team.name => team } : {}
 
   name                     = each.value.name
   description              = try(each.value.description, each.value.name)
