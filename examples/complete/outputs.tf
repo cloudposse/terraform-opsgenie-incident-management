@@ -8,6 +8,11 @@ output "escalation_name" {
   value       = module.escalation.escalation_name
 }
 
+output "integration_action_id" {
+  description = "The ID of the Opsgenie Integration Action"
+  value       = module.integration_action.integration_action_id
+}
+
 output "api_integration_id" {
   description = "The ID of the Opsgenie integration"
   value       = module.api_integration.api_integration_id

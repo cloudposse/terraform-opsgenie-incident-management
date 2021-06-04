@@ -13,6 +13,11 @@ output "escalations" {
   description = "Escalations"
 }
 
+output "integration_actions" {
+  value       = module.opsgenie_config.integration_actions
+  description = "Integration Actions"
+}
+
 output "notification_policies" {
   value       = module.opsgenie_config.notification_policies
   description = "Notification policies"

@@ -1,5 +1,6 @@
 integration_actions:
-  - integration_name: acme-dev-opsgenie-sns-integration
+  - name: acme-dev-opsgenie-sns-close-low-priority
+    integration_name: acme-dev-opsgenie-sns-integration
     close:
       - name: Close low priority alerts
         filter:
