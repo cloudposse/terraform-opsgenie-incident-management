@@ -54,6 +54,11 @@ output "escalation_name" {
   value       = module.escalation.escalation_name
 }
 
+output "integration_action_id" {
+  description = "The ID of the Opsgenie Integration Action"
+  value       = module.integration_action.integration_action_id
+}
+
 output "notification_policy_id" {
   description = "The ID of the Opsgenie Notification Policy"
   value       = module.notification_policy.notification_policy_id

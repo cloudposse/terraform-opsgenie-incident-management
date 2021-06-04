@@ -19,6 +19,11 @@ variable "escalation" {
   description = "Opsgenie Escalation configuration"
 }
 
+variable "integration_action" {
+  default     = {}
+  description = "Opsgenie Integration Action configuration"
+}
+
 variable "notification_policy" {
   default     = {}
   description = "Opsgenie Notification Policy configuration"

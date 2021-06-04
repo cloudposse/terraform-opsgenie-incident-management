@@ -27,6 +27,13 @@ output "escalations" {
   description = "Escalations"
 }
 
+output "integration_actions" {
+  value = [
+    for integration_action in opsgenie_integration_action.this : integration_action.id
+  ]
+  description = "Integration Actions"
+}
+
 output "notification_policies" {
   value = {
     for policy in opsgenie_notification_policy.this : policy.id => policy.name
