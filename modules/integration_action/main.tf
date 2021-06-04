@@ -2,7 +2,6 @@ resource "opsgenie_integration_action" "this" {
   count = module.this.enabled ? 1 : 0
 
   integration_id = var.integration_action.integration_id
-  name           = var.integration_action.name
 
   dynamic "create" {
     for_each = try(var.integration_action.create, [])
