@@ -14,16 +14,17 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_alert_policy"></a> [alert\_policy](#module\_alert\_policy) | ./modules/alert_policy |  |
-| <a name="module_api_integration"></a> [api\_integration](#module\_api\_integration) | ./modules/api_integration |  |
-| <a name="module_escalation"></a> [escalation](#module\_escalation) | ./modules/escalation |  |
-| <a name="module_notification_policy"></a> [notification\_policy](#module\_notification\_policy) | ./modules/notification_policy |  |
-| <a name="module_service"></a> [service](#module\_service) | ./modules/service |  |
-| <a name="module_service_incident_rule"></a> [service\_incident\_rule](#module\_service\_incident\_rule) | ./modules/service_incident_rule |  |
-| <a name="module_team"></a> [team](#module\_team) | ./modules/team |  |
-| <a name="module_team_routing_rule"></a> [team\_routing\_rule](#module\_team\_routing\_rule) | ./modules/team_routing_rule |  |
+| <a name="module_alert_policy"></a> [alert\_policy](#module\_alert\_policy) | ./modules/alert_policy | n/a |
+| <a name="module_api_integration"></a> [api\_integration](#module\_api\_integration) | ./modules/api_integration | n/a |
+| <a name="module_escalation"></a> [escalation](#module\_escalation) | ./modules/escalation | n/a |
+| <a name="module_integration_action"></a> [integration\_action](#module\_integration\_action) | ./modules/integration_action | n/a |
+| <a name="module_notification_policy"></a> [notification\_policy](#module\_notification\_policy) | ./modules/notification_policy | n/a |
+| <a name="module_service"></a> [service](#module\_service) | ./modules/service | n/a |
+| <a name="module_service_incident_rule"></a> [service\_incident\_rule](#module\_service\_incident\_rule) | ./modules/service_incident_rule | n/a |
+| <a name="module_team"></a> [team](#module\_team) | ./modules/team | n/a |
+| <a name="module_team_routing_rule"></a> [team\_routing\_rule](#module\_team\_routing\_rule) | ./modules/team_routing_rule | n/a |
 | <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.24.1 |
-| <a name="module_user"></a> [user](#module\_user) | ./modules/user |  |
+| <a name="module_user"></a> [user](#module\_user) | ./modules/user | n/a |
 
 ## Resources
 
@@ -43,6 +44,7 @@ No resources.
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment, e.g. 'uw2', 'us-west-2', OR 'prod', 'staging', 'dev', 'UAT' | `string` | `null` | no |
 | <a name="input_escalation"></a> [escalation](#input\_escalation) | Opsgenie Escalation configuration | `map` | `{}` | no |
 | <a name="input_id_length_limit"></a> [id\_length\_limit](#input\_id\_length\_limit) | Limit `id` to this many characters (minimum 6).<br>Set to `0` for unlimited length.<br>Set to `null` for default, which is `0`.<br>Does not affect `id_full`. | `number` | `null` | no |
+| <a name="input_integration_action"></a> [integration\_action](#input\_integration\_action) | Opsgenie Integration Action configuration | `map` | `{}` | no |
 | <a name="input_label_key_case"></a> [label\_key\_case](#input\_label\_key\_case) | The letter case of label keys (`tag` names) (i.e. `name`, `namespace`, `environment`, `stage`, `attributes`) to use in `tags`.<br>Possible values: `lower`, `title`, `upper`.<br>Default value: `title`. | `string` | `null` | no |
 | <a name="input_label_order"></a> [label\_order](#input\_label\_order) | The naming order of the id output and Name tag.<br>Defaults to ["namespace", "environment", "stage", "name", "attributes"].<br>You can omit any of the 5 elements, but at least one must be present. | `list(string)` | `null` | no |
 | <a name="input_label_value_case"></a> [label\_value\_case](#input\_label\_value\_case) | The letter case of output label values (also used in `tags` and `id`).<br>Possible values: `lower`, `title`, `upper` and `none` (no transformation).<br>Default value: `lower`. | `string` | `null` | no |
@@ -74,6 +76,7 @@ No resources.
 | <a name="output_api_integration_name"></a> [api\_integration\_name](#output\_api\_integration\_name) | The name of the Opsgenie API Integration |
 | <a name="output_escalation_id"></a> [escalation\_id](#output\_escalation\_id) | The ID of the Opsgenie Escalation |
 | <a name="output_escalation_name"></a> [escalation\_name](#output\_escalation\_name) | Name of the Opsgenie Escalation |
+| <a name="output_integration_action_id"></a> [integration\_action\_id](#output\_integration\_action\_id) | The ID of the Opsgenie Integration Action |
 | <a name="output_notification_policy_id"></a> [notification\_policy\_id](#output\_notification\_policy\_id) | The ID of the Opsgenie Notification Policy |
 | <a name="output_notification_policy_name"></a> [notification\_policy\_name](#output\_notification\_policy\_name) | The name of the Opsgenie Notification Policy |
 | <a name="output_service_id"></a> [service\_id](#output\_service\_id) | The ID of the Opsgenie Service |

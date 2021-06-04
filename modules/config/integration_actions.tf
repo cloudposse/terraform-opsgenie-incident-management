@@ -20,7 +20,7 @@ resource "opsgenie_integration_action" "this" {
       alert_actions = try(create.value.alert_actions, [])
 
       filter {
-        type       = try(create.value.filter.type, null)
+        type = try(create.value.filter.type, null)
 
         dynamic "conditions" {
           for_each = try(create.value.filter.conditions, [])
@@ -42,7 +42,7 @@ resource "opsgenie_integration_action" "this" {
       name = try(close.value.name, null)
 
       filter {
-        type       = try(close.value.filter.type, null)
+        type = try(close.value.filter.type, null)
 
         dynamic "conditions" {
           for_each = try(close.value.filter.conditions, [])
@@ -64,7 +64,7 @@ resource "opsgenie_integration_action" "this" {
       name = try(acknowledge.value.name, null)
 
       filter {
-        type       = try(acknowledge.value.filter.type, null)
+        type = try(acknowledge.value.filter.type, null)
 
         dynamic "conditions" {
           for_each = try(acknowledge.value.filter.conditions, [])
@@ -87,7 +87,7 @@ resource "opsgenie_integration_action" "this" {
       note = try(add_note.value.name, null)
 
       filter {
-        type       = try(add_note.value.filter.type, null)
+        type = try(add_note.value.filter.type, null)
 
         dynamic "conditions" {
           for_each = try(add_note.value.filter.conditions, [])
@@ -109,7 +109,7 @@ resource "opsgenie_integration_action" "this" {
       name = try(ignore.value.name, null)
 
       filter {
-        type       = try(ignore.value.filter.type, null)
+        type = try(ignore.value.filter.type, null)
 
         dynamic "conditions" {
           for_each = try(ignore.value.filter.conditions, [])
