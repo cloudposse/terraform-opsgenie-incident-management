@@ -69,7 +69,7 @@ Available modules:
 - [API Integration](modules/api_integration)
 - [Config](modules/config)
 - [Escalation](modules/escalation)
-- [Integration Action](modules/integration_action)
+- [Integration Action](modules/integration_action) (advanced feature — not available to all OpsGenie plans)
 - [Notification Policy](modules/notification_policy)
 - [Team](modules/team)
 - [Team Routing Rule](modules/team_routing_rule)
@@ -78,6 +78,7 @@ Available modules:
 - [Service Incident Rule](modules/service_incident_rule)
 
 **Note:** Root module is just an example that uses all of submodules.
+**Note:** See the [Advanced Features Example](examples/advanced_features) for features only available to some OpsGenie plans.
 
 
 ## Security & Compliance [<img src="https://cloudposse.com/wp-content/uploads/2020/11/bridgecrew.svg" width="250" align="right" />](https://bridgecrew.io/)
@@ -141,7 +142,7 @@ Submodules examples:
 - [`alert_policy`](examples/alert_policy)
 - [`api_integration`](examples/api_integration)
 - [`escalation`](examples/escalation)
-- [`integration_action`](examples/integration_action)
+- [`integration_action`](examples/integration_action) (advanced feature — not available to all OpsGenie plans)
 - [`notification_policy`](examples/notification_policy)
 - [`team`](examples/team)
 - [`team_routing_rule`](examples/team_routing_rule)
