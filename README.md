@@ -78,6 +78,7 @@ Available modules:
 - [Service Incident Rule](modules/service_incident_rule)
 
 **Note:** Root module is just an example that uses all of submodules.
+
 **Note:** See the [Advanced Features Example](examples/advanced_features) for features only available to some OpsGenie plans.
 
 
