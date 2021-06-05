@@ -5,11 +5,8 @@ import (
 	"testing"
 )
 
-// Do not actually apply the Terraform module in examples/integration_action using Terratest.
-// Instead, just test that this configuration can perform a plan. The reasoning behind this is
-// that this configuration requires an OpsGenie plan that has access to advanced integrations.
-// Otherwise, we will get the following error from the OpsGenie API:
-// 'Your plan does not allow saving advanced integrations.''
+
+// Test the Terraform module in examples/integration_action using Terratest.
 func TestExamplesIntegrationAction(t *testing.T) {
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
@@ -19,5 +16,9 @@ func TestExamplesIntegrationAction(t *testing.T) {
 		VarFiles: []string{"fixtures.tfvars"},
 	}
 
-	terraform.InitAndPlan(t, terraformOptions)
+  // At the end of the test, run `terraform destroy` to clean up any resources that were created
+	defer terraform.Destroy(t, terraformOptions)
+
+	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
+	terraform.InitAndApply(t, terraformOptions)
 }
