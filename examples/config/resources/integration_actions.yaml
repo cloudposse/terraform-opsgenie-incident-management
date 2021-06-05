@@ -1,14 +1,12 @@
 integration_actions:
   - name: acme-dev-opsgenie-sns-close-low-priority
     integration_name: acme-dev-opsgenie-sns-integration
-    close:
-      - name: Close low priority alerts
+    create:
+      - name: Create Non-informational Alerts
         filter:
           type: match-any-condition
           conditions:
             - field: priority
+              not: true
               operation: equals
               expected_value: P5
-            - field: message
-              operation: contains
-              expected_value: DEBUG

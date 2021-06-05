@@ -26,6 +26,7 @@ resource "opsgenie_integration_action" "this" {
 
           content {
             field          = try(conditions.value.field, null)
+            not            = try(conditions.value.not, null)
             operation      = try(conditions.value.operation, null)
             expected_value = try(conditions.value.expected_value, null)
           }
@@ -48,6 +49,7 @@ resource "opsgenie_integration_action" "this" {
 
           content {
             field          = try(conditions.value.field, null)
+            not            = try(conditions.value.not, null)
             operation      = try(conditions.value.operation, null)
             expected_value = try(conditions.value.expected_value, null)
           }
@@ -70,6 +72,7 @@ resource "opsgenie_integration_action" "this" {
 
           content {
             field          = try(conditions.value.field, null)
+            not            = try(conditions.value.not, null)
             operation      = try(conditions.value.operation, null)
             expected_value = try(conditions.value.expected_value, null)
           }
@@ -93,6 +96,7 @@ resource "opsgenie_integration_action" "this" {
 
           content {
             field          = try(conditions.value.field, null)
+            not            = try(conditions.value.not, null)
             operation      = try(conditions.value.operation, null)
             expected_value = try(conditions.value.expected_value, null)
           }
@@ -115,6 +119,7 @@ resource "opsgenie_integration_action" "this" {
 
           content {
             field          = try(conditions.value.field, null)
+            not            = try(conditions.value.not, null)
             operation      = try(conditions.value.operation, null)
             expected_value = try(conditions.value.expected_value, null)
           }

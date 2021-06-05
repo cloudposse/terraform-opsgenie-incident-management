@@ -26,21 +26,17 @@ module "integration_action" {
   integration_action = {
     integration_id = module.api_integration.api_integration_id
 
-    close = [
+    create = [
       {
-        name = "Close low priority alerts"
+        name = "Create Non-informational Alerts"
         filter = {
           type = "match-any-condition"
           conditions = [
             {
               field          = "priority"
+              not            = true
               operation      = "equals"
               expected_value = "P5"
-            },
-            {
-              field          = "message"
-              operation      = "contains"
-              expected_value = "DEBUG"
             }
           ]
         }

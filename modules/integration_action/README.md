@@ -2,6 +2,8 @@
 
 Terraform module to configure [Opsgenie Integration Action](https://registry.terraform.io/providers/opsgenie/opsgenie/latest/docs/resources/integration_action)
 
+NOTE: your OpsGenie plan must support advanced integrations. Otherwise, you will get the following error back from the API: `Your plan does not allow saving advanced integrations.`.
+
 
 ## Usage
 
@@ -13,24 +15,20 @@ module "integration_action" {
   # Cloud Posse recommends pinning every module to a specific version
   # version     = "x.x.x"
 
-integration_action = {
+  integration_action = {
     integration_id = module.api_integration.api_integration_id
 
-    close = [
+    create = [
       {
-        name = "Close low priority alerts"
+        name = "Create Non-informational Alerts"
         filter = {
           type = "match-any-condition"
           conditions = [
             {
               field          = "priority"
+              not            = true
               operation      = "equals"
               expected_value = "P5"
-            },
-            {
-              field          = "message"
-              operation      = "contains"
-              expected_value = "DEBUG"
             }
           ]
         }
