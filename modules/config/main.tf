@@ -2,6 +2,7 @@ locals {
   alert_policies         = lookup(var.opsgenie_resources, "alert_policies", [])
   api_integrations       = lookup(var.opsgenie_resources, "api_integrations", [])
   escalations            = lookup(var.opsgenie_resources, "escalations", [])
+  integration_actions    = lookup(var.opsgenie_resources, "integration_actions", [])
   notification_policies  = lookup(var.opsgenie_resources, "notification_policies", [])
   team_routing_rules     = lookup(var.opsgenie_resources, "team_routing_rules", [])
   teams                  = lookup(var.opsgenie_resources, "teams", [])

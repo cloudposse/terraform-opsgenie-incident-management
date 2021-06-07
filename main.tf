@@ -20,6 +20,12 @@ module "escalation" {
   escalation = var.escalation
 }
 
+module "integration_action" {
+  source = "./modules/integration_action"
+
+  integration_action = var.integration_action
+}
+
 module "notification_policy" {
   source = "./modules/notification_policy"
 
