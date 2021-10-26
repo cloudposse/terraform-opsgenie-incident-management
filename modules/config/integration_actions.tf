@@ -1,5 +1,5 @@
 resource "opsgenie_integration_action" "this" {
-  for_each = module.this.enabled ? { for integration_action in local.integration_actions : integration_action.name => integration_action } : {}
+  for_each = { for integration_action in local.integration_actions : integration_action.name => integration_action if module.this.enabled }
 
   # Look up our integration id by name
   integration_id = try(opsgenie_api_integration.this[each.value.integration_name].id, null)
