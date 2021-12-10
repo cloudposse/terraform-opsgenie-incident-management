@@ -30,7 +30,7 @@ resource "opsgenie_integration_action" "this" {
 
       dynamic "filter" {
         for_each = try(create.value.filter, [])
-        
+
         content {
           type = try(filter.value.type, null)
 
