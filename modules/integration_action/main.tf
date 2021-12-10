@@ -28,17 +28,21 @@ resource "opsgenie_integration_action" "this" {
         type = "team"
       }
 
-      filter {
-        type = try(create.value.filter.type, null)
+      dynamic "filter" {
+        for_each = try(create.value.filter, [])
+        
+        content {
+          type = try(filter.value.type, null)
 
-        dynamic "conditions" {
-          for_each = try(create.value.filter.conditions, [])
+          dynamic "conditions" {
+            for_each = try(filter.value.conditions, [])
 
-          content {
-            field          = try(conditions.value.field, null)
-            not            = try(conditions.value.not, null)
-            operation      = try(conditions.value.operation, null)
-            expected_value = try(conditions.value.expected_value, null)
+            content {
+              field          = try(conditions.value.field, null)
+              not            = try(conditions.value.not, null)
+              operation      = try(conditions.value.operation, null)
+              expected_value = try(conditions.value.expected_value, null)
+            }
           }
         }
       }
