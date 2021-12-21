@@ -17,6 +17,7 @@ resource "opsgenie_api_integration" "this" {
   allow_write_access             = try(var.api_integration.allow_write_access, true)
   ignore_responders_from_payload = try(var.api_integration.ignore_responders_from_payload, false)
   suppress_notifications         = try(var.api_integration.suppress_notifications, false)
+  webhook_url                    = try(var.api_integration.webhook_url, null)
 
   owner_team_id = try(var.api_integration.owner_team_id, null)
 }
