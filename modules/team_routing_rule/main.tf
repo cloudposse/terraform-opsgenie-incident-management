@@ -1,16 +1,48 @@
 resource "opsgenie_team_routing_rule" "this" {
   count = module.this.enabled ? 1 : 0
 
-  name     = var.team_routing_rule.name
-  team_id  = var.team_routing_rule.team_id
-  order    = try(var.team_routing_rule.order, 0)
+  name    = var.team_routing_rule.name
+  team_id = var.team_routing_rule.team_id
+  order   = try(var.team_routing_rule.order, 5)
+
   timezone = try(var.team_routing_rule.timezone, "America/Los_Angeles")
+  dynamic "time_restriction" {
+    for_each = [for time_restriction in try([var.team_routing_rule.time_restriction], []) : time_restriction if time_restriction != null]
+
+    content {
+      # NOTE: The Opsgenie Provider appears to be inconsistent with how it uses time_restriction:
+      # `restrictions` for type `weekday-and-time-of-day`
+      # `restriction` for type `time-of-day`
+      type = try(var.team_routing_rule.time_restriction.type, "weekday-and-time-of-day")
+      dynamic "restrictions" {
+        for_each = var.team_routing_rule.time_restriction.type == "weekday-and-time-of-day" ? try(var.team_routing_rule.time_restriction.restrictions, []) : []
+        content {
+          start_hour = try(restrictions.value.start_hour, 09)
+          start_min  = try(restrictions.value.start_min, 0)
+          start_day  = try(restrictions.value.start_day, "monday")
+          end_hour   = try(restrictions.value.end_hour, 17)
+          end_min    = try(restrictions.value.end_min, 00)
+          end_day    = try(restrictions.value.end_day, "friday")
+        }
+      }
+
+      dynamic "restriction" {
+        for_each = var.team_routing_rule.time_restriction.type == "time-of-day" ? try(var.team_routing_rule.time_restriction.restrictions, []) : []
+        content {
+          start_hour = try(restriction.value.start_hour, 09)
+          start_min  = try(restriction.value.start_min, 0)
+          end_hour   = try(restriction.value.end_hour, 17)
+          end_min    = try(restriction.value.end_min, 00)
+        }
+      }
+    }
+  }
 
   criteria {
-    type = try(var.team_routing_rule.criteria.type, "match-all")
+    type = try(var.team_routing_rule.criteria.type != null ? var.team_routing_rule.criteria.type : "match-all", "match-all")
 
     dynamic "conditions" {
-      for_each = try(var.team_routing_rule.criteria.conditions, [])
+      for_each = try(var.team_routing_rule.criteria.conditions != null ? var.team_routing_rule.criteria.conditions : [], [])
 
       content {
         expected_value = try(conditions.value.expected_value, null)
