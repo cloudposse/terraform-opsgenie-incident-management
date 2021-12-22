@@ -22,6 +22,7 @@ module "schedule" {
 data "opsgenie_team" "the_team" {
   name  = var.team_name
 }
+
 module "team_schedule" {
   source  = "cloudposse/incident-management/opsgenie//modules/schedule"
   # Cloud Posse recommends pinning every module to a specific version
@@ -33,7 +34,6 @@ module "team_schedule" {
     owner_team_id            = data.opsgenie_team.the_team.id
   }
 }
-
 ```
 
 ## Inputs
