@@ -22,8 +22,8 @@ module "team_schedule" {
 module "schedule" {
   source = "../../modules/schedule"
   schedule = {
-    enabled       = module.this.enabled
-    name          = module.this.id
-    description   = "schedule-description"
+    enabled     = module.this.enabled
+    name        = module.this.id
+    description = "schedule-description"
   }
 }
