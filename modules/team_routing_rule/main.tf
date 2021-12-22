@@ -13,16 +13,16 @@ resource "opsgenie_team_routing_rule" "this" {
       # NOTE: The Opsgenie Provider appears to be inconsistent with how it uses time_restriction:
       # `restrictions` for type `weekday-and-time-of-day`
       # `restriction` for type `time-of-day`
-      type = try(var.team_routing_rule.time_restriction.type, "weekday-and-time-of-day")
+      type = var.team_routing_rule.time_restriction.type
       dynamic "restrictions" {
         for_each = var.team_routing_rule.time_restriction.type == "weekday-and-time-of-day" ? try(var.team_routing_rule.time_restriction.restrictions, []) : []
         content {
           start_hour = try(restrictions.value.start_hour, 09)
           start_min  = try(restrictions.value.start_min, 0)
-          start_day  = try(restrictions.value.start_day, "monday")
+          start_day  = restrictions.value.start_day
           end_hour   = try(restrictions.value.end_hour, 17)
           end_min    = try(restrictions.value.end_min, 00)
-          end_day    = try(restrictions.value.end_day, "friday")
+          end_day    = restrictions.value.end_day
         }
       }
 
