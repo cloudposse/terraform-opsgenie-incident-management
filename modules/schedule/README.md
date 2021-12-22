@@ -5,7 +5,7 @@ Terraform module to configure [Opsgenie Schedule](https://registry.terraform.io/
 
 ## Usage
 
-[Create Opsgenie Schedule example](../../examples/schedule)
+[Opsgenie Schedule example](../../examples/schedule)
 
 ```hcl
 module "schedule" {
@@ -24,6 +24,7 @@ data "opsgenie_team" "the_team" {
 }
 
 module "team_schedule" {
+
   source  = "cloudposse/incident-management/opsgenie//modules/schedule"
   # Cloud Posse recommends pinning every module to a specific version
   # version     = "x.x.x"
