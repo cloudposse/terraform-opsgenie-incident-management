@@ -19,7 +19,7 @@ resource "opsgenie_team_routing_rule" "this" {
         content {
           start_hour = try(restrictions.value.start_hour, 09)
           start_min  = try(restrictions.value.start_min, 0)
-          start_day  = restrictions.value.start_day
+          start_day  = try(restrictions.value.start_day, "monday")
           end_hour   = try(restrictions.value.end_hour, 17)
           end_min    = try(restrictions.value.end_min, 00)
           end_day    = restrictions.value.end_day
