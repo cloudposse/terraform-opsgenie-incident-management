@@ -17,7 +17,7 @@ module "team_schedule" {
   schedule = {
     enabled       = module.this.enabled
     name          = module.this.id
-    description   = "schedule-description"
+    description   = "team-schedule-description"
     owner_team_id = module.owner_team.team_id
   }
 }
