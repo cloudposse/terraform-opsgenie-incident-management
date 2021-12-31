@@ -10,7 +10,7 @@ resource "opsgenie_team_routing_rule" "this" {
     for_each = [for time_restriction in try([var.team_routing_rule.time_restriction], []) : time_restriction if time_restriction != null]
 
     content {
-      # NOTE: The Opsgenie Provider appears to be inconsistent with how it uses time_restriction:
+      # NOTE: The Opsgenie terraform provider appears to be inconsistent with how it uses time_restriction:
       # `restrictions` for type `weekday-and-time-of-day`
       # `restriction` for type `time-of-day`
       type = var.team_routing_rule.time_restriction.type
