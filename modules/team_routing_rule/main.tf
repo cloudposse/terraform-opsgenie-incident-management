@@ -32,7 +32,7 @@ resource "opsgenie_team_routing_rule" "this" {
           start_hour = restriction.value.start_hour
           start_min  = restriction.value.start_min
           end_hour   = restriction.value.end_hour
-          end_min    = try(restriction.value.end_min, 00)
+          end_min    = restriction.value.end_min
         }
       }
     }
