@@ -18,7 +18,7 @@ resource "opsgenie_team_routing_rule" "this" {
         for_each = var.team_routing_rule.time_restriction.type == "weekday-and-time-of-day" ? try(var.team_routing_rule.time_restriction.restrictions, []) : []
         content {
           start_hour = restrictions.value.start_hour
-          start_min  = try(restrictions.value.start_min, 0)
+          start_min  = restrictions.value.start_min
           start_day  = try(restrictions.value.start_day, "monday")
           end_hour   = try(restrictions.value.end_hour, 17)
           end_min    = try(restrictions.value.end_min, 00)
