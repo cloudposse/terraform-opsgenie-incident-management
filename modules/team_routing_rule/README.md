@@ -45,7 +45,7 @@ module "team_routing_rule" {
 
 ## Important Note
 
-Due to the OpsGenie Provider there is a difference of block nested based on type
+Due to the Opsgenie terraform provider issue, there is a difference in the configuration of the `time_restriction` blocks based on `type`.
 
 [Github Issue #282](https://github.com/opsgenie/terraform-provider-opsgenie/issues/282)
 
