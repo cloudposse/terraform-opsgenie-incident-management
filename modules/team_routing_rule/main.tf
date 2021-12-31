@@ -21,7 +21,7 @@ resource "opsgenie_team_routing_rule" "this" {
           start_min  = restrictions.value.start_min
           start_day  = restrictions.value.start_day
           end_hour   = restrictions.value.end_hour
-          end_min    = try(restrictions.value.end_min, 00)
+          end_min    = restrictions.value.end_min
           end_day    = restrictions.value.end_day
         }
       }
