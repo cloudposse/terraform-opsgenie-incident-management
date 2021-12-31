@@ -31,7 +31,7 @@ module "team_schedule" {
 
   schedule = {
     name                     = module.label.id
-    description              = "schedule-description"
+    description              = "team-schedule-description"
     owner_team_id            = data.opsgenie_team.the_team.id
   }
 }
