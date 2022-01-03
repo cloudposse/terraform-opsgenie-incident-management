@@ -49,5 +49,15 @@ module "team_routing_rule" {
         id   = module.escalation.escalation_id
       }
     ]
+
+    time_restriction = {
+      type = "time-of-day"
+      restriction = {
+        end_hour   = 17
+        end_min    = 0
+        start_hour = 9
+        start_min  = 0
+      }
+    }
   }
 }
