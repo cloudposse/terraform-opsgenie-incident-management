@@ -22,7 +22,6 @@ module "team_routing_rule" {
       id   = module.escalation.escalation_id
     }]
   }
-
 }
 ```
 
@@ -43,3 +42,35 @@ module "team_routing_rule" {
 |:----------------------------|:--------------------------------------------|
 | `team_routing_rule_name`    | The name of the Opsgenie Team Routing Rule.|
 | `team_routing_rule_id`      | The ID of the Opsgenie Team Routing Rule.  |
+
+## Important Note
+
+Due to the Opsgenie terraform provider issue, there is a difference in the configuration of the `time_restriction` blocks based on `type`.
+
+[Github Issue #282](https://github.com/opsgenie/terraform-provider-opsgenie/issues/282)
+
+```hcl
+time_restriction {
+  type = "time-of-day"
+  restriction {
+    end_hour   = 17
+    end_min    = 0
+    start_hour = 9
+    start_min  = 0
+  }
+}
+```
+vs
+```hcl
+ time_restriction {
+  type = "weekday-and-time-of-day"
+  restriction {
+    end_day  = "friday"
+    end_hour   = 17
+    end_min    = 0
+    start_day  = "monday"
+    start_hour = 9
+    start_min  = 0
+  }
+}
+```
