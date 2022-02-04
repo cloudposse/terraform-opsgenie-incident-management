@@ -1,3 +1,15 @@
+locals {
+#  [for f in local.slo_files : yamldecode(file(f))]
+  lookup_team_arr = [for recipient in var.escalation.rule.recipients : recipient if recipient.type == "team"]
+  lookup_team_names = [for r in local.lookup_team_arr: r.team_name]
+#  lookup_team_map = {for r in local.lookup_team_arr: r.team_name->data.}
+}
+
+data "opsgenie_team" "recipients" {
+  for_each = toset(local.lookup_team_names)
+  name = each.value
+}
+
 resource "opsgenie_escalation" "this" {
   count = module.this.enabled ? 1 : 0
 
@@ -14,7 +26,7 @@ resource "opsgenie_escalation" "this" {
       for_each = try(var.escalation.rule.recipients, [])
 
       content {
-        id   = recipient.value.id
+        id   = data.opsgenie_team.recipients[recipient.value.team_name].id
         type = recipient.value.type
       }
     }
