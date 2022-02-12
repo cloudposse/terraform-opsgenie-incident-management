@@ -5,6 +5,7 @@ resource "opsgenie_alert_policy" "this" {
 
   name               = each.value.name
   policy_description = try(each.value.description, each.value.name)
+  alert_description  = try(each.value.alert_description, "{{description}}")
 
   # Look up our team id by name
   team_id = try(opsgenie_team.this[each.value.owner_team_name].id, null)
