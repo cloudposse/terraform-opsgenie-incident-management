@@ -3,6 +3,7 @@ resource "opsgenie_alert_policy" "this" {
 
   name               = var.alert_policy.name
   policy_description = try(var.alert_policy.description, var.alert_policy.name)
+  alert_description  = try(var.alert_policy.alert_description, "{{description}}")
   team_id            = try(var.alert_policy.team_id, null)
 
   enabled         = try(var.alert_policy.enabled, true)
