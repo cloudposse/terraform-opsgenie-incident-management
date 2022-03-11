@@ -1,0 +1,18 @@
+schedule_rotations:
+  - name: acme.default.rotation
+    schedule_name: acme.default
+    start_date: "1970-01-01T00:00:00Z"
+    type: weekly
+    length: 1
+    participants:
+    - type: user
+      username: opsgenie-test@cloudposse.com
+    - type: user
+      username: opsgenie-test-2@cloudposse.com
+    time_restriction:
+      type: time-of-day
+      restrictions:
+      - start_hour: 8
+        start_min: 0
+        end_hour: 20
+        end_min: 0
