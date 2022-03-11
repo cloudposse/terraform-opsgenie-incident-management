@@ -41,6 +41,20 @@ output "notification_policies" {
   description = "Notification policies"
 }
 
+output "schedules" {
+  value = {
+    for schedule in opsgenie_schedule.this : schedule.id => schedule.name
+  }
+  description = "Schedules"
+}
+
+output "schedule_rotations" {
+  value = {
+    for rotation in opsgenie_schedule_rotation.this : rotation.id => rotation.name
+  }
+  description = "Schedule rotations"
+}
+
 output "team_routing_rules" {
   value = {
     for rule in opsgenie_team_routing_rule.this : rule.id => rule.name

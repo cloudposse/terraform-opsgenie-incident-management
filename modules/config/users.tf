@@ -1,5 +1,5 @@
 resource "opsgenie_user" "this" {
-  for_each = module.this.enabled ? { for user in local.users : user.username => user } : {}
+  for_each = module.this.enabled ? { for user in local.users : user.username => user } : tomap()
 
   username  = each.value.username
   full_name = each.value.full_name

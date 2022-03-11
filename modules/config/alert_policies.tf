@@ -4,7 +4,8 @@ resource "opsgenie_alert_policy" "this" {
   for_each = module.this.enabled ? { for policy in local.alert_policies : policy.name => policy } : {}
 
   name               = each.value.name
-  policy_description = try(each.value.description, each.value.name)
+  policy_description = try(each.value.policy_description, each.value.name)
+  alert_description  = try(each.value.alert_description, each.value.name)
 
   # Look up our team id by name
   team_id = try(opsgenie_team.this[each.value.owner_team_name].id, null)
