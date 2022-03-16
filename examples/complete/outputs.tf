@@ -18,26 +18,6 @@ output "api_integration_name" {
   value       = module.api_integration.api_integration_name
 }
 
-output "alert_policy_id" {
-  description = "The ID of the Opsgenie policy"
-  value       = module.alert_policy.alert_policy_id
-}
-
-output "alert_policy_name" {
-  description = "The name of the Opsgenie policy"
-  value       = module.alert_policy.alert_policy_name
-}
-
-output "notification_policy_id" {
-  description = "The ID of the Opsgenie notification policy"
-  value       = module.notification_policy.notification_policy_id
-}
-
-output "notification_policy_name" {
-  description = "The name of the Opsgenie notification policy"
-  value       = module.notification_policy.notification_policy_name
-}
-
 output "team_routing_rule_id" {
   description = "The ID of the Opsgenie team routing rule"
   value       = module.team_routing_rule.team_routing_rule_id
