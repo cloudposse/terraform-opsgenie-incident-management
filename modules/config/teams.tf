@@ -1,5 +1,5 @@
 resource "opsgenie_team" "this" {
-  for_each = module.this.enabled ? { for team in local.teams : team.name => team } : {}
+  for_each = module.this.enabled ? { for team in local.teams : team.name => team } : tomap()
 
   name                     = each.value.name
   description              = try(each.value.description, each.value.name)
@@ -7,7 +7,7 @@ resource "opsgenie_team" "this" {
   delete_default_resources = try(each.value.delete_default_resources, false)
 
   dynamic "member" {
-    for_each = try(each.value.members, [])
+    for_each = try(tolist(each.value.members), [])
 
     content {
       id   = try(opsgenie_user.this[member.value.username].id, data.opsgenie_user.this[member.value.username].id)

@@ -71,6 +71,40 @@ notification_policies:
         expected_value: P3
 ```
 
+### `schedules.yaml`
+
+```yaml
+schedules:
+  - name: acme.default
+    description: "Acme Infrastructure Team"
+    timezone: "America/Los_Angeles"
+    owner_team_name: acme
+    enabled: true
+```
+
+### `schedule_rotations.yaml`
+
+```yaml
+schedule_rotations:
+  - name: acme.default.rotation
+    schedule_name: acme.default
+    start_date: "1970-01-01T00:00:00Z"
+    type: weekly
+    length: 1
+    participants:
+    - type: user
+      username: opsgenie-test@cloudposse.com
+    - type: user
+      username: opsgenie-test-2@cloudposse.com
+    time_restriction:
+      type: time-of-day
+      restrictions:
+      - start_hour: 8
+        start_min: 0
+        end_hour: 20
+        end_min: 0
+```
+
 ### `team_routing_rules.yaml`
 
 ```yaml
@@ -194,11 +228,13 @@ module "opsgenie" {
 | `alert_policies`            | `name` and `id` of each alert policy        |
 | `api_integrations`          | `name` and `id` of each API integration     |
 | `escalations`               | `name` and `id` of each escalation          |
-| `notification_policies`     | `name` and `id` of each notification policy |
-| `team_routing_rules`        | `name` and `id` of each team routing rule   |
-| `teams`                     | `name` and `id` of each team                |
-| `users`                     | `username` and `id` of each user            |
 | `existing_users`            | `username` and `id` of each existing user   |
+| `notification_policies`     | `name` and `id` of each notification policy |
+| `schedules`                 | `name` and `id` of each schedules           |
+| `schedule_rotations`        | `name` and `id` of each schedule rotations  |
 | `services`                  | `name` and `id` of each service             |
 | `services`                  | `name` and `id` of each service             |
 | `service_incident_rule_ids` | `id` of each service incident rule          |
+| `team_routing_rules`        | `name` and `id` of each team routing rule   |
+| `teams`                     | `name` and `id` of each team                |
+| `users`                     | `username` and `id` of each user            |

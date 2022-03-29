@@ -4,6 +4,8 @@ locals {
   escalations            = lookup(var.opsgenie_resources, "escalations", [])
   integration_actions    = lookup(var.opsgenie_resources, "integration_actions", [])
   notification_policies  = lookup(var.opsgenie_resources, "notification_policies", [])
+  schedules              = lookup(var.opsgenie_resources, "schedules", [])
+  schedule_rotations     = lookup(var.opsgenie_resources, "schedule_rotations", [])
   team_routing_rules     = lookup(var.opsgenie_resources, "team_routing_rules", [])
   teams                  = lookup(var.opsgenie_resources, "teams", [])
   users                  = lookup(var.opsgenie_resources, "users", [])
