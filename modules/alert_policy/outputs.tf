@@ -27,3 +27,8 @@ output "alert_policy_responders" {
   description = "Responders of the Opsgenie Alert Policy"
   value       = try(opsgenie_alert_policy.this[0].responders, null)
 }
+
+output "alert_policy_time_restrictions" {
+  description = "Time restrictions of the Opsgenie Alert Policy"
+  value       = try(opsgenie_alert_policy.this[0].time_restriction, null)
+}

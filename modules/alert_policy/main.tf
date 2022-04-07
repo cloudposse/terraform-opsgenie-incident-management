@@ -46,4 +46,38 @@ resource "opsgenie_alert_policy" "this" {
       }
     }
   }
+
+  dynamic time_restriction {
+    for_each = try(var.alert_policy.time_restrictions, [])
+
+    content {
+      type = time_restriction.value.type
+      
+      dynamic "restrictions" {
+        for_each = [for s in time_restriction.value.restrictions : s if time_restriction.value.type == "weekday-and-time-of-day"]
+
+        content {
+          end_day    = try(restrictions.value.end_day, null)
+          end_hour   = try(restrictions.value.end_hour, null)
+          end_min    = try(restrictions.value.end_min, null)
+          start_day  = try(restrictions.value.start_day, null)
+          start_hour = try(restrictions.value.start_hour, null)
+          start_min  = try(restrictions.value.start_min, null)
+        }
+      }
+
+      dynamic "restriction" {
+        for_each = [for s in time_restriction.value.restrictions : s if time_restriction.value.type == "time-of-day"]
+
+        content {
+          end_hour   = try(restriction.value.end_hour, null)
+          end_min    = try(restriction.value.end_min, null)
+          start_hour = try(restriction.value.start_hour, null)
+          start_min  = try(restriction.value.start_min, null)
+        }
+      }
+    }
+
+  }
+
 }
