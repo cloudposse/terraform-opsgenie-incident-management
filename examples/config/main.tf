@@ -11,6 +11,8 @@ locals {
   ]...)
 }
 
+# NOTE: Usage of the submodule `modules/config` is deprecated in favor of the individual `modules/*`
+
 module "opsgenie_config" {
   source = "../../modules/config"
 

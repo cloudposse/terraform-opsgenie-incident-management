@@ -80,7 +80,7 @@ usage: |-
   Here's how to invoke `team` module in your projects
 
   ```hcl
-  module "team-name" {
+  module "team_name" {
     source  = "cloudposse/incident-management/opsgenie//modules/team"
     # Cloud Posse recommends pinning every module to a specific version
     # version     = "x.x.x"
@@ -137,3 +137,5 @@ contributors:
     github: "korenyoni"
   - name: "Benjamin Smith"
     github: "benbentwo"
+  - name: "RB"
+    github: "nitrocode"

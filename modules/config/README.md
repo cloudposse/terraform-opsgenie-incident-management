@@ -1,5 +1,7 @@
 ## Config
 
+***NOTE: Usage of the submodule `modules/config` is deprecated in favor of the individual `modules/*`***
+
 Terraform module that configures a multitude of [Opsgenie resources](https://registry.terraform.io/providers/opsgenie/opsgenie/latest/docs). 
 Many resources have cross-resource dependencies, which may be simpler to handle within a single module in certain cases, such as using YAML configurations.
 
