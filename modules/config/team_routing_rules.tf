@@ -3,8 +3,6 @@ resource "opsgenie_team_routing_rule" "this" {
 
   name = each.value.name
 
-  is_default = try(each.value.is_default, false)
-
   # Look up Team ID by name
   team_id = opsgenie_team.this[each.value.owner_team_name].id
 
