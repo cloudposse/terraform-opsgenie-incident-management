@@ -16,7 +16,7 @@ resource "opsgenie_schedule_rotation" "this" {
 
     content {
       type = participant.value.type
-      id   = data.opsgenie_user.this[participant.value.username].id
+      id   = try(opsgenie_user.this[participant.value.username].id, data.opsgenie_user.this[participant.value.username].id)
     }
   }
 
