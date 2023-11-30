@@ -26,6 +26,23 @@ module "notification_policy" {
       }]
     }
 
+    de_duplication_action  = {
+      de_duplication_action_type = "frequency-based"
+      count = 2
+      duration = {
+        time_unit = "minutes"
+        time_amount = 5
+      }
+    }
+
+    delay_action = {
+      delay_option = "for-duration"
+      duration = {
+        time_unit = "minutes"
+        time_amount = 10
+      }
+    }
+
     auto_close_action = {
       time_unit   = "minutes"
       time_amount = 5
@@ -36,7 +53,7 @@ module "notification_policy" {
 
 ## Inputs
 
-**Note:** `notification_policy` is a map for two reasons: 
+**Note:** `notification_policy` is a map for two reasons:
 - to be able to put whole configuration in yaml file
 - variables defined with type set are not robust enough (can't set default values)
 
