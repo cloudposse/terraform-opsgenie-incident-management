@@ -14,7 +14,7 @@ resource "opsgenie_alert_policy" "this" {
   priority          = try(var.alert_policy.priority, null)
   source            = try(var.alert_policy.source, null)
   tags              = try(var.alert_policy.tags, null)
-  alert_description = try(var.alert_policy.alert_description, "{{ message }}")
+  alert_description = try(var.alert_policy.alert_description, "{{ description }}")
 
   ignore_original_actions    = try(var.alert_policy.ignore_original_actions, false)
   ignore_original_details    = try(var.alert_policy.ignore_original_details, false)
