@@ -32,10 +32,10 @@ module "escalation" {
     owner_team_id = module.owner_team.team_id
 
     rule = {
-      recipients = [{
+      recipient = {
         type = "team"
         id   = module.escalation_team.team_id
-      }]
+      }
     }
   }
 

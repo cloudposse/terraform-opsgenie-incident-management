@@ -50,7 +50,7 @@ escalations:
     condition: if-not-acked
     notify_type: default
     delay: 0
-    recipients:
+    recipient:
     - type: team
       team_name: acme.dev.some-service
 ```
