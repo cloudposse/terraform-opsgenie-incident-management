@@ -94,6 +94,7 @@ schedule_rotations:
     participants:
     - type: user
       username: opsgenie-test@cloudposse.com
+    - type: none
     - type: user
       username: opsgenie-test-2@cloudposse.com
     time_restriction:
