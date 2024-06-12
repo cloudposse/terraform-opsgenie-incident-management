@@ -9,6 +9,7 @@ schedule_rotations:
       username: opsgenie-test@cloudposse.com
     - type: user
       username: opsgenie-test-2@cloudposse.com
+    - type: none
     time_restriction:
       type: time-of-day
       restrictions:
