@@ -1,0 +1,7 @@
+# Upstream changes from _extends are only recognized when modifications are made to this file in the default branch.
+_extends: .github
+repository:
+  name: terraform-opsgenie-incident-management
+  description: Terraform module to provision Opsgenie resources from YAML configurations using the Opsgenie provider,, complete with automated tests
+  homepage: https://cloudposse.com/accelerate
+  topics: opsgenie-provider, terraform-modules, terratest, opsgenie, opsgenie-api, escalation, notifications, y, yaml, yaml-configuration
