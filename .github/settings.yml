@@ -5,3 +5,4 @@ repository:
   description: Terraform module to provision Opsgenie resources from YAML configurations using the Opsgenie provider,, complete with automated tests
   homepage: https://cloudposse.com/accelerate
   topics: opsgenie-provider, terraform-modules, terratest, opsgenie, opsgenie-api, escalation, notifications, y, yaml, yaml-configuration
+
