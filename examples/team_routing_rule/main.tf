@@ -6,7 +6,7 @@ module "escalation_team" {
   source = "../../modules/team"
 
   team = {
-    name        = "team-routing-rules-escalation-team" + var.attributes[0]
+    name        = module.this.id
     description = "owner-team-description"
   }
 
