@@ -30,14 +30,40 @@ clean:
 	[ "$(TEST_HARNESS_PATH)" == "/" ] || rm -rf $(TEST_HARNESS_PATH)
 
 ## Run all tests
-all: module examples/complete
+all: module pre-test examples/complete examples/advanced_features examples/alert_policy examples/api_integration examples/complete examples/config examples/escalation examples/integration_action examples/notification_policy examples/schedule examples/team examples/team_routing_rule examples/user
 
 ## Run basic sanity checks against the module itself
 module: export TESTS ?= installed lint get-modules module-pinning get-plugins provider-pinning validate terraform-docs input-descriptions output-descriptions
 module: deps
 	$(call RUN_TESTS, ../)
 
+pre-test:
+	export TESTS ?= installed lint get-modules get-plugins validate
+
 ## Run tests against example
-examples/complete: export TESTS ?= installed lint get-modules get-plugins validate
 examples/complete: deps
+	$(call RUN_TESTS, ../$@)
+examples/advanced_features:  deps
+	$(call RUN_TESTS, ../$@)
+examples/alert_policy:  deps
+	$(call RUN_TESTS, ../$@)
+examples/api_integration:  deps
+	$(call RUN_TESTS, ../$@)
+examples/complete:  deps
+	$(call RUN_TESTS, ../$@)
+examples/config:  deps
+	$(call RUN_TESTS, ../$@)
+examples/escalation:  deps
+	$(call RUN_TESTS, ../$@)
+examples/integration_action:  deps
+	$(call RUN_TESTS, ../$@)
+examples/notification_policy:  deps
+	$(call RUN_TESTS, ../$@)
+examples/schedule:  deps
+	$(call RUN_TESTS, ../$@)
+examples/team:  deps
+	$(call RUN_TESTS, ../$@)
+examples/team_routing_rule:  deps
+	$(call RUN_TESTS, ../$@)
+examples/user:  deps
 	$(call RUN_TESTS, ../$@)
