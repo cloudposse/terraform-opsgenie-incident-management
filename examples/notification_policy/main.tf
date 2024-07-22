@@ -6,7 +6,7 @@ module "team" {
   source = "../../modules/team"
 
   team = {
-    name        = "owner-team"
+    name        = "notification-policy-owner-team"
     description = "owner-team-description"
   }
 
@@ -47,9 +47,21 @@ module "notification_policy" {
     }
 
     auto_close_action = {
-      time_unit   = "minutes"
-      time_amount = 5
+      duration = {
+        time_unit   = "minutes"
+        time_amount = 5
+      }
     }
+
+    auto_restart_action = {
+      duration = {
+        time_unit   = "minutes"
+        time_amount = 5
+      }
+      max_repeat_count = 3
+    }
+
+    suppress = false
   }
 
   context = module.this.context

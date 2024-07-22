@@ -6,7 +6,7 @@ module "owner_team" {
   source = "../../modules/team"
 
   team = {
-    name        = "owner-team"
+    name        = "schedule-owner-team"
     description = "owner-team-description"
   }
 

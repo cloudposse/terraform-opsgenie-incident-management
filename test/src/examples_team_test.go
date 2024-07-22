@@ -40,7 +40,8 @@ func TestExamplesTeam(t *testing.T) {
 
 	// Run `terraform output` to get the value of an output variable
 	outputTeamName := terraform.Output(t, terraformOptions, "team_name")
-
+	expectedTeamName := "eg-test-team-" + randID
 	// Verify we're getting back the outputs we expect
-	assert.Regexp(t, "^eg-test-team$", outputTeamName)
+
+	assert.Equal(t, expectedTeamName, outputTeamName)
 }

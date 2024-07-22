@@ -58,7 +58,7 @@ resource "opsgenie_notification_policy" "this" {
   }
 
   dynamic "auto_close_action" {
-    for_each = try(each.value.auto_close_action, null) != null ? [each.value.auto_close_action] : []
+    for_each = try(var.notification_policy.auto_close_action, null) != null ? [var.notification_policy.auto_close_action] : []
 
     content {
       duration {
@@ -70,7 +70,7 @@ resource "opsgenie_notification_policy" "this" {
   }
 
   dynamic "auto_restart_action" {
-    for_each = try(each.value.auto_restart_action, null) != null ? [each.value.auto_restart_action] : []
+    for_each = try(var.notification_policy.auto_restart_action, null) != null ? [var.notification_policy.auto_restart_action] : []
 
     content {
       duration {
@@ -120,5 +120,5 @@ resource "opsgenie_notification_policy" "this" {
     }
   }
 
-  suppress = try(each.value.suppress, null)
+  suppress = try(var.notification_policy.suppress, null)
 }

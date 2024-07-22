@@ -6,7 +6,7 @@ module "escalation_team" {
   source = "../../modules/team"
 
   team = {
-    name        = "escalation-team"
+    name        = "team-routing-rules-team"
     description = "owner-team-description"
   }
 
@@ -35,7 +35,7 @@ module "owner_team" {
   source = "../../modules/team"
 
   team = {
-    name        = "owner-team"
+    name        = "team-routing-rule-owner-team"
     description = "owner-team-description"
   }
 
