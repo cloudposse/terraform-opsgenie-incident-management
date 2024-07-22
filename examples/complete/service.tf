@@ -9,4 +9,6 @@ module "service" {
     description = "Frontend service"
     team_id     = module.team.team_id
   }
+
+  context = module.this.context
 }

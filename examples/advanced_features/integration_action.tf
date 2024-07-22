@@ -23,4 +23,6 @@ module "integration_action" {
       }
     ]
   }
+
+  context = module.this.context
 }

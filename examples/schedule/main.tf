@@ -9,6 +9,8 @@ module "owner_team" {
     name        = "owner-team"
     description = "owner-team-description"
   }
+
+  context = module.this.context
 }
 
 module "team_schedule" {
@@ -20,6 +22,8 @@ module "team_schedule" {
     description   = "team-schedule-description"
     owner_team_id = module.owner_team.team_id
   }
+
+  context = module.this.context
 }
 
 module "schedule" {
@@ -30,4 +34,6 @@ module "schedule" {
     name        = module.this.id
     description = "schedule-description"
   }
+
+  context = module.this.context
 }

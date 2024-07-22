@@ -10,4 +10,6 @@ module "team_routing_rule" {
       id   = module.escalation.escalation_id
     }]
   }
+
+  context = module.this.context
 }

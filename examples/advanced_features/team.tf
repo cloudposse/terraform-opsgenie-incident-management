@@ -6,4 +6,6 @@ module "team" {
     description    = "${module.this.id} Security Team"
     ignore_members = false
   }
+
+  context = module.this.context
 }

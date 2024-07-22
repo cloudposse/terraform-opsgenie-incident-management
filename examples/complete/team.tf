@@ -6,6 +6,7 @@ module "team" {
     description    = "team-description"
     ignore_members = false
   }
+  context = module.this.context
 }
 
 module "sub_team" {
@@ -15,4 +16,5 @@ module "sub_team" {
     name        = "${module.this.id}.team"
     description = "sub-team-description"
   }
+  context = module.this.context
 }

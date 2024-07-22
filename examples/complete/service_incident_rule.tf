@@ -35,4 +35,6 @@ module "service_incident_rule" {
       }
     }
   }
+
+  context = module.this.context
 }
