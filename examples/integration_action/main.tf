@@ -8,6 +8,8 @@ module "team" {
   team = {
     name = module.this.id
   }
+
+  context = module.this.context
 }
 
 module "api_integration" {
@@ -18,6 +20,8 @@ module "api_integration" {
     type          = "AmazonSns"
     owner_team_id = module.team.team_id
   }
+
+  context = module.this.context
 }
 
 module "integration_action" {
@@ -45,4 +49,6 @@ module "integration_action" {
       }
     ]
   }
+
+  context = module.this.context
 }

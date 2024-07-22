@@ -35,6 +35,8 @@ module "alert_policy" {
       ]
     }
   }
+
+  context = module.this.context
 }
 
 module "team" {
@@ -44,4 +46,6 @@ module "team" {
     name        = module.this.id
     description = "team-description"
   }
+
+  context = module.this.context
 }

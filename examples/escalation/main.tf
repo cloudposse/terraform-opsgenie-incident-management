@@ -9,6 +9,8 @@ module "owner_team" {
     name        = "owner-team"
     description = "owner-team-description"
   }
+
+  context = module.this.context
 }
 
 module "escalation_team" {
@@ -18,6 +20,8 @@ module "escalation_team" {
     name        = "escalation-team"
     description = "owner-team-description"
   }
+
+  context = module.this.context
 }
 
 module "escalation" {
@@ -34,4 +38,6 @@ module "escalation" {
       }]
     }
   }
+
+  context = module.this.contexts
 }

@@ -9,4 +9,6 @@ module "team" {
     name        = module.this.id
     description = "team-description"
   }
+
+  context = module.this.context
 }
