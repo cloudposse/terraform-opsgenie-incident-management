@@ -21,10 +21,12 @@ module "escalation" {
     owner_team_id = module.owner_team.team_id
 
     rule = {
-      recipients = [{
-        type = "team"
-        id   = module.escalation_team.team_id
-      }]
+      recipients = [
+        {
+          type = "team"
+          id   = module.escalation_team.team_id
+        }
+      ]
     }
   }
 
@@ -56,15 +58,29 @@ module "team_routing_rule" {
       }
     ]
 
-    time_restriction = {
-      type = "time-of-day"
-      restrictions = {
-        end_hour   = 17
-        end_min    = 0
-        start_hour = 9
-        start_min  = 0
+    time_restriction = [
+      {
+        type         = "time-of-day"
+        restrictions = {
+          end_hour   = 17
+          end_min    = 0
+          start_hour = 9
+          start_min  = 0
+        }
+      },
+
+      {
+        type         = "weekday-and-time-of-day"
+        restrictions = {
+          end_day    = "Friday"
+          end_hour   = 17
+          end_min    = 0
+          start_day  = "Monday"
+          start_hour = 9
+          start_min  = 0
+        }
       }
-    }
+    ]
   }
 
   context = module.this.context
