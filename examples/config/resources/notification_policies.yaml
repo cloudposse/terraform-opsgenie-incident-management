@@ -18,7 +18,7 @@ notification_policies:
       time_amount: 5
 
 - name: delay-action-test
-  team_name: acme.test
+  team_name: acme.dev
   auto_close_action:
     duration:
       time_amount: 60
