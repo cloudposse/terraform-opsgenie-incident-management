@@ -9,3 +9,5 @@ delay_action = {
     time_amount = 10
   }
 }
+
+suppress = true

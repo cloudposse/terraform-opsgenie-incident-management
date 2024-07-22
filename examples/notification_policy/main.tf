@@ -49,7 +49,7 @@ module "notification_policy" {
       max_repeat_count = 3
     }
 
-    suppress = false
+    suppress = var.suppress
   }
 
   context = module.this.context

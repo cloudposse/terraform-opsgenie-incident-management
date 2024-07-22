@@ -28,3 +28,9 @@ variable "delay_action" {
   description = "The delay action for the notification policy"
   default     = null
 }
+
+variable "suppress" {
+  type        = bool
+  description = "The suppress flag for the notification policy"
+  default     = null
+}
