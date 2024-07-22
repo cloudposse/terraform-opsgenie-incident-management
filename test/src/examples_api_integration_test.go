@@ -40,7 +40,8 @@ func TestExamplesApiIntegration(t *testing.T) {
 
 	// Run `terraform output` to get the value of an output variable
 	outputApiIntegrationName := terraform.Output(t, terraformOptions, "api_integration_name")
+	expectedApiIntegrationName := "eg-test-api-integration-" + randID
 
 	// Verify we're getting back the outputs we expect
-	assert.Regexp(t, "^eg-test-api-integration$", outputApiIntegrationName)
+	assert.Equal(t, expectedApiIntegrationName, outputApiIntegrationName)
 }
