@@ -76,7 +76,7 @@ func TestExamplesCompleteDisabled(t *testing.T) {
 
 	rootFolder := "../../"
 	terraformFolderRelativeToRoot := "examples/complete"
-	varFiles := []string{"fixtures.tfvars"}
+	varFiles := []string{"fixtures.disabled.tfvars"}
 
 	tempTestFolder := testStructure.CopyTerraformFolderToTemp(t, rootFolder, terraformFolderRelativeToRoot)
 
@@ -88,7 +88,6 @@ func TestExamplesCompleteDisabled(t *testing.T) {
 		VarFiles: varFiles,
 		Vars: map[string]interface{}{
 			"attributes": attributes,
-			"enabled":    false,
 		},
 	}
 
