@@ -43,23 +43,27 @@ func TestExamplesComplete(t *testing.T) {
 	outputApiIntegrationName := terraform.Output(t, terraformOptions, "api_integration_name")
 
 	// Verify we're getting back the outputs we expect
-	assert.Regexp(t, "^eg-test-incident-management-workflow$", outputApiIntegrationName)
+	expectedWorkflowName := "eg-test-incident-management-workflow-" + randID
+	assert.Equal(t, expectedWorkflowName, outputApiIntegrationName)
 
 	// Run `terraform output` to get the value of an output variable
+
 	outputEscalationName := terraform.Output(t, terraformOptions, "escalation_name")
+	expectedEscalationName := "eg-test-incident-management-workflow-" + randID + "-escalation"
 
 	// Verify we're getting back the outputs we expect
-	assert.Regexp(t, "^eg-test-incident-management-workflow-escalation$", outputEscalationName)
+	assert.Equal(t, expectedEscalationName, outputEscalationName)
 
 	// Run `terraform output` to get the value of an output variable
 	outputTeamRoutingRuleName := terraform.Output(t, terraformOptions, "team_routing_rule_name")
+	expectedTeamRoutingRuleName := "eg-test-incident-management-workflow-" + randID
 
 	// Verify we're getting back the outputs we expect
-	assert.Regexp(t, "^eg-test-incident-management-workflow$", outputTeamRoutingRuleName)
+	assert.Equal(t, expectedTeamRoutingRuleName, outputTeamRoutingRuleName)
 
 	// Run `terraform output` to get the value of an output variable
 	outputTeamName := terraform.Output(t, terraformOptions, "team_name")
-
+	expectedTeamName := "eg-test-incident-management-workflow-" + randID
 	// Verify we're getting back the outputs we expect
-	assert.Regexp(t, "^eg-test-incident-management-workflow$", outputTeamName)
+	assert.Equal(t, expectedTeamName, outputTeamName)
 }
