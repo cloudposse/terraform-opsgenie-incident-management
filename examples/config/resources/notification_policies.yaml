@@ -9,3 +9,15 @@ notification_policies:
       - field: priority
         operation: less-than
         expected_value: P3
+  de_duplication_action:
+    de_duplication_action_type: frequency-based
+    count: 2
+    duration:
+      time_unit: minutes
+      time_amount: 5
+
+  delay_action:
+    delay_option: for-duration
+    duration:
+      time_unit: minutes
+      time_amount: 5
