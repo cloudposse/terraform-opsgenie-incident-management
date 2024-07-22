@@ -17,6 +17,17 @@ notification_policies:
       time_unit: minutes
       time_amount: 5
 
+- name: delay-action-test
+  team_name: acme.test
+  auto_close_action:
+    duration:
+      time_amount: 60
+  filter:
+    type: match-all-conditions
+    conditions:
+      - field: priority
+        operation: less-than
+        expected_value: P3
   delay_action:
     delay_option: for-duration
     duration:

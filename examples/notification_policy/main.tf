@@ -29,22 +29,8 @@ module "notification_policy" {
       }]
     }
 
-    de_duplication_action = {
-      de_duplication_action_type = "frequency-based"
-      count                      = 2
-      duration = {
-        time_unit   = "minutes"
-        time_amount = 5
-      }
-    }
-
-    delay_action = {
-      delay_option = "for-duration"
-      duration = {
-        time_unit   = "minutes"
-        time_amount = 10
-      }
-    }
+    de_duplication_action = var.de_duplication_action
+    delay_action = var.delay_action
 
     auto_close_action = {
       duration = {
