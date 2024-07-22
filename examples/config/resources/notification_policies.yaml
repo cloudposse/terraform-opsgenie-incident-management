@@ -2,7 +2,8 @@ notification_policies:
 - name: auto-close-based-on-priority
   team_name: acme.dev
   auto_close_action:
-    time_amount: 60
+    duration:
+      time_amount: 60
   filter:
     type: match-all-conditions
     conditions:

@@ -39,5 +39,5 @@ module "escalation" {
     }
   }
 
-  context = module.this.contexts
+  context = module.this.context
 }
