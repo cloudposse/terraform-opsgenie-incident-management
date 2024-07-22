@@ -58,7 +58,7 @@ module "team_routing_rule" {
 
     time_restriction = {
       type = "time-of-day"
-      restriction = {
+      restrictions = {
         end_hour   = 17
         end_min    = 0
         start_hour = 9
