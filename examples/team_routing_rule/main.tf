@@ -60,7 +60,7 @@ module "team_routing_rule" {
 
     time_restriction = [
       {
-        type         = "time-of-day"
+        type = "time-of-day"
         restrictions = {
           end_hour   = 17
           end_min    = 0
@@ -70,7 +70,7 @@ module "team_routing_rule" {
       },
 
       {
-        type         = "weekday-and-time-of-day"
+        type = "weekday-and-time-of-day"
         restrictions = {
           end_day    = "Friday"
           end_hour   = 17
