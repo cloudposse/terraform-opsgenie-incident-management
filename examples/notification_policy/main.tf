@@ -21,16 +21,18 @@ module "notification_policy" {
     team_id = module.team.team_id
 
     filter = {
-      type = "match-all-conditions"
-      conditions = [{
-        field          = "tags"
-        operation      = "contains"
-        expected_value = "recommendation:auto-close"
-      }]
+      type       = "match-all-conditions"
+      conditions = [
+        {
+          field          = "tags"
+          operation      = "contains"
+          expected_value = "recommendation:auto-close"
+        }
+      ]
     }
 
     de_duplication_action = var.de_duplication_action
-    delay_action = var.delay_action
+    delay_action          = var.delay_action
 
     auto_close_action = {
       duration = {

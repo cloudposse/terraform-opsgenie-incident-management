@@ -5,7 +5,7 @@ variable "opsgenie_provider_api_key" {
 }
 
 variable "de_duplication_action" {
-  type        = object({
+  type = object({
     de_duplication_action_type = string
     count                      = number
     duration                   = object({
@@ -14,17 +14,17 @@ variable "de_duplication_action" {
     })
   })
   description = "The de-duplication action for the notification policy"
-  default = null
+  default     = null
 }
 
 variable "delay_action" {
-  type        = object({
+  type = object({
     delay_option = string
-    duration      = object({
+    duration     = object({
       time_unit   = string
       time_amount = number
     })
   })
   description = "The delay action for the notification policy"
-  default = null
+  default     = null
 }
