@@ -1,5 +1,5 @@
 resource "opsgenie_api_integration" "this" {
-  count = module.this.context.enabled ? 1 : 0
+  count = module.this.enabled ? 1 : 0
 
   name = var.api_integration.name
   type = var.api_integration.type
