@@ -8,7 +8,7 @@ variable "de_duplication_action" {
   type = object({
     de_duplication_action_type = string
     count                      = number
-    duration                   = object({
+    duration = object({
       time_unit   = string
       time_amount = number
     })
@@ -20,7 +20,7 @@ variable "de_duplication_action" {
 variable "delay_action" {
   type = object({
     delay_option = string
-    duration     = object({
+    duration = object({
       time_unit   = string
       time_amount = number
     })

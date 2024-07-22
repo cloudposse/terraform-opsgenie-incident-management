@@ -21,7 +21,7 @@ module "notification_policy" {
     team_id = module.team.team_id
 
     filter = {
-      type       = "match-all-conditions"
+      type = "match-all-conditions"
       conditions = [
         {
           field          = "tags"
