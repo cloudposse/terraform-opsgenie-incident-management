@@ -11,4 +11,6 @@ module "user" {
     locale    = "en_US"
     timezone  = "America/New_York"
   }
+
+  context = module.this.context
 }

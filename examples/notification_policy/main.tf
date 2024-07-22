@@ -9,6 +9,8 @@ module "team" {
     name        = "owner-team"
     description = "owner-team-description"
   }
+
+  context = module.this.context
 }
 
 module "notification_policy" {
@@ -32,4 +34,6 @@ module "notification_policy" {
       time_amount = 5
     }
   }
+
+  context = module.this.context
 }

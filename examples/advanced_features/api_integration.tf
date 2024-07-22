@@ -6,4 +6,6 @@ module "api_integration" {
     type          = "AmazonSns"
     owner_team_id = module.team.team_id
   }
+
+  context = module.this.context
 }

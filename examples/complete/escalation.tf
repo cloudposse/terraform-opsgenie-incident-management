@@ -12,4 +12,6 @@ module "escalation" {
       }]
     }
   }
+
+  context = module.this.context
 }

@@ -15,4 +15,6 @@ module "opsgenie_config" {
   source = "../../modules/config"
 
   opsgenie_resources = local.opsgenie_resources
+
+  context = module.this.context
 }
