@@ -6,7 +6,7 @@ module "user" {
   source = "../../modules/user"
 
   user = {
-    username  = "opsgenie-test@cloudposse.com"
+    username  = format("opsgenie-test+%s@cloudposse.com", var.random_string)
     full_name = "Opsgenie Test User"
     role      = "User"
     locale    = "en_US"

@@ -1,6 +1,6 @@
 schedule_rotations:
-  - name: acme.default.rotation
-    schedule_name: acme.default
+  - name:  acme.default.rotation
+    schedule_name: acme-default
     start_date: "1970-01-01T00:00:00Z"
     type: weekly
     length: 1
