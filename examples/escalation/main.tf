@@ -6,7 +6,7 @@ module "owner_team" {
   source = "../../modules/team"
 
   team = {
-    name        = "owner-team"
+    name        = format("%s-%s", module.this.id, "owner-team")
     description = "owner-team-description"
   }
 
@@ -17,7 +17,7 @@ module "escalation_team" {
   source = "../../modules/team"
 
   team = {
-    name        = "escalation-team"
+    name        = format("%s-%s", module.this.id, "escalation-team")
     description = "owner-team-description"
   }
 
@@ -39,5 +39,5 @@ module "escalation" {
     }
   }
 
-  context = module.this.contexts
+  context = module.this.context
 }

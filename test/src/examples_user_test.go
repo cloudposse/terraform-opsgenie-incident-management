@@ -28,7 +28,8 @@ func TestExamplesUser(t *testing.T) {
 		// Variables to pass to our Terraform code using -var-file options
 		VarFiles: varFiles,
 		Vars: map[string]interface{}{
-			"attributes": attributes,
+			"attributes":    attributes,
+			"random_string": randID,
 		},
 	}
 

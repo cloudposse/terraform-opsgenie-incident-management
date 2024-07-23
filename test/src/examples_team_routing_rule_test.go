@@ -40,7 +40,7 @@ func TestExamplesTeamRoutingRule(t *testing.T) {
 
 	// Run `terraform output` to get the value of an output variable
 	outputTeamRoutingRuleName := terraform.Output(t, terraformOptions, "team_routing_rule_name")
-
+	expectedTeamRoutingRuleName := "eg-test-team-routing-rule-" + randID
 	// Verify we're getting back the outputs we expect
-	assert.Regexp(t, "^eg-test-team-routing-rule$", outputTeamRoutingRuleName)
+	assert.Equal(t, expectedTeamRoutingRuleName, outputTeamRoutingRuleName)
 }

@@ -40,7 +40,7 @@ func TestExamplesEscalation(t *testing.T) {
 
 	// Run `terraform output` to get the value of an output variable
 	outputEscalationName := terraform.Output(t, terraformOptions, "escalation_name")
-
+	expectedEscalationName := "eg-test-escalation-" + randID
 	// Verify we're getting back the outputs we expect
-	assert.Regexp(t, "^eg-test-escalation$", outputEscalationName)
+	assert.Equal(t, expectedEscalationName, outputEscalationName)
 }

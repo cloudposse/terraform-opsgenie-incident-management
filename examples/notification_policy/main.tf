@@ -6,7 +6,7 @@ module "team" {
   source = "../../modules/team"
 
   team = {
-    name        = "owner-team"
+    name        = module.this.id
     description = "owner-team-description"
   }
 
@@ -22,34 +22,34 @@ module "notification_policy" {
 
     filter = {
       type = "match-all-conditions"
-      conditions = [{
-        field          = "tags"
-        operation      = "contains"
-        expected_value = "recommendation:auto-close"
-      }]
+      conditions = [
+        {
+          field          = "tags"
+          operation      = "contains"
+          expected_value = "recommendation:auto-close"
+        }
+      ]
     }
 
-    de_duplication_action = {
-      de_duplication_action_type = "frequency-based"
-      count                      = 2
+    de_duplication_action = var.de_duplication_action
+    delay_action          = var.delay_action
+
+    auto_close_action = {
       duration = {
         time_unit   = "minutes"
         time_amount = 5
       }
     }
 
-    delay_action = {
-      delay_option = "for-duration"
+    auto_restart_action = {
       duration = {
         time_unit   = "minutes"
-        time_amount = 10
+        time_amount = 5
       }
+      max_repeat_count = 3
     }
 
-    auto_close_action = {
-      time_unit   = "minutes"
-      time_amount = 5
-    }
+    suppress = var.suppress
   }
 
   context = module.this.context

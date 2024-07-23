@@ -6,8 +6,8 @@ module "escalation_team" {
   source = "../../modules/team"
 
   team = {
-    name        = "escalation-team"
-    description = "owner-team-description"
+    name        = module.this.id
+    description = "escalation-team-description"
   }
 
   context = module.this.context
@@ -21,10 +21,12 @@ module "escalation" {
     owner_team_id = module.owner_team.team_id
 
     rule = {
-      recipients = [{
-        type = "team"
-        id   = module.escalation_team.team_id
-      }]
+      recipients = [
+        {
+          type = "team"
+          id   = module.escalation_team.team_id
+        }
+      ]
     }
   }
 
@@ -35,7 +37,7 @@ module "owner_team" {
   source = "../../modules/team"
 
   team = {
-    name        = "owner-team"
+    name        = format("%s-%s", module.this.id, "owner-team")
     description = "owner-team-description"
   }
 
@@ -58,12 +60,14 @@ module "team_routing_rule" {
 
     time_restriction = {
       type = "time-of-day"
-      restriction = {
-        end_hour   = 17
-        end_min    = 0
-        start_hour = 9
-        start_min  = 0
-      }
+      restrictions = [
+        {
+          end_hour   = 17
+          end_min    = 0
+          start_hour = 9
+          start_min  = 0
+        }
+      ]
     }
   }
 
