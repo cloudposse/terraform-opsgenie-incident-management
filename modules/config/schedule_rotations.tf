@@ -1,5 +1,5 @@
 resource "opsgenie_schedule_rotation" "this" {
-  for_each = module.this.enabled ? { for schedule_rotation in local.schedule_rotations : schedule_rotation.name => schedule_rotation } : tomap()
+  for_each = module.this.enabled ? { for schedule_rotation in local.schedule_rotations : format("%s.%s", schedule_rotation.schedule_name, schedule_rotation.name) => schedule_rotation } : tomap()
 
   name = each.value.name
   type = each.value.type

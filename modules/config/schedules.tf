@@ -1,5 +1,5 @@
 resource "opsgenie_schedule" "this" {
-  for_each = module.this.enabled ? { for schedule in local.schedules : schedule.name => schedule } : tomap()
+  for_each = module.this.enabled ? { for schedule in local.schedules : format("%s.%s", schedule.owner_team_name, schedule.name) => schedule } : tomap()
 
   enabled = try(each.value.enabled, true)
 

@@ -1,5 +1,5 @@
 resource "opsgenie_escalation" "this" {
-  for_each = module.this.enabled ? { for escalation in local.escalations : escalation.name => escalation } : tomap()
+  for_each = module.this.enabled ? { for escalation in local.escalations : format("%s.%s", escalation.owner_team_name, escalation.name) => escalation } : tomap()
 
   name        = each.value.name
   description = try(each.value.description, each.value.name)

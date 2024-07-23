@@ -1,8 +1,8 @@
 resource "opsgenie_notification_policy" "this" {
-  for_each = module.this.enabled ? { for policy in local.notification_policies : policy.name => policy } : tomap()
+  for_each = module.this.enabled ? { for policy in local.notification_policies : format("%s.%s", policy.team_name, policy.name) => policy } : tomap()
 
   enabled = try(each.value.enabled, true)
-  name    = each.key
+  name    = each.value.name
 
   # Look up our team id by name
   team_id            = opsgenie_team.this[each.value.team_name].id
