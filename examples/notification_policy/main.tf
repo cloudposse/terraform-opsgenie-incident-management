@@ -6,7 +6,7 @@ module "team" {
   source = "../../modules/team"
 
   team = {
-    name        = "notification-policy-owner-team"
+    name        = module.this.id
     description = "owner-team-description"
   }
 

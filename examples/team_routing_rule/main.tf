@@ -7,7 +7,7 @@ module "escalation_team" {
 
   team = {
     name        = module.this.id
-    description = "owner-team-description"
+    description = "escalation-team-description"
   }
 
   context = module.this.context
@@ -37,7 +37,7 @@ module "owner_team" {
   source = "../../modules/team"
 
   team = {
-    name        = "team-routing-rule-owner-team"
+    name        = format("%s-%s", module.this.id, "owner-team")
     description = "owner-team-description"
   }
 
