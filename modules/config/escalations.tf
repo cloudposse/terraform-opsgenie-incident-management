@@ -8,7 +8,7 @@ resource "opsgenie_escalation" "this" {
   owner_team_id = try(opsgenie_team.this[each.value.owner_team_name].id, null)
 
   dynamic "rules" {
-    for_each = try([each.value.rules], [])
+    for_each = try(each.value.rules, [])
 
     content {
       condition   = try(rules.value.condition, "if-not-acked")
@@ -16,9 +16,9 @@ resource "opsgenie_escalation" "this" {
       delay       = try(rules.value.delay, 0)
 
       recipient {
-        type = rules.value.recipient["type"]
+        type = rules.value.recipient.type
 
-        id = lookup(rules.value.recipient, "id", null) != null ? rules.value.recipient.id : (
+        id = try(rules.value.recipient.id, null) != null ? rules.value.recipient.id : (
           rules.value.recipient.type == "team" ? try(opsgenie_team.this[rules.value.recipient.team_name].id, data.opsgenie_team.this[rules.value.recipient.team_name].id) : (
             rules.value.recipient.type == "user" ? try(opsgenie_user.this[rules.value.recipient.user_name].id, data.opsgenie_user.this[rules.value.recipient.user_name].id) : (
               rules.value.recipient.type == "schedule" ? try(opsgenie_schedule.this[rules.value.recipient.schedule_name].id, data.opsgenie_schedule.this[rules.value.recipient.schedule_name].id) : (

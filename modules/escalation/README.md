@@ -17,12 +17,12 @@ module "escalation" {
     name          = module.label.id
     owner_team_id = module.owner_team.team_id
 
-    rule = {
-      recipient = {
-        type = "team"
-        id   = module.escalation_team.team_id
-      }
-    }
+    rules = [{
+        recipient = {
+            type = "team"
+            id   = module.escalation_team.team_id
+        }
+    }]
   }
 
 }

@@ -6,7 +6,7 @@ resource "opsgenie_escalation" "this" {
   owner_team_id = try(var.escalation.owner_team_id, null)
 
   dynamic "rules" {
-    for_each = try(var.escalation.rule, [])
+    for_each = try(var.escalation.rules, [])
 
     content {
       condition   = try(rules.value.condition, "if-not-acked")
