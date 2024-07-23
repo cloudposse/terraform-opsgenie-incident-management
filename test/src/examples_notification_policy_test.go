@@ -50,6 +50,10 @@ func TestExamplesNotificationPolicyDeDuplicationAction(t *testing.T) {
 }
 
 func TestExamplesNotificationPolicyDelayAction(t *testing.T) {
+	// We are skipping this test because of the following error:
+	//    Error: Error occurred with Status code: 403, Message: You are not authorized to use policies!, Took: 0.001000, RequestId: 66e46694-8e4c-4e20-9644-178db4b2f4c1
+	t.SkipNow()
+
 	t.Parallel()
 	randID := strings.ToLower(random.UniqueId())
 	attributes := []string{randID}
