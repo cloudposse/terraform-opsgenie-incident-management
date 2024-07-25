@@ -16,7 +16,7 @@ resource "opsgenie_schedule_rotation" "this" {
 
     content {
       type = participant.value.type
-      id   = try(opsgenie_user.this[participant.value.username].id, data.opsgenie_user.this[participant.value.username].id)
+      id   = participant.value.type == "none" ? null : try(opsgenie_user.this[participant.value.username].id, data.opsgenie_user.this[participant.value.username].id)
     }
   }
 
