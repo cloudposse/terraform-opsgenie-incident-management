@@ -4,6 +4,8 @@ import (
 	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
+	"github.com/opsgenie/opsgenie-go-sdk-v2/client"
+	opsgenieUser "github.com/opsgenie/opsgenie-go-sdk-v2/user"
 	"github.com/stretchr/testify/assert"
 	"os"
 	"strings"
@@ -35,7 +37,7 @@ func TestExamplesUser(t *testing.T) {
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
-	defer cleanupUser(t, terraformOptions, tempTestFolder)
+	defer cleanup(t, terraformOptions, tempTestFolder)
 
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
@@ -46,31 +48,37 @@ func TestExamplesUser(t *testing.T) {
 	// Verify we're getting back the outputs we expect
 	assert.NotEmpty(t, userId)
 
-	//opsGenieUserClient, err := opsgenieUser.NewClient(&client.Config{ApiKey: os.Getenv("OPSGENIE_API_KEY")})
-	//if err != nil {
-	//	t.Fatal(err)
-	//}
-	//result, err := opsGenieUserClient.Delete(nil, &opsgenieUser.DeleteRequest{Identifier: userId})
-	//if err != nil {
-	//	t.Fatal(err)
-	//}
-	//
-	//t.Logf("Result: %+v", result)
-	//
-	//assert.Equal(t, result.Result, "Deleted")
-}
-
-func cleanupUser(t *testing.T, terraformOptions *terraform.Options, tempTestFolder string) {
-	terraform.Apply(t, &terraform.Options{
-		TerraformDir: terraformOptions.TerraformDir,
-		Upgrade:      terraformOptions.Upgrade,
-		// Variables to pass to our Terraform code using -var-file options
-		VarFiles: terraformOptions.VarFiles,
-		Vars: map[string]interface{}{
-			"attributes":    terraformOptions.Vars["attributes"],
-			"random_string": terraformOptions.Vars["random_string"],
-			"enabled":       false,
-		},
+	opsGenieUserClient, err := opsgenieUser.NewClient(&client.Config{
+		ApiKey: os.Getenv("OPSGENIE_API_KEY"),
 	})
-	_ = os.RemoveAll(tempTestFolder)
+
+	list, err := opsGenieUserClient.List(nil, &opsgenieUser.ListRequest{
+		// Queries don't like + signs which makes + addressing email addresses a problem
+		Query: "username: opsgenie-test*" + randID + "*",
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	//for _, listItem := range list.Users {
+	//	t.Logf("User: %+v", listItem)
+	//}
+
+	if len(list.Users) == 1 {
+		userId = list.Users[0].Id
+	} else if len(list.Users) == 0 {
+		t.Fatal("User not found")
+	} else {
+		t.Fatal("Multiple users found")
+	}
+	if err != nil {
+		t.Fatal(err)
+	}
+	result, err := opsGenieUserClient.Delete(nil, &opsgenieUser.DeleteRequest{Identifier: userId})
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	assert.Equal(t, result.Result, "Deleted")
 }
