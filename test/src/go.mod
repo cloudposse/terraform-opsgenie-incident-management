@@ -467,6 +467,7 @@ require (
 	github.com/opencontainers/runtime-spec v1.0.3-0.20200929063507-e6143ca7d51d // indirect
 	github.com/opencontainers/runtime-tools v0.0.0-20181011054405-1d69bd0f9c39 // indirect
 	github.com/opencontainers/selinux v1.8.0 // indirect
+	github.com/opsgenie/opsgenie-go-sdk-v2 v1.2.23 // indirect
 	github.com/oracle/oci-go-sdk v7.1.0+incompatible // indirect
 	github.com/pascaldekloe/goe v0.0.0-20180627143212-57f6aae5913c // indirect
 	github.com/pelletier/go-toml v1.9.3 // indirect

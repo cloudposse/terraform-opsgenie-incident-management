@@ -4,7 +4,10 @@ import (
 	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
+	"github.com/opsgenie/opsgenie-go-sdk-v2/client"
+	opsgenieUser "github.com/opsgenie/opsgenie-go-sdk-v2/user"
 	"github.com/stretchr/testify/assert"
+	"os"
 	"strings"
 	"testing"
 )
@@ -44,4 +47,14 @@ func TestExamplesUser(t *testing.T) {
 
 	// Verify we're getting back the outputs we expect
 	assert.NotEmpty(t, userId)
+
+	opsGenieUserClient, err := opsgenieUser.NewClient(&client.Config{ApiKey: os.Getenv("OPSGENIE_API_KEY")})
+	if err != nil {
+		t.Fatal(err)
+	}
+	result, err := opsGenieUserClient.Delete(nil, &opsgenieUser.DeleteRequest{Identifier: userId})
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.Equal(t, result.Result, "Deleted")
 }
