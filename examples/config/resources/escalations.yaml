@@ -2,11 +2,10 @@ escalations:
 - name: acme.dev.some-service-escalation
   description: "repo: https://github.com/acme/some-service;owner:David Lightman @David Lightman"
   owner_team_name: acme.dev
-  # please note - config uses `rules` but escalation modules uses `rule`
   rules:
-    condition: if-not-acked
+  - condition: if-not-acked
     notify_type: default
     delay: 0
-    recipients:
-    - type: team
+    recipient:
+      type: team
       team_name: acme.dev.some-service

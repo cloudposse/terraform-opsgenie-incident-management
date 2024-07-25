@@ -8,29 +8,25 @@ resource "opsgenie_escalation" "this" {
   owner_team_id = try(opsgenie_team.this[each.value.owner_team_name].id, null)
 
   dynamic "rules" {
-    for_each = try([each.value.rules], [])
+    for_each = each.value.rules
 
     content {
       condition   = try(rules.value.condition, "if-not-acked")
       notify_type = try(rules.value.notify_type, "default")
       delay       = try(rules.value.delay, 0)
 
-      dynamic "recipient" {
-        for_each = try(rules.value.recipients, [])
+      recipient {
+        type = rules.value.recipient.type
 
-        content {
-          type = recipient.value.type
-
-          id = lookup(recipient.value, "id", null) != null ? recipient.value.id : (
-            recipient.value.type == "team" ? opsgenie_team.this[recipient.value.team_name].id : (
-              recipient.value.type == "user" ? try(opsgenie_user.this[recipient.value.user_name].id, data.opsgenie_user.this[recipient.value.user_name].id) : (
-                recipient.value.type == "schedule" ? opsgenie_schedule.this[recipient.value.schedule_name].id : (
-                  null
-                )
+        id = try(rules.value.recipient.id, null) != null ? rules.value.recipient.id : (
+          rules.value.recipient.type == "team" ? try(opsgenie_team.this[rules.value.recipient.team_name].id, data.opsgenie_team.this[rules.value.recipient.team_name].id) : (
+            rules.value.recipient.type == "user" ? try(opsgenie_user.this[rules.value.recipient.user_name].id, data.opsgenie_user.this[rules.value.recipient.user_name].id) : (
+              rules.value.recipient.type == "schedule" ? try(opsgenie_schedule.this[rules.value.recipient.schedule_name].id, data.opsgenie_schedule.this[rules.value.recipient.schedule_name].id) : (
+                null
               )
             )
           )
-        }
+        )
       }
     }
   }

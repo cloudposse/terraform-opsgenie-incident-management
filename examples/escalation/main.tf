@@ -31,12 +31,13 @@ module "escalation" {
     name          = module.this.id
     owner_team_id = module.owner_team.team_id
 
-    rule = {
-      recipients = [{
+    rules = [{
+      delay = 0
+      recipient = {
         type = "team"
         id   = module.escalation_team.team_id
-      }]
-    }
+      }
+    }]
   }
 
   context = module.this.context

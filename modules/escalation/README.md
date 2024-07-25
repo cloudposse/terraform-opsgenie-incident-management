@@ -17,12 +17,12 @@ module "escalation" {
     name          = module.label.id
     owner_team_id = module.owner_team.team_id
 
-    rule = {
-      recipients = [{
-        type = "team"
-        id   = module.escalation_team.team_id
-      }]
-    }
+    rules = [{
+        recipient = {
+            type = "team"
+            id   = module.escalation_team.team_id
+        }
+    }]
   }
 
 }
@@ -31,7 +31,7 @@ module "escalation" {
 
 ## Inputs
 
-**Note:** `escalation` is a map for two reasons: 
+**Note:** `escalation` is a map for two reasons:
 - to be able to put whole configuration in yaml file
 - variables defined with type set are not robust enough (can't set default values)
 
