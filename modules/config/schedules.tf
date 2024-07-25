@@ -8,5 +8,5 @@ resource "opsgenie_schedule" "this" {
   timezone    = try(each.value.timezone, each.value.name)
 
   # Look up our team id by name
-  owner_team_id = try(opsgenie_team.this[each.value.owner_team_name].id, null)
+  owner_team_id = try(opsgenie_team.this[each.value.owner_team_name].id, data.opsgenie_team.this[each.value.owner_team_name].id, null)
 }

@@ -8,7 +8,7 @@ resource "opsgenie_alert_policy" "this" {
   alert_description  = try(each.value.alert_description, each.value.name)
 
   # Look up our team id by name
-  team_id = try(opsgenie_team.this[each.value.owner_team_name].id, null)
+  team_id = try(opsgenie_team.this[each.value.owner_team_name].id, data.opsgenie_team.this[each.value.owner_team_name].id, null)
 
   enabled         = try(each.value.enabled, true)
   continue_policy = try(each.value.continue, true)
@@ -32,7 +32,7 @@ resource "opsgenie_alert_policy" "this" {
       type = responders.value.type
 
       id = lookup(responders.value, "id", null) != null ? responders.value.id : (
-        responders.value.type == "team" ? opsgenie_team.this[responders.value.team_name].id : (
+        responders.value.type == "team" ? try(opsgenie_team.this[responders.value.team_name].id, data.opsgenie_team.this[responders.value.team_name].id) : (
           responders.value.type == "user" ? try(opsgenie_user.this[responders.value.user_name].id, data.opsgenie_user.this[responders.value.user_name].id) : (
             responders.value.type == "escalation" ? opsgenie_escalation.this[responders.value.escalation_name].id : (
               null

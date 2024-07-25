@@ -20,5 +20,5 @@ resource "opsgenie_api_integration" "this" {
   webhook_url                    = try(each.value.webhook_url, null)
 
   # Look up our team id by name
-  owner_team_id = try(opsgenie_team.this[each.value.owner_team_name].id, null)
+  owner_team_id = try(opsgenie_team.this[each.value.owner_team_name].id, data.opsgenie_team.this[each.value.owner_team_name].id, null)
 }

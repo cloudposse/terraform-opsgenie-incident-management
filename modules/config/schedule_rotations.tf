@@ -9,7 +9,7 @@ resource "opsgenie_schedule_rotation" "this" {
   length     = try(each.value.length, null)
 
   # Look up our schedule id by name
-  schedule_id = try(opsgenie_schedule.this[each.value.schedule_name].id, null)
+  schedule_id = try(opsgenie_schedule.this[each.value.schedule_name].id, data.opsgenie_schedule.this[each.value.schedule_name].id, null)
 
   dynamic "participant" {
     for_each = try(each.value.participants, [])

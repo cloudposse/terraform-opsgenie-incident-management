@@ -5,7 +5,7 @@ resource "opsgenie_escalation" "this" {
   description = try(each.value.description, each.value.name)
 
   # Look up our team id by name
-  owner_team_id = try(opsgenie_team.this[each.value.owner_team_name].id, null)
+  owner_team_id = try(opsgenie_team.this[each.value.owner_team_name].id, data.opsgenie_team.this[each.value.owner_team_name].id, null)
 
   dynamic "rules" {
     for_each = each.value.rules
@@ -17,7 +17,6 @@ resource "opsgenie_escalation" "this" {
 
       recipient {
         type = rules.value.recipient.type
-
         id = try(rules.value.recipient.id, null) != null ? rules.value.recipient.id : (
           rules.value.recipient.type == "team" ? try(opsgenie_team.this[rules.value.recipient.team_name].id, data.opsgenie_team.this[rules.value.recipient.team_name].id) : (
             rules.value.recipient.type == "user" ? try(opsgenie_user.this[rules.value.recipient.user_name].id, data.opsgenie_user.this[rules.value.recipient.user_name].id) : (
