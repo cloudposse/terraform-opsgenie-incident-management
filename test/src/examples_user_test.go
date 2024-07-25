@@ -56,5 +56,8 @@ func TestExamplesUser(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
+	t.Logf("Result: %+v", result)
+
 	assert.Equal(t, result.Result, "Deleted")
 }
