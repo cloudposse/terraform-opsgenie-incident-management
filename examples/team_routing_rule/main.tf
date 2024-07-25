@@ -17,7 +17,7 @@ module "escalation" {
   source = "../../modules/escalation"
 
   escalation = {
-    name          = "escalation"
+    name          = module.this.id
     owner_team_id = module.owner_team.team_id
 
     rules = [{
