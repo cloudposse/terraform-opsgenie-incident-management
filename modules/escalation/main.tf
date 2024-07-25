@@ -11,7 +11,7 @@ resource "opsgenie_escalation" "this" {
     content {
       condition   = try(rules.value.condition, "if-not-acked")
       notify_type = try(rules.value.notify_type, "default")
-      delay       = rules.value.delay
+      delay       = try(rules.value.delay, 0)
 
       recipient {
         type = rules.value.recipient.type
