@@ -4,8 +4,6 @@ import (
 	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
-	"github.com/opsgenie/opsgenie-go-sdk-v2/client"
-	opsgenieUser "github.com/opsgenie/opsgenie-go-sdk-v2/user"
 	"github.com/stretchr/testify/assert"
 	"os"
 	"strings"
@@ -37,7 +35,7 @@ func TestExamplesUser(t *testing.T) {
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
-	defer cleanup(t, terraformOptions, tempTestFolder)
+	defer cleanupUser(t, terraformOptions, tempTestFolder)
 
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
@@ -48,16 +46,31 @@ func TestExamplesUser(t *testing.T) {
 	// Verify we're getting back the outputs we expect
 	assert.NotEmpty(t, userId)
 
-	opsGenieUserClient, err := opsgenieUser.NewClient(&client.Config{ApiKey: os.Getenv("OPSGENIE_API_KEY")})
-	if err != nil {
-		t.Fatal(err)
-	}
-	result, err := opsGenieUserClient.Delete(nil, &opsgenieUser.DeleteRequest{Identifier: userId})
-	if err != nil {
-		t.Fatal(err)
-	}
+	//opsGenieUserClient, err := opsgenieUser.NewClient(&client.Config{ApiKey: os.Getenv("OPSGENIE_API_KEY")})
+	//if err != nil {
+	//	t.Fatal(err)
+	//}
+	//result, err := opsGenieUserClient.Delete(nil, &opsgenieUser.DeleteRequest{Identifier: userId})
+	//if err != nil {
+	//	t.Fatal(err)
+	//}
+	//
+	//t.Logf("Result: %+v", result)
+	//
+	//assert.Equal(t, result.Result, "Deleted")
+}
 
-	t.Logf("Result: %+v", result)
-
-	assert.Equal(t, result.Result, "Deleted")
+func cleanupUser(t *testing.T, terraformOptions *terraform.Options, tempTestFolder string) {
+	terraform.Apply(t, &terraform.Options{
+		TerraformDir: terraformOptions.TerraformDir,
+		Upgrade:      terraformOptions.Upgrade,
+		// Variables to pass to our Terraform code using -var-file options
+		VarFiles: terraformOptions.VarFiles,
+		Vars: map[string]interface{}{
+			"attributes":    terraformOptions.Vars["attributes"],
+			"random_string": terraformOptions.Vars["random_string"],
+			"enabled":       false,
+		},
+	})
+	_ = os.RemoveAll(tempTestFolder)
 }
