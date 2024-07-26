@@ -13,10 +13,10 @@ locals {
   context_tags = merge({
     for k, v in module.this.tags :
     lower(k) => v
-  },
+    },
     {
       "platform" : try(module.this.attributes[0], "none"),
-    })
+  })
 }
 
 
