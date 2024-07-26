@@ -1,19 +1,18 @@
 package test
 
 import (
-	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
 	"github.com/stretchr/testify/assert"
-	"strings"
 	"testing"
 )
 
 // Test the Terraform module in examples/advanced_features using Terratest.
 func TestExamplesAdvancedFeatures(t *testing.T) {
 	t.Parallel()
-	randID := strings.ToLower(random.UniqueId())
-	attributes := []string{randID}
+
+	platform := detectPlatform()
+	attributes := []string{platform}
 
 	rootFolder := "../../"
 	terraformFolderRelativeToRoot := "examples/advanced_features"
@@ -35,10 +34,8 @@ func TestExamplesAdvancedFeatures(t *testing.T) {
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
 	defer cleanup(t, terraformOptions, tempTestFolder)
 
-	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
-	terraform.InitAndApply(t, terraformOptions)
+	// Here we have to do a plan because our plan doesn't support advanced_integrations
+	stdOut := terraform.InitAndPlan(t, terraformOptions)
 
-	outputApiIntegrationName := terraform.Output(t, terraformOptions, "api_integration_name")
-
-	assert.Equal(t, "eg-test-api-integration-"+randID, outputApiIntegrationName)
+	assert.Contains(t, stdOut, "eg-test-api-integration-"+platform)
 }

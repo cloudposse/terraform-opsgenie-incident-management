@@ -8,7 +8,7 @@ module "user" {
   user = {
     // opsgenie-test+tofu-user@cloudposse.com
     // opsgenie-test+tf-user@cloudposse.com
-    username  = format("opsgenie-test+%s-%s@cloudposse.com", module.this.attributes[0], module.this.name)
+    username  = format("opsgenie-test+%s-%s@cloudposse.com", try(module.this.attributes[0], "none"), module.this.name)
     full_name = "Opsgenie Test User"
     role      = "User"
     locale    = "en_US"

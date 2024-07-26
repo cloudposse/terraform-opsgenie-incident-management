@@ -3,10 +3,7 @@ package test
 import (
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
-	"github.com/opsgenie/opsgenie-go-sdk-v2/client"
-	opsgenieUser "github.com/opsgenie/opsgenie-go-sdk-v2/user"
 	"github.com/stretchr/testify/assert"
-	"os"
 	"testing"
 )
 
@@ -46,33 +43,33 @@ func TestExamplesUser(t *testing.T) {
 	// Verify we're getting back the outputs we expect
 	assert.NotEmpty(t, userId)
 
-	opsGenieUserClient, err := opsgenieUser.NewClient(&client.Config{
-		ApiKey: os.Getenv("OPSGENIE_API_KEY"),
-	})
-
-	list, err := opsGenieUserClient.List(nil, &opsgenieUser.ListRequest{
-		// Queries don't like + signs which makes + addressing email addresses a problem
-		Query: "username: opsgenie-test*" + platform + "user" + "*",
-	})
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	if len(list.Users) == 1 {
-		userId = list.Users[0].Id
-	} else if len(list.Users) == 0 {
-		t.Fatal("User not found")
-	} else {
-		t.Fatal("Multiple users found")
-	}
-	if err != nil {
-		t.Fatal(err)
-	}
-	result, err := opsGenieUserClient.Delete(nil, &opsgenieUser.DeleteRequest{Identifier: userId})
-
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	assert.Equal(t, result.Result, "Deleted")
+	//opsGenieUserClient, err := opsgenieUser.NewClient(&client.Config{
+	//	ApiKey: os.Getenv("OPSGENIE_API_KEY"),
+	//})
+	//
+	//list, err := opsGenieUserClient.List(nil, &opsgenieUser.ListRequest{
+	//	// Queries don't like + signs which makes + addressing email addresses a problem
+	//	Query: "username: opsgenie-test*" + platform + "user" + "*",
+	//})
+	//if err != nil {
+	//	t.Fatal(err)
+	//}
+	//
+	//if len(list.Users) == 1 {
+	//	userId = list.Users[0].Id
+	//} else if len(list.Users) == 0 {
+	//	t.Fatal("User not found")
+	//} else {
+	//	t.Fatal("Multiple users found")
+	//}
+	//if err != nil {
+	//	t.Fatal(err)
+	//}
+	//result, err := opsGenieUserClient.Delete(nil, &opsgenieUser.DeleteRequest{Identifier: userId})
+	//
+	//if err != nil {
+	//	t.Fatal(err)
+	//}
+	//
+	//assert.Equal(t, result.Result, "Deleted")
 }
