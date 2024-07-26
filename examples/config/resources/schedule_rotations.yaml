@@ -6,9 +6,9 @@ schedule_rotations:
     length: 1
     participants:
     - type: user
-      username: opsgenie-test@cloudposse.com
+      username: opsgenie-test+${ platform }-${ stage }@cloudposse.com
     - type: user
-      username: opsgenie-test-2@cloudposse.com
+      username: opsgenie-test+${ platform }-${ stage }-2@cloudposse.com
     - type: none
     time_restriction:
       type: time-of-day
