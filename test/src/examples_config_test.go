@@ -1,21 +1,16 @@
 package test
 
 import (
-	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
-	"strings"
 	"testing"
 )
 
 // Test the Terraform module in examples/config using Terratest.
 func TestExamplesConfig(t *testing.T) {
-	// We skip the ExamplesConfig Test because our API key doesn't allow full testing of the modules used in the example.
-	t.SkipNow()
 
-	t.Parallel()
-	randID := strings.ToLower(random.UniqueId())
-	attributes := []string{randID}
+	platform := detectPlatform()
+	attributes := []string{platform}
 
 	rootFolder := "../../"
 	terraformFolderRelativeToRoot := "examples/config"

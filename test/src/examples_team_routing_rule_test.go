@@ -1,19 +1,17 @@
 package test
 
 import (
-	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
 	"github.com/stretchr/testify/assert"
-	"strings"
 	"testing"
 )
 
 // Test the Terraform module in examples/team_routing_rule using Terratest.
 func TestExamplesTeamRoutingRule(t *testing.T) {
-	t.Parallel()
-	randID := strings.ToLower(random.UniqueId())
-	attributes := []string{randID}
+
+	platform := detectPlatform()
+	attributes := []string{platform}
 
 	rootFolder := "../../"
 	terraformFolderRelativeToRoot := "examples/team_routing_rule"
@@ -40,7 +38,7 @@ func TestExamplesTeamRoutingRule(t *testing.T) {
 
 	// Run `terraform output` to get the value of an output variable
 	outputTeamRoutingRuleName := terraform.Output(t, terraformOptions, "team_routing_rule_name")
-	expectedTeamRoutingRuleName := "eg-test-team-routing-rule-" + randID
+	expectedTeamRoutingRuleName := "eg-test-team-routing-rule-" + platform
 	// Verify we're getting back the outputs we expect
 	assert.Equal(t, expectedTeamRoutingRuleName, outputTeamRoutingRuleName)
 }

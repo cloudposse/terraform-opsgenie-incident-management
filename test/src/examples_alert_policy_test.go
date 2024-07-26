@@ -1,23 +1,17 @@
 package test
 
 import (
-	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
 	"github.com/stretchr/testify/assert"
-	"strings"
 	"testing"
 )
 
 // Test the Terraform module in examples/alert_policy using Terratest.
 func TestExamplesAlertPolicy(t *testing.T) {
-	t.SkipNow()
-	// We are skipping this test because of the following error:
-	//    Error: Error occurred with Status code: 403, Message: You are not authorized to use policies!, Took: 0.001000, RequestId: 66e46694-8e4c-4e20-9644-178db4b2f4c1
 
-	t.Parallel()
-	randID := strings.ToLower(random.UniqueId())
-	attributes := []string{randID}
+	platform := detectPlatform()
+	attributes := []string{platform}
 
 	rootFolder := "../../"
 	terraformFolderRelativeToRoot := "examples/alert_policy"

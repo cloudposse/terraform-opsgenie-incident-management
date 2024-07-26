@@ -1,19 +1,17 @@
 package test
 
 import (
-	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
 	"github.com/stretchr/testify/assert"
-	"strings"
 	"testing"
 )
 
 // Test the Terraform module in examples/user using Terratest.
 func TestExamplesUser(t *testing.T) {
-	t.Parallel()
-	randID := strings.ToLower(random.UniqueId())
-	attributes := []string{randID}
+
+	platform := detectPlatform()
+	attributes := []string{platform}
 
 	rootFolder := "../../"
 	terraformFolderRelativeToRoot := "examples/user"
@@ -28,8 +26,7 @@ func TestExamplesUser(t *testing.T) {
 		// Variables to pass to our Terraform code using -var-file options
 		VarFiles: varFiles,
 		Vars: map[string]interface{}{
-			"attributes":    attributes,
-			"random_string": randID,
+			"attributes": attributes,
 		},
 	}
 
@@ -44,4 +41,34 @@ func TestExamplesUser(t *testing.T) {
 
 	// Verify we're getting back the outputs we expect
 	assert.NotEmpty(t, userId)
+
+	//opsGenieUserClient, err := opsgenieUser.NewClient(&client.Config{
+	//	ApiKey: os.Getenv("OPSGENIE_API_KEY"),
+	//})
+	//
+	//list, err := opsGenieUserClient.List(nil, &opsgenieUser.ListRequest{
+	//	// Queries don't like + signs which makes + addressing email addresses a problem
+	//	Query: "username: opsgenie-test*" + platform + "user" + "*",
+	//})
+	//if err != nil {
+	//	t.Fatal(err)
+	//}
+	//
+	//if len(list.Users) == 1 {
+	//	userId = list.Users[0].Id
+	//} else if len(list.Users) == 0 {
+	//	t.Fatal("User not found")
+	//} else {
+	//	t.Fatal("Multiple users found")
+	//}
+	//if err != nil {
+	//	t.Fatal(err)
+	//}
+	//result, err := opsGenieUserClient.Delete(nil, &opsgenieUser.DeleteRequest{Identifier: userId})
+	//
+	//if err != nil {
+	//	t.Fatal(err)
+	//}
+	//
+	//assert.Equal(t, result.Result, "Deleted")
 }

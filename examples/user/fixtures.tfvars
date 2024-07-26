@@ -1,3 +1,3 @@
 namespace = "eg"
-stage     = "test"
 name      = "user"
+stage     = "test"
