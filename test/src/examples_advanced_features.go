@@ -9,7 +9,6 @@ import (
 
 // Test the Terraform module in examples/advanced_features using Terratest.
 func TestExamplesAdvancedFeatures(t *testing.T) {
-	t.Parallel()
 
 	platform := detectPlatform()
 	attributes := []string{platform}

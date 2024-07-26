@@ -9,7 +9,6 @@ import (
 
 // Test the Terraform module in examples/notification_policy using Terratest.
 func TestExamplesNotificationPolicyDeDuplicationAction(t *testing.T) {
-	t.Parallel()
 	platform := detectPlatform()
 	attributes := []string{platform}
 
@@ -44,7 +43,6 @@ func TestExamplesNotificationPolicyDeDuplicationAction(t *testing.T) {
 }
 
 func TestExamplesNotificationPolicyDelayAction(t *testing.T) {
-	t.Parallel()
 
 	platform := detectPlatform()
 	attributes := []string{platform}

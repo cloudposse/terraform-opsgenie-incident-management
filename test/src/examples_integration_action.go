@@ -8,7 +8,6 @@ import (
 
 // Test the Terraform module in examples/integration_action using Terratest.
 func TestExamplesIntegrationAction(t *testing.T) {
-	t.Parallel()
 
 	platform := detectPlatform()
 	attributes := []string{platform}

@@ -9,7 +9,6 @@ import (
 
 // Test the Terraform module in examples/escalation using Terratest.
 func TestExamplesEscalation(t *testing.T) {
-	t.Parallel()
 
 	platform := detectPlatform()
 	attributes := []string{platform}

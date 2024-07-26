@@ -11,7 +11,6 @@ import (
 
 // Test the Terraform module in examples/complete using Terratest.
 func TestExamplesComplete(t *testing.T) {
-	t.Parallel()
 
 	platform := detectPlatform()
 	attributes := []string{platform}
@@ -69,7 +68,6 @@ func TestExamplesComplete(t *testing.T) {
 }
 
 func TestExamplesCompleteDisabled(t *testing.T) {
-	t.Parallel()
 
 	platform := detectPlatform()
 	attributes := []string{platform}

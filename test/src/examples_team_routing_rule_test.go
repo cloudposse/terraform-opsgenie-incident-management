@@ -9,7 +9,6 @@ import (
 
 // Test the Terraform module in examples/team_routing_rule using Terratest.
 func TestExamplesTeamRoutingRule(t *testing.T) {
-	t.Parallel()
 
 	platform := detectPlatform()
 	attributes := []string{platform}
