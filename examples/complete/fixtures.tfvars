@@ -1,3 +1,3 @@
 namespace = "eg"
-name      = "incident-management-workflow"
+name      = "complete"
 stage     = "test"

@@ -52,15 +52,11 @@ func TestExamplesUser(t *testing.T) {
 
 	list, err := opsGenieUserClient.List(nil, &opsgenieUser.ListRequest{
 		// Queries don't like + signs which makes + addressing email addresses a problem
-		Query: "username: opsgenie-test*" + platform + "*",
+		Query: "username: opsgenie-test*" + platform + "user" + "*",
 	})
 	if err != nil {
 		t.Fatal(err)
 	}
-
-	//for _, listItem := range list.Users {
-	//	t.Logf("User: %+v", listItem)
-	//}
 
 	if len(list.Users) == 1 {
 		userId = list.Users[0].Id

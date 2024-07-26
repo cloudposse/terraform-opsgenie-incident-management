@@ -4,6 +4,7 @@ import (
 	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
+	"github.com/stretchr/testify/assert"
 	"strings"
 	"testing"
 )
@@ -36,4 +37,8 @@ func TestExamplesAdvancedFeatures(t *testing.T) {
 
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
+
+	outputApiIntegrationName := terraform.Output(t, terraformOptions, "api_integration_name")
+
+	assert.Equal(t, "eg-test-api-integration-"+randID, outputApiIntegrationName)
 }

@@ -5,7 +5,7 @@ module "user" {
   enabled = false
 
   user = {
-    username  = "opsgenie-test@cloudposse.com"
+    username  = format("opsgenie-test+%s-%s@cloudposse.com", module.this.attributes[0], module.this.name)
     full_name = "Opsgenie Test User"
     role      = "User"
     locale    = "en_US"
