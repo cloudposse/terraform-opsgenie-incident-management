@@ -5,6 +5,7 @@ import (
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
 	"github.com/stretchr/testify/assert"
+	"os/exec"
 	"strings"
 	"testing"
 )
@@ -20,6 +21,9 @@ func TestExamplesTeamRoutingRule(t *testing.T) {
 	varFiles := []string{"fixtures.tfvars"}
 
 	tempTestFolder := testStructure.CopyTerraformFolderToTemp(t, rootFolder, terraformFolderRelativeToRoot)
+	cmd := exec.Command("update-alternatives", "--list", "terraform")
+	out, _ := cmd.CombinedOutput()
+	t.Log(out)
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
