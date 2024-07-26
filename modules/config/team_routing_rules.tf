@@ -6,7 +6,7 @@ resource "opsgenie_team_routing_rule" "this" {
   is_default = try(each.value.is_default, false)
 
   # Look up Team ID by name
-  team_id = opsgenie_team.this[each.value.owner_team_name].id
+  team_id = try(opsgenie_team.this[each.value.owner_team_name].id, data.opsgenie_team.this[each.value.owner_team_name].id)
 
   order    = try(each.value.order, 0)
   timezone = try(each.value.timezone, "America/Los_Angeles")
