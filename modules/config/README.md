@@ -149,6 +149,22 @@ users:
 ```
 
 
+### `existing_schedules.yaml`
+
+```yaml
+existing_schedules:
+- acme.default
+```
+
+
+### `existing_teams.yaml`
+
+```yaml
+existing_teams:
+- acme
+```
+
+
 ### `existing_users.yaml`
 
 ```yaml
@@ -229,6 +245,8 @@ module "opsgenie" {
 | `alert_policies`            | `name` and `id` of each alert policy        |
 | `api_integrations`          | `name` and `id` of each API integration     |
 | `escalations`               | `name` and `id` of each escalation          |
+| `existing_schedules`        | `name` and `id` of each existing schedule   |
+| `existing_teams`            | `name` and `id` of each existing team       |
 | `existing_users`            | `username` and `id` of each existing user   |
 | `notification_policies`     | `name` and `id` of each notification policy |
 | `schedules`                 | `name` and `id` of each schedules           |
