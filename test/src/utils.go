@@ -20,8 +20,10 @@ func detectPlatform() string {
 	platform := ""
 	if strings.Contains(string(out), "Terraform") {
 		platform = "tf"
-	} else {
+	} else if strings.Contains(string(out), "OpenTofu") {
 		platform = "tofu"
+	} else {
+		platform = "unknown"
 	}
 	return platform
 }
