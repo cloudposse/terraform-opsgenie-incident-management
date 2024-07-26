@@ -1,22 +1,21 @@
 package test
 
 import (
-	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
 	"github.com/opsgenie/opsgenie-go-sdk-v2/client"
 	opsgenieUser "github.com/opsgenie/opsgenie-go-sdk-v2/user"
 	"github.com/stretchr/testify/assert"
 	"os"
-	"strings"
 	"testing"
 )
 
 // Test the Terraform module in examples/user using Terratest.
 func TestExamplesUser(t *testing.T) {
 	t.Parallel()
-	randID := strings.ToLower(random.UniqueId())
-	attributes := []string{randID}
+
+	platform := detectPlatform()
+	attributes := []string{platform}
 
 	rootFolder := "../../"
 	terraformFolderRelativeToRoot := "examples/user"
@@ -31,8 +30,7 @@ func TestExamplesUser(t *testing.T) {
 		// Variables to pass to our Terraform code using -var-file options
 		VarFiles: varFiles,
 		Vars: map[string]interface{}{
-			"attributes":    attributes,
-			"random_string": randID,
+			"attributes": attributes,
 		},
 	}
 
@@ -54,7 +52,7 @@ func TestExamplesUser(t *testing.T) {
 
 	list, err := opsGenieUserClient.List(nil, &opsgenieUser.ListRequest{
 		// Queries don't like + signs which makes + addressing email addresses a problem
-		Query: "username: opsgenie-test*" + randID + "*",
+		Query: "username: opsgenie-test*" + platform + "*",
 	})
 	if err != nil {
 		t.Fatal(err)

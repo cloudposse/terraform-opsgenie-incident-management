@@ -1,29 +1,24 @@
 package test
 
 import (
-	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
 	"github.com/stretchr/testify/assert"
-	"os/exec"
-	"strings"
 	"testing"
 )
 
 // Test the Terraform module in examples/team_routing_rule using Terratest.
 func TestExamplesTeamRoutingRule(t *testing.T) {
 	t.Parallel()
-	randID := strings.ToLower(random.UniqueId())
-	attributes := []string{randID}
+
+	platform := detectPlatform()
+	attributes := []string{platform}
 
 	rootFolder := "../../"
 	terraformFolderRelativeToRoot := "examples/team_routing_rule"
 	varFiles := []string{"fixtures.tfvars"}
 
 	tempTestFolder := testStructure.CopyTerraformFolderToTemp(t, rootFolder, terraformFolderRelativeToRoot)
-	cmd := exec.Command("update-alternatives", "--list", "terraform")
-	out, _ := cmd.CombinedOutput()
-	t.Log(out)
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
@@ -44,7 +39,7 @@ func TestExamplesTeamRoutingRule(t *testing.T) {
 
 	// Run `terraform output` to get the value of an output variable
 	outputTeamRoutingRuleName := terraform.Output(t, terraformOptions, "team_routing_rule_name")
-	expectedTeamRoutingRuleName := "eg-test-team-routing-rule-" + randID
+	expectedTeamRoutingRuleName := "eg-test-team-routing-rule-" + platform
 	// Verify we're getting back the outputs we expect
 	assert.Equal(t, expectedTeamRoutingRuleName, outputTeamRoutingRuleName)
 }
