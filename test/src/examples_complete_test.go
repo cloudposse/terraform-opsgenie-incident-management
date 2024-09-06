@@ -2,10 +2,8 @@ package test
 
 import (
 	"regexp"
-	"strings"
 	"testing"
 
-	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
 	"github.com/stretchr/testify/assert"
@@ -13,9 +11,9 @@ import (
 
 // Test the Terraform module in examples/complete using Terratest.
 func TestExamplesComplete(t *testing.T) {
-	t.Parallel()
-	randID := strings.ToLower(random.UniqueId())
-	attributes := []string{randID}
+
+	platform := detectPlatform()
+	attributes := []string{platform}
 
 	rootFolder := "../../"
 	terraformFolderRelativeToRoot := "examples/complete"
@@ -44,35 +42,35 @@ func TestExamplesComplete(t *testing.T) {
 	outputApiIntegrationName := terraform.Output(t, terraformOptions, "api_integration_name")
 
 	// Verify we're getting back the outputs we expect
-	expectedWorkflowName := "eg-test-incident-management-workflow-" + randID
+	expectedWorkflowName := "eg-test-complete-" + platform
 	assert.Equal(t, expectedWorkflowName, outputApiIntegrationName)
 
 	// Run `terraform output` to get the value of an output variable
 
 	outputEscalationName := terraform.Output(t, terraformOptions, "escalation_name")
-	expectedEscalationName := "eg-test-incident-management-workflow-" + randID + "-escalation"
+	expectedEscalationName := "eg-test-complete-" + platform + "-escalation"
 
 	// Verify we're getting back the outputs we expect
 	assert.Equal(t, expectedEscalationName, outputEscalationName)
 
 	// Run `terraform output` to get the value of an output variable
 	outputTeamRoutingRuleName := terraform.Output(t, terraformOptions, "team_routing_rule_name")
-	expectedTeamRoutingRuleName := "eg-test-incident-management-workflow-" + randID
+	expectedTeamRoutingRuleName := "eg-test-complete-" + platform
 
 	// Verify we're getting back the outputs we expect
 	assert.Equal(t, expectedTeamRoutingRuleName, outputTeamRoutingRuleName)
 
 	// Run `terraform output` to get the value of an output variable
 	outputTeamName := terraform.Output(t, terraformOptions, "team_name")
-	expectedTeamName := "eg-test-incident-management-workflow-" + randID
+	expectedTeamName := "eg-test-complete-" + platform
 	// Verify we're getting back the outputs we expect
 	assert.Equal(t, expectedTeamName, outputTeamName)
 }
 
 func TestExamplesCompleteDisabled(t *testing.T) {
-	t.Parallel()
-	randID := strings.ToLower(random.UniqueId())
-	attributes := []string{randID}
+
+	platform := detectPlatform()
+	attributes := []string{platform}
 
 	rootFolder := "../../"
 	terraformFolderRelativeToRoot := "examples/complete"

@@ -1,19 +1,17 @@
 package test
 
 import (
-	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
 	"github.com/stretchr/testify/assert"
-	"strings"
 	"testing"
 )
 
 // Test the Terraform module in examples/escalation using Terratest.
 func TestExamplesEscalation(t *testing.T) {
-	t.Parallel()
-	randID := strings.ToLower(random.UniqueId())
-	attributes := []string{randID}
+
+	platform := detectPlatform()
+	attributes := []string{platform}
 
 	rootFolder := "../../"
 	terraformFolderRelativeToRoot := "examples/escalation"
@@ -40,7 +38,7 @@ func TestExamplesEscalation(t *testing.T) {
 
 	// Run `terraform output` to get the value of an output variable
 	outputEscalationName := terraform.Output(t, terraformOptions, "escalation_name")
-	expectedEscalationName := "eg-test-escalation-" + randID
+	expectedEscalationName := "eg-test-escalation-" + platform
 	// Verify we're getting back the outputs we expect
 	assert.Equal(t, expectedEscalationName, outputEscalationName)
 }

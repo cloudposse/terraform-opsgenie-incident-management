@@ -1,11 +1,11 @@
 users:
-  - username: opsgenie-test@cloudposse.com
+  - username: opsgenie-test+${ platform }-${ name }@cloudposse.com
     full_name: Opsgenie Test User
     role: User
     locale: "en_US"
     timezone: "America/New_York"
 
-  - username: opsgenie-test-2@cloudposse.com
+  - username: opsgenie-test+${ platform }-${ name }-2@cloudposse.com
     full_name: Opsgenie Test User 2
     role: User
     locale: "en_US"

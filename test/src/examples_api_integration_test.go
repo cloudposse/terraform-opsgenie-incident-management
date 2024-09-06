@@ -1,19 +1,17 @@
 package test
 
 import (
-	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	testStructure "github.com/gruntwork-io/terratest/modules/test-structure"
 	"github.com/stretchr/testify/assert"
-	"strings"
 	"testing"
 )
 
 // Test the Terraform module in examples/api_integration using Terratest.
 func TestExamplesApiIntegration(t *testing.T) {
-	t.Parallel()
-	randID := strings.ToLower(random.UniqueId())
-	attributes := []string{randID}
+
+	platform := detectPlatform()
+	attributes := []string{platform}
 
 	rootFolder := "../../"
 	terraformFolderRelativeToRoot := "examples/api_integration"
@@ -40,7 +38,7 @@ func TestExamplesApiIntegration(t *testing.T) {
 
 	// Run `terraform output` to get the value of an output variable
 	outputApiIntegrationName := terraform.Output(t, terraformOptions, "api_integration_name")
-	expectedApiIntegrationName := "eg-test-api-integration-" + randID
+	expectedApiIntegrationName := "eg-test-api-integration-" + platform
 
 	// Verify we're getting back the outputs we expect
 	assert.Equal(t, expectedApiIntegrationName, outputApiIntegrationName)
