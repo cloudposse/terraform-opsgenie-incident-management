@@ -1,7 +1,7 @@
 # https://docs.opsgenie.com/docs/alert-api
 
 resource "opsgenie_alert_policy" "this" {
-  for_each = module.this.enabled ? { for policy in local.alert_policies : policy.name => policy } : {}
+  for_each = module.this.enabled ? { for policy in local.alert_policies : policy.name => policy } : tomap()
 
   name               = each.value.name
   policy_description = try(each.value.policy_description, each.value.name)
