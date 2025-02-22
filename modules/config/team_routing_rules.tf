@@ -32,12 +32,9 @@ resource "opsgenie_team_routing_rule" "this" {
     }
   }
 
-  dynamic "notify" {
-    for_each = try(each.value.notify, [])
-
-    content {
-      type = notify.value.type
-      id   = opsgenie_escalation.this[notify.value.name].id
-    }
+  notify {
+    type = each.value.notify[0].type
+    id   = try(each.value.notify[0].id, null)
+    name = try(each.value.notify[0].name, null)
   }
 }
