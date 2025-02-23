@@ -32,6 +32,38 @@ resource "opsgenie_team_routing_rule" "this" {
     }
   }
 
+  dynamic "time_restriction" {
+    for_each = try(each.value.time_restriction, null) != null ? ["true"] : []
+
+    content {
+      type = each.value.time_restriction.type
+
+      dynamic "restriction" {
+        for_each = try(each.value.time_restriction.restriction, null) != null ? ["true"] : []
+
+        content {
+          start_hour = restriction.value.start_hour
+          start_min  = restriction.value.start_min
+          end_hour   = restriction.value.end_hour
+          end_min    = restriction.value.end_min
+        }
+      }
+
+      dynamic "restrictions" {
+        for_each = try(each.value.time_restriction.restrictions, null) != null ? each.value.time_restriction.restrictions : []
+
+        content {
+          start_day  = restrictions.value.start_day
+          start_hour = restrictions.value.start_hour
+          start_min  = restrictions.value.start_min
+          end_day    = restrictions.value.end_day
+          end_hour   = restrictions.value.end_hour
+          end_min    = restrictions.value.end_min
+        }
+      }
+    }
+  }
+
   notify {
     type = each.value.notify[0].type
     id   = try(each.value.notify[0].id, null)
